@@ -1,75 +1,68 @@
 import Link from "next/link";
-import { teams, getWinRate, type League } from "@/lib/data";
+import { prisma } from "@/lib/prisma";
 
-function TeamCard({ team }: { team: (typeof teams)[0] }) {
-  const winRate = getWinRate(team);
-  return (
-    <Link
-      href={`/teams/${team.id}`}
-      className="bg-gray-900 rounded-xl p-5 hover:bg-gray-800 transition-colors border border-gray-800 hover:border-gray-700 group"
-    >
-      <div className="flex items-center justify-between mb-3">
-        <span className="text-lg font-bold text-white group-hover:text-blue-400 transition-colors">
-          {team.shortName}
-        </span>
-        <span
-          className="text-xs px-2 py-1 rounded-full font-medium"
-          style={{ backgroundColor: team.color + "33", color: team.color }}
-        >
-          {team.city}
-        </span>
-      </div>
-      <p className="text-xs text-gray-500 mb-4 truncate">{team.name}</p>
-      <div className="flex gap-3 text-sm mb-3">
-        <span className="text-green-400 font-semibold">{team.wins}勝</span>
-        <span className="text-red-400 font-semibold">{team.losses}敗</span>
-        <span className="text-gray-500">{team.draws}分</span>
-      </div>
-      <div className="w-full bg-gray-800 rounded-full h-1.5">
-        <div
-          className="h-1.5 rounded-full"
-          style={{ width: `${winRate * 100}%`, backgroundColor: team.color }}
-        />
-      </div>
-      <p className="text-right text-xs text-gray-500 mt-1">
-        勝率 {winRate.toFixed(3)}
-      </p>
-    </Link>
-  );
-}
+export default async function Home() {
+  const standings = await prisma.standing.findMany({
+    where: { seasonYear: 2024 },
+    include: { team: { include: { stadium: true } } },
+    orderBy: [{ league: "asc" }, { rank: "asc" }],
+  });
 
-function LeagueSection({ league, leagueTeams }: { league: League; leagueTeams: (typeof teams) }) {
-  const sorted = [...leagueTeams].sort((a, b) => getWinRate(b) - getWinRate(a));
-  return (
-    <section>
-      <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-        <span
-          className="w-1 h-6 rounded-full inline-block"
-          style={{ backgroundColor: league === "セントラル" ? "#3B82F6" : "#F59E0B" }}
-        />
-        {league}・リーグ
-      </h2>
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-        {sorted.map((team) => (
-          <TeamCard key={team.id} team={team} />
-        ))}
-      </div>
-    </section>
-  );
-}
-
-export default function Home() {
-  const central = teams.filter((t) => t.league === "セントラル");
-  const pacific = teams.filter((t) => t.league === "パシフィック");
+  const central = standings.filter((s) => s.league === "セントラル");
+  const pacific = standings.filter((s) => s.league === "パシフィック");
 
   return (
     <div className="space-y-10">
       <div>
-        <h1 className="text-3xl font-bold text-white mb-1">2025年 NPB 順位表</h1>
+        <h1 className="text-3xl font-bold text-white mb-1">2024年 NPB 順位表</h1>
         <p className="text-gray-400 text-sm">日本プロ野球 全12球団のデータ</p>
       </div>
-      <LeagueSection league="セントラル" leagueTeams={central} />
-      <LeagueSection league="パシフィック" leagueTeams={pacific} />
+      {[{ label: "セントラル・リーグ", data: central, color: "#3B82F6" }, { label: "パシフィック・リーグ", data: pacific, color: "#F59E0B" }].map(({ label, data, color }) => (
+        <section key={label}>
+          <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+            <span className="w-1 h-6 rounded-full inline-block" style={{ backgroundColor: color }} />
+            {label}
+          </h2>
+          <div className="bg-gray-900 rounded-xl border border-gray-800 overflow-hidden">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="border-b border-gray-800 text-gray-500 text-xs">
+                  <th className="text-center px-4 py-3 w-8">順位</th>
+                  <th className="text-left px-4 py-3">球団</th>
+                  <th className="text-right px-4 py-3">勝</th>
+                  <th className="text-right px-4 py-3">敗</th>
+                  <th className="text-right px-4 py-3">分</th>
+                  <th className="text-right px-4 py-3">勝率</th>
+                  <th className="text-right px-4 py-3">GB</th>
+                  <th className="text-right px-4 py-3 hidden md:table-cell">得点</th>
+                  <th className="text-right px-4 py-3 hidden md:table-cell">失点</th>
+                </tr>
+              </thead>
+              <tbody>
+                {data.map((s) => (
+                  <tr key={s.teamId} className="border-b border-gray-800/50 hover:bg-gray-800/50 transition-colors">
+                    <td className="text-center px-4 py-3 font-bold text-gray-400">{s.rank}</td>
+                    <td className="px-4 py-3">
+                      <Link href={`/teams/${s.teamId}`} className="flex items-center gap-2 hover:text-blue-400 transition-colors">
+                        <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: s.team.color }} />
+                        <span className="font-semibold text-white">{s.team.shortName}</span>
+                        <span className="text-gray-500 text-xs hidden sm:inline">{s.team.name}</span>
+                      </Link>
+                    </td>
+                    <td className="px-4 py-3 text-right font-mono text-green-400">{s.wins}</td>
+                    <td className="px-4 py-3 text-right font-mono text-red-400">{s.losses}</td>
+                    <td className="px-4 py-3 text-right font-mono text-gray-500">{s.draws}</td>
+                    <td className="px-4 py-3 text-right font-mono font-bold">{s.winRate.toFixed(3)}</td>
+                    <td className="px-4 py-3 text-right font-mono text-gray-400">{s.gamesBehind === 0 ? "—" : s.gamesBehind.toFixed(1)}</td>
+                    <td className="px-4 py-3 text-right font-mono hidden md:table-cell">{s.runsFor}</td>
+                    <td className="px-4 py-3 text-right font-mono hidden md:table-cell text-gray-400">{s.runsAgainst}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      ))}
     </div>
   );
 }

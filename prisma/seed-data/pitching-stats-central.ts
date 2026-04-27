@@ -1,0 +1,609 @@
+export const pitchingStatsCentral: {
+  playerId: string;
+  seasonYear: number;
+  games: number;
+  starts: number;
+  completeGames: number;
+  shutouts: number;
+  wins: number;
+  losses: number;
+  saves: number;
+  holds: number;
+  blownSaves: number;
+  inningsPitched: number;
+  hitsAllowed: number;
+  runsAllowed: number;
+  earnedRuns: number;
+  walksAllowed: number;
+  intentionalWalks: number;
+  hitBatters: number;
+  strikeouts: number;
+  homeRunsAllowed: number;
+  era: number;
+  whip: number;
+  kPer9: number;
+  bbPer9: number;
+  qualityStarts: number;
+}[] = [
+  // ── 読売ジャイアンツ ──────────────────────────────────────────
+
+  {
+    // 戸郷翔征  25G, 13W-8L, ERA 2.51, 176 SO
+    // IP=157.667 (157.2), ER=44 → ERA=44*9/157.667=396/157.667=2.511→2.51 ✓
+    // walks=48, hits=131 → WHIP=(48+131)/157.667=179/157.667=1.136→1.14
+    // K/9=176*9/157.667=1584/157.667=10.0 ✓  BB/9=48*9/157.667=432/157.667=2.7 ✓
+    playerId: "giants-4",
+    seasonYear: 2024,
+    games: 25,
+    starts: 25,
+    completeGames: 3,
+    shutouts: 1,
+    wins: 13,
+    losses: 8,
+    saves: 0,
+    holds: 0,
+    blownSaves: 0,
+    inningsPitched: 157.2,
+    hitsAllowed: 131,
+    runsAllowed: 47,
+    earnedRuns: 44,
+    walksAllowed: 48,
+    intentionalWalks: 3,
+    hitBatters: 4,
+    strikeouts: 176,
+    homeRunsAllowed: 12,
+    era: 2.51,
+    whip: 1.14,
+    kPer9: 10.0,
+    bbPer9: 2.7,
+    qualityStarts: 17,
+  },
+  {
+    // 菅野智之  24G starter
+    // IP=148.0, ER=40 → ERA=40*9/148=360/148=2.432→2.43
+    // walks=38, hits=128 → WHIP=(38+128)/148=166/148=1.122→1.12
+    // K/9=142*9/148=1278/148=8.6  BB/9=38*9/148=342/148=2.3
+    playerId: "giants-5",
+    seasonYear: 2024,
+    games: 24,
+    starts: 24,
+    completeGames: 2,
+    shutouts: 1,
+    wins: 11,
+    losses: 7,
+    saves: 0,
+    holds: 0,
+    blownSaves: 0,
+    inningsPitched: 148.0,
+    hitsAllowed: 128,
+    runsAllowed: 43,
+    earnedRuns: 40,
+    walksAllowed: 38,
+    intentionalWalks: 2,
+    hitBatters: 3,
+    strikeouts: 142,
+    homeRunsAllowed: 10,
+    era: 2.43,
+    whip: 1.12,
+    kPer9: 8.6,
+    bbPer9: 2.3,
+    qualityStarts: 15,
+  },
+  {
+    // 高橋礼  closer/reliever
+    // IP=62.0, saves=22, holds=0
+    // ER=18 → ERA=18*9/62=162/62=2.613→2.61
+    // walks=22, hits=48 → WHIP=(22+48)/62=70/62=1.129→1.13
+    // K/9=58*9/62=522/62=8.4  BB/9=22*9/62=198/62=3.2
+    playerId: "giants-6",
+    seasonYear: 2024,
+    games: 58,
+    starts: 0,
+    completeGames: 0,
+    shutouts: 0,
+    wins: 3,
+    losses: 4,
+    saves: 22,
+    holds: 0,
+    blownSaves: 3,
+    inningsPitched: 62.0,
+    hitsAllowed: 48,
+    runsAllowed: 20,
+    earnedRuns: 18,
+    walksAllowed: 22,
+    intentionalWalks: 4,
+    hitBatters: 2,
+    strikeouts: 58,
+    homeRunsAllowed: 4,
+    era: 2.61,
+    whip: 1.13,
+    kPer9: 8.4,
+    bbPer9: 3.2,
+    qualityStarts: 0,
+  },
+
+  // ── 阪神タイガース ────────────────────────────────────────────
+
+  {
+    // 青柳晃洋  24G, 12W-7L, ERA 2.65, 158 SO
+    // IP=153.0, ER=45 → ERA=45*9/153=405/153=2.647→2.65 ✓
+    // walks=52, hits=127 → WHIP=(52+127)/153=179/153=1.170→1.17
+    // K/9=158*9/153=1422/153=9.3  BB/9=52*9/153=468/153=3.1
+    playerId: "tigers-4",
+    seasonYear: 2024,
+    games: 24,
+    starts: 24,
+    completeGames: 2,
+    shutouts: 1,
+    wins: 12,
+    losses: 7,
+    saves: 0,
+    holds: 0,
+    blownSaves: 0,
+    inningsPitched: 153.0,
+    hitsAllowed: 127,
+    runsAllowed: 48,
+    earnedRuns: 45,
+    walksAllowed: 52,
+    intentionalWalks: 4,
+    hitBatters: 6,
+    strikeouts: 158,
+    homeRunsAllowed: 9,
+    era: 2.65,
+    whip: 1.17,
+    kPer9: 9.3,
+    bbPer9: 3.1,
+    qualityStarts: 15,
+  },
+  {
+    // 西勇輝  23G starter
+    // IP=140.0, ER=41 → ERA=41*9/140=369/140=2.636→2.64
+    // walks=34, hits=126 → WHIP=(34+126)/140=160/140=1.143→1.14
+    // K/9=112*9/140=1008/140=7.2  BB/9=34*9/140=306/140=2.2
+    playerId: "tigers-5",
+    seasonYear: 2024,
+    games: 23,
+    starts: 23,
+    completeGames: 1,
+    shutouts: 0,
+    wins: 10,
+    losses: 8,
+    saves: 0,
+    holds: 0,
+    blownSaves: 0,
+    inningsPitched: 140.0,
+    hitsAllowed: 126,
+    runsAllowed: 44,
+    earnedRuns: 41,
+    walksAllowed: 34,
+    intentionalWalks: 2,
+    hitBatters: 4,
+    strikeouts: 112,
+    homeRunsAllowed: 11,
+    era: 2.64,
+    whip: 1.14,
+    kPer9: 7.2,
+    bbPer9: 2.2,
+    qualityStarts: 13,
+  },
+  {
+    // 伊藤将司  reliever with holds
+    // IP=55.0, holds=28, saves=0
+    // ER=14 → ERA=14*9/55=126/55=2.291→2.29
+    // walks=18, hits=42 → WHIP=(18+42)/55=60/55=1.091→1.09
+    // K/9=52*9/55=468/55=8.5  BB/9=18*9/55=162/55=2.9
+    playerId: "tigers-6",
+    seasonYear: 2024,
+    games: 52,
+    starts: 0,
+    completeGames: 0,
+    shutouts: 0,
+    wins: 4,
+    losses: 3,
+    saves: 0,
+    holds: 28,
+    blownSaves: 2,
+    inningsPitched: 55.0,
+    hitsAllowed: 42,
+    runsAllowed: 16,
+    earnedRuns: 14,
+    walksAllowed: 18,
+    intentionalWalks: 3,
+    hitBatters: 2,
+    strikeouts: 52,
+    homeRunsAllowed: 3,
+    era: 2.29,
+    whip: 1.09,
+    kPer9: 8.5,
+    bbPer9: 2.9,
+    qualityStarts: 0,
+  },
+
+  // ── 横浜DeNAベイスターズ ──────────────────────────────────────
+
+  {
+    // 東克樹  26G, 15W-6L, ERA 2.35, 167 SO
+    // IP=168.2 (168.667), ER=44 → ERA=44*9/168.667=396/168.667=2.348→2.35 ✓
+    // walks=46, hits=138 → WHIP=(46+138)/168.667=184/168.667=1.091→1.09
+    // K/9=167*9/168.667=1503/168.667=8.9  BB/9=46*9/168.667=414/168.667=2.5
+    playerId: "baystars-4",
+    seasonYear: 2024,
+    games: 26,
+    starts: 26,
+    completeGames: 4,
+    shutouts: 2,
+    wins: 15,
+    losses: 6,
+    saves: 0,
+    holds: 0,
+    blownSaves: 0,
+    inningsPitched: 168.2,
+    hitsAllowed: 138,
+    runsAllowed: 47,
+    earnedRuns: 44,
+    walksAllowed: 46,
+    intentionalWalks: 3,
+    hitBatters: 5,
+    strikeouts: 167,
+    homeRunsAllowed: 11,
+    era: 2.35,
+    whip: 1.09,
+    kPer9: 8.9,
+    bbPer9: 2.5,
+    qualityStarts: 18,
+  },
+  {
+    // 今永昇太  22G starter (fewer games — overseas consideration)
+    // IP=133.0, ER=37 → ERA=37*9/133=333/133=2.504→2.50
+    // walks=30, hits=108 → WHIP=(30+108)/133=138/133=1.038→1.04
+    // K/9=138*9/133=1242/133=9.3  BB/9=30*9/133=270/133=2.0
+    playerId: "baystars-5",
+    seasonYear: 2024,
+    games: 22,
+    starts: 22,
+    completeGames: 2,
+    shutouts: 1,
+    wins: 11,
+    losses: 6,
+    saves: 0,
+    holds: 0,
+    blownSaves: 0,
+    inningsPitched: 133.0,
+    hitsAllowed: 108,
+    runsAllowed: 40,
+    earnedRuns: 37,
+    walksAllowed: 30,
+    intentionalWalks: 2,
+    hitBatters: 3,
+    strikeouts: 138,
+    homeRunsAllowed: 8,
+    era: 2.50,
+    whip: 1.04,
+    kPer9: 9.3,
+    bbPer9: 2.0,
+    qualityStarts: 14,
+  },
+  {
+    // バウアー  closer/reliever
+    // IP=68.0, saves=30, holds=0
+    // ER=22 → ERA=22*9/68=198/68=2.912→2.91
+    // walks=24, hits=54 → WHIP=(24+54)/68=78/68=1.147→1.15
+    // K/9=78*9/68=702/68=10.3  BB/9=24*9/68=216/68=3.2
+    playerId: "baystars-6",
+    seasonYear: 2024,
+    games: 62,
+    starts: 0,
+    completeGames: 0,
+    shutouts: 0,
+    wins: 4,
+    losses: 3,
+    saves: 30,
+    holds: 0,
+    blownSaves: 4,
+    inningsPitched: 68.0,
+    hitsAllowed: 54,
+    runsAllowed: 24,
+    earnedRuns: 22,
+    walksAllowed: 24,
+    intentionalWalks: 5,
+    hitBatters: 3,
+    strikeouts: 78,
+    homeRunsAllowed: 5,
+    era: 2.91,
+    whip: 1.15,
+    kPer9: 10.3,
+    bbPer9: 3.2,
+    qualityStarts: 0,
+  },
+
+  // ── 広島東洋カープ ────────────────────────────────────────────
+
+  {
+    // 九里亜蓮  25G starter
+    // IP=155.0, ER=46 → ERA=46*9/155=414/155=2.671→2.67
+    // walks=44, hits=140 → WHIP=(44+140)/155=184/155=1.187→1.19
+    // K/9=128*9/155=1152/155=7.4  BB/9=44*9/155=396/155=2.6
+    playerId: "carp-4",
+    seasonYear: 2024,
+    games: 25,
+    starts: 25,
+    completeGames: 2,
+    shutouts: 0,
+    wins: 11,
+    losses: 9,
+    saves: 0,
+    holds: 0,
+    blownSaves: 0,
+    inningsPitched: 155.0,
+    hitsAllowed: 140,
+    runsAllowed: 50,
+    earnedRuns: 46,
+    walksAllowed: 44,
+    intentionalWalks: 3,
+    hitBatters: 5,
+    strikeouts: 128,
+    homeRunsAllowed: 13,
+    era: 2.67,
+    whip: 1.19,
+    kPer9: 7.4,
+    bbPer9: 2.6,
+    qualityStarts: 14,
+  },
+  {
+    // 床田寛樹  26G starter
+    // IP=162.0, ER=48 → ERA=48*9/162=432/162=2.667→2.67
+    // walks=40, hits=148 → WHIP=(40+148)/162=188/162=1.160→1.16
+    // K/9=145*9/162=1305/162=8.1  BB/9=40*9/162=360/162=2.2
+    playerId: "carp-5",
+    seasonYear: 2024,
+    games: 26,
+    starts: 26,
+    completeGames: 3,
+    shutouts: 1,
+    wins: 13,
+    losses: 8,
+    saves: 0,
+    holds: 0,
+    blownSaves: 0,
+    inningsPitched: 162.0,
+    hitsAllowed: 148,
+    runsAllowed: 51,
+    earnedRuns: 48,
+    walksAllowed: 40,
+    intentionalWalks: 2,
+    hitBatters: 4,
+    strikeouts: 145,
+    homeRunsAllowed: 12,
+    era: 2.67,
+    whip: 1.16,
+    kPer9: 8.1,
+    bbPer9: 2.2,
+    qualityStarts: 16,
+  },
+  {
+    // 大瀬良大地  reliever with holds (transitioned to bullpen)
+    // IP=72.0, holds=25, saves=0
+    // ER=24 → ERA=24*9/72=216/72=3.000→3.00
+    // walks=26, hits=62 → WHIP=(26+62)/72=88/72=1.222→1.22
+    // K/9=65*9/72=585/72=8.1  BB/9=26*9/72=234/72=3.3
+    playerId: "carp-6",
+    seasonYear: 2024,
+    games: 55,
+    starts: 0,
+    completeGames: 0,
+    shutouts: 0,
+    wins: 3,
+    losses: 4,
+    saves: 0,
+    holds: 25,
+    blownSaves: 3,
+    inningsPitched: 72.0,
+    hitsAllowed: 62,
+    runsAllowed: 26,
+    earnedRuns: 24,
+    walksAllowed: 26,
+    intentionalWalks: 4,
+    hitBatters: 3,
+    strikeouts: 65,
+    homeRunsAllowed: 6,
+    era: 3.00,
+    whip: 1.22,
+    kPer9: 8.1,
+    bbPer9: 3.3,
+    qualityStarts: 0,
+  },
+
+  // ── 中日ドラゴンズ ────────────────────────────────────────────
+
+  {
+    // 柳裕也  25G starter
+    // IP=158.0, ER=50 → ERA=50*9/158=450/158=2.848→2.85
+    // walks=48, hits=148 → WHIP=(48+148)/158=196/158=1.241→1.24
+    // K/9=135*9/158=1215/158=7.7  BB/9=48*9/158=432/158=2.7
+    playerId: "dragons-4",
+    seasonYear: 2024,
+    games: 25,
+    starts: 25,
+    completeGames: 2,
+    shutouts: 0,
+    wins: 11,
+    losses: 10,
+    saves: 0,
+    holds: 0,
+    blownSaves: 0,
+    inningsPitched: 158.0,
+    hitsAllowed: 148,
+    runsAllowed: 54,
+    earnedRuns: 50,
+    walksAllowed: 48,
+    intentionalWalks: 3,
+    hitBatters: 5,
+    strikeouts: 135,
+    homeRunsAllowed: 14,
+    era: 2.85,
+    whip: 1.24,
+    kPer9: 7.7,
+    bbPer9: 2.7,
+    qualityStarts: 13,
+  },
+  {
+    // 小笠原慎之介  24G starter
+    // IP=145.0, ER=44 → ERA=44*9/145=396/145=2.731→2.73
+    // walks=50, hits=130 → WHIP=(50+130)/145=180/145=1.241→1.24
+    // K/9=140*9/145=1260/145=8.7  BB/9=50*9/145=450/145=3.1
+    playerId: "dragons-5",
+    seasonYear: 2024,
+    games: 24,
+    starts: 24,
+    completeGames: 1,
+    shutouts: 0,
+    wins: 10,
+    losses: 9,
+    saves: 0,
+    holds: 0,
+    blownSaves: 0,
+    inningsPitched: 145.0,
+    hitsAllowed: 130,
+    runsAllowed: 47,
+    earnedRuns: 44,
+    walksAllowed: 50,
+    intentionalWalks: 2,
+    hitBatters: 6,
+    strikeouts: 140,
+    homeRunsAllowed: 11,
+    era: 2.73,
+    whip: 1.24,
+    kPer9: 8.7,
+    bbPer9: 3.1,
+    qualityStarts: 12,
+  },
+  {
+    // 涌井秀章  reliever/closer (veteran, mixed role)
+    // IP=58.0, saves=18, holds=0
+    // ER=20 → ERA=20*9/58=180/58=3.103→3.10
+    // walks=20, hits=52 → WHIP=(20+52)/58=72/58=1.241→1.24
+    // K/9=48*9/58=432/58=7.4  BB/9=20*9/58=180/58=3.1
+    playerId: "dragons-6",
+    seasonYear: 2024,
+    games: 48,
+    starts: 0,
+    completeGames: 0,
+    shutouts: 0,
+    wins: 3,
+    losses: 5,
+    saves: 18,
+    holds: 0,
+    blownSaves: 4,
+    inningsPitched: 58.0,
+    hitsAllowed: 52,
+    runsAllowed: 22,
+    earnedRuns: 20,
+    walksAllowed: 20,
+    intentionalWalks: 2,
+    hitBatters: 2,
+    strikeouts: 48,
+    homeRunsAllowed: 5,
+    era: 3.10,
+    whip: 1.24,
+    kPer9: 7.4,
+    bbPer9: 3.1,
+    qualityStarts: 0,
+  },
+
+  // ── 東京ヤクルトスワローズ ────────────────────────────────────
+
+  {
+    // 小川泰弘  23G starter
+    // IP=138.0, ER=42 → ERA=42*9/138=378/138=2.739→2.74
+    // walks=36, hits=122 → WHIP=(36+122)/138=158/138=1.145→1.14
+    // K/9=115*9/138=1035/138=7.5  BB/9=36*9/138=324/138=2.3
+    playerId: "swallows-4",
+    seasonYear: 2024,
+    games: 23,
+    starts: 23,
+    completeGames: 1,
+    shutouts: 0,
+    wins: 9,
+    losses: 10,
+    saves: 0,
+    holds: 0,
+    blownSaves: 0,
+    inningsPitched: 138.0,
+    hitsAllowed: 122,
+    runsAllowed: 45,
+    earnedRuns: 42,
+    walksAllowed: 36,
+    intentionalWalks: 2,
+    hitBatters: 3,
+    strikeouts: 115,
+    homeRunsAllowed: 12,
+    era: 2.74,
+    whip: 1.14,
+    kPer9: 7.5,
+    bbPer9: 2.3,
+    qualityStarts: 11,
+  },
+  {
+    // 石川雅規  22G starter (veteran lefty)
+    // IP=130.0, ER=44 → ERA=44*9/130=396/130=3.046→3.05
+    // walks=32, hits=128 → WHIP=(32+128)/130=160/130=1.231→1.23
+    // K/9=88*9/130=792/130=6.1  BB/9=32*9/130=288/130=2.2
+    playerId: "swallows-5",
+    seasonYear: 2024,
+    games: 22,
+    starts: 22,
+    completeGames: 1,
+    shutouts: 0,
+    wins: 8,
+    losses: 10,
+    saves: 0,
+    holds: 0,
+    blownSaves: 0,
+    inningsPitched: 130.0,
+    hitsAllowed: 128,
+    runsAllowed: 47,
+    earnedRuns: 44,
+    walksAllowed: 32,
+    intentionalWalks: 1,
+    hitBatters: 2,
+    strikeouts: 88,
+    homeRunsAllowed: 11,
+    era: 3.05,
+    whip: 1.23,
+    kPer9: 6.1,
+    bbPer9: 2.2,
+    qualityStarts: 10,
+  },
+  {
+    // 高橋奎二  reliever with holds
+    // IP=65.0, holds=22, saves=0
+    // ER=20 → ERA=20*9/65=180/65=2.769→2.77
+    // walks=28, hits=55 → WHIP=(28+55)/65=83/65=1.277→1.28
+    // K/9=68*9/65=612/65=9.4  BB/9=28*9/65=252/65=3.9
+    playerId: "swallows-6",
+    seasonYear: 2024,
+    games: 60,
+    starts: 0,
+    completeGames: 0,
+    shutouts: 0,
+    wins: 4,
+    losses: 4,
+    saves: 0,
+    holds: 22,
+    blownSaves: 3,
+    inningsPitched: 65.0,
+    hitsAllowed: 55,
+    runsAllowed: 22,
+    earnedRuns: 20,
+    walksAllowed: 28,
+    intentionalWalks: 3,
+    hitBatters: 3,
+    strikeouts: 68,
+    homeRunsAllowed: 4,
+    era: 2.77,
+    whip: 1.28,
+    kPer9: 9.4,
+    bbPer9: 3.9,
+    qualityStarts: 0,
+  },
+];
