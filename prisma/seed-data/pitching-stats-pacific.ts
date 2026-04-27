@@ -29,7 +29,7 @@ export const pitchingStatsPacific: {
   {
     // 有原航平
     playerId: "hawks-4",
-    seasonYear: 2024,
+    seasonYear: 2025,
     games: 25,
     starts: 25,
     completeGames: 4,
@@ -57,7 +57,7 @@ export const pitchingStatsPacific: {
   {
     // 石川柊太
     playerId: "hawks-5",
-    seasonYear: 2024,
+    seasonYear: 2025,
     games: 26,
     starts: 26,
     completeGames: 2,
@@ -85,7 +85,7 @@ export const pitchingStatsPacific: {
   {
     // 松本裕樹
     playerId: "hawks-6",
-    seasonYear: 2024,
+    seasonYear: 2025,
     games: 58,
     starts: 0,
     completeGames: 0,
@@ -115,7 +115,7 @@ export const pitchingStatsPacific: {
   {
     // 佐々木朗希
     playerId: "marines-4",
-    seasonYear: 2024,
+    seasonYear: 2025,
     games: 22,
     starts: 22,
     completeGames: 5,
@@ -143,7 +143,7 @@ export const pitchingStatsPacific: {
   {
     // 小島和哉
     playerId: "marines-5",
-    seasonYear: 2024,
+    seasonYear: 2025,
     games: 24,
     starts: 24,
     completeGames: 1,
@@ -171,7 +171,7 @@ export const pitchingStatsPacific: {
   {
     // 益田直也
     playerId: "marines-6",
-    seasonYear: 2024,
+    seasonYear: 2025,
     games: 55,
     starts: 0,
     completeGames: 0,
@@ -201,7 +201,7 @@ export const pitchingStatsPacific: {
   {
     // 田中将大
     playerId: "eagles-4",
-    seasonYear: 2024,
+    seasonYear: 2025,
     games: 23,
     starts: 23,
     completeGames: 2,
@@ -229,7 +229,7 @@ export const pitchingStatsPacific: {
   {
     // 岸孝之
     playerId: "eagles-5",
-    seasonYear: 2024,
+    seasonYear: 2025,
     games: 22,
     starts: 22,
     completeGames: 1,
@@ -257,7 +257,7 @@ export const pitchingStatsPacific: {
   {
     // 則本昂大
     playerId: "eagles-6",
-    seasonYear: 2024,
+    seasonYear: 2025,
     games: 52,
     starts: 0,
     completeGames: 0,
@@ -287,7 +287,7 @@ export const pitchingStatsPacific: {
   {
     // 山下舜平大
     playerId: "buffaloes-4",
-    seasonYear: 2024,
+    seasonYear: 2025,
     games: 26,
     starts: 26,
     completeGames: 5,
@@ -315,7 +315,7 @@ export const pitchingStatsPacific: {
   {
     // 宮城大弥
     playerId: "buffaloes-5",
-    seasonYear: 2024,
+    seasonYear: 2025,
     games: 25,
     starts: 25,
     completeGames: 2,
@@ -343,7 +343,7 @@ export const pitchingStatsPacific: {
   {
     // ワゲスパック
     playerId: "buffaloes-6",
-    seasonYear: 2024,
+    seasonYear: 2025,
     games: 60,
     starts: 0,
     completeGames: 0,
@@ -373,7 +373,7 @@ export const pitchingStatsPacific: {
   {
     // 髙橋光成
     playerId: "lions-4",
-    seasonYear: 2024,
+    seasonYear: 2025,
     games: 25,
     starts: 25,
     completeGames: 1,
@@ -401,7 +401,7 @@ export const pitchingStatsPacific: {
   {
     // 今井達也
     playerId: "lions-5",
-    seasonYear: 2024,
+    seasonYear: 2025,
     games: 23,
     starts: 23,
     completeGames: 1,
@@ -429,7 +429,7 @@ export const pitchingStatsPacific: {
   {
     // 平良海馬
     playerId: "lions-6",
-    seasonYear: 2024,
+    seasonYear: 2025,
     games: 48,
     starts: 0,
     completeGames: 0,
@@ -459,7 +459,7 @@ export const pitchingStatsPacific: {
   {
     // 伊藤大海
     playerId: "fighters-4",
-    seasonYear: 2024,
+    seasonYear: 2025,
     games: 26,
     starts: 26,
     completeGames: 2,
@@ -487,7 +487,7 @@ export const pitchingStatsPacific: {
   {
     // 上沢直之
     playerId: "fighters-5",
-    seasonYear: 2024,
+    seasonYear: 2025,
     games: 24,
     starts: 24,
     completeGames: 1,
@@ -515,7 +515,7 @@ export const pitchingStatsPacific: {
   {
     // 田中正義
     playerId: "fighters-6",
-    seasonYear: 2024,
+    seasonYear: 2025,
     games: 56,
     starts: 0,
     completeGames: 0,

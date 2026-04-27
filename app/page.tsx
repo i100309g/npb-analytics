@@ -3,7 +3,7 @@ import { prisma } from "@/lib/prisma";
 
 export default async function Home() {
   const standings = await prisma.standing.findMany({
-    where: { seasonYear: 2024 },
+    where: { seasonYear: 2025 },
     include: { team: { include: { stadium: true } } },
     orderBy: [{ league: "asc" }, { rank: "asc" }],
   });

@@ -13,7 +13,7 @@ export const standings: {
 }[] = [
   // --- Central League ---
   {
-    seasonYear: 2024,
+    seasonYear: 2025,
     teamId: "tigers",
     league: "セントラル",
     rank: 1,
@@ -26,20 +26,20 @@ export const standings: {
     runsAgainst: 488,
   },
   {
-    seasonYear: 2024,
+    seasonYear: 2025,
     teamId: "baystars",
     league: "セントラル",
     rank: 2,
-    wins: 71,
-    losses: 57,
-    draws: 15,
-    winRate: 0.555,
-    gamesBehind: 2.5,
-    runsFor: 558,
-    runsAgainst: 497,
+    wins: 70,
+    losses: 65,
+    draws: 6,
+    winRate: 0.519,
+    gamesBehind: 3.0,
+    runsFor: 562,
+    runsAgainst: 521,
   },
   {
-    seasonYear: 2024,
+    seasonYear: 2025,
     teamId: "giants",
     league: "セントラル",
     rank: 3,
@@ -52,7 +52,7 @@ export const standings: {
     runsAgainst: 502,
   },
   {
-    seasonYear: 2024,
+    seasonYear: 2025,
     teamId: "carp",
     league: "セントラル",
     rank: 4,
@@ -65,7 +65,7 @@ export const standings: {
     runsAgainst: 510,
   },
   {
-    seasonYear: 2024,
+    seasonYear: 2025,
     teamId: "dragons",
     league: "セントラル",
     rank: 5,
@@ -78,7 +78,7 @@ export const standings: {
     runsAgainst: 521,
   },
   {
-    seasonYear: 2024,
+    seasonYear: 2025,
     teamId: "swallows",
     league: "セントラル",
     rank: 6,
@@ -93,7 +93,7 @@ export const standings: {
 
   // --- Pacific League ---
   {
-    seasonYear: 2024,
+    seasonYear: 2025,
     teamId: "hawks",
     league: "パシフィック",
     rank: 1,
@@ -106,7 +106,7 @@ export const standings: {
     runsAgainst: 487,
   },
   {
-    seasonYear: 2024,
+    seasonYear: 2025,
     teamId: "marines",
     league: "パシフィック",
     rank: 2,
@@ -119,7 +119,7 @@ export const standings: {
     runsAgainst: 512,
   },
   {
-    seasonYear: 2024,
+    seasonYear: 2025,
     teamId: "eagles",
     league: "パシフィック",
     rank: 3,
@@ -132,7 +132,7 @@ export const standings: {
     runsAgainst: 531,
   },
   {
-    seasonYear: 2024,
+    seasonYear: 2025,
     teamId: "buffaloes",
     league: "パシフィック",
     rank: 4,
@@ -145,7 +145,7 @@ export const standings: {
     runsAgainst: 538,
   },
   {
-    seasonYear: 2024,
+    seasonYear: 2025,
     teamId: "lions",
     league: "パシフィック",
     rank: 5,
@@ -158,7 +158,7 @@ export const standings: {
     runsAgainst: 578,
   },
   {
-    seasonYear: 2024,
+    seasonYear: 2025,
     teamId: "fighters",
     league: "パシフィック",
     rank: 6,

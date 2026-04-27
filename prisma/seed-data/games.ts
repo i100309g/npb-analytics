@@ -12,7 +12,7 @@ export const games: {
 }[] = [
   // --- April ---
   {
-    seasonYear: 2024,
+    seasonYear: 2025,
     date: "2024-04-01",
     homeTeamId: "giants",
     awayTeamId: "swallows",
@@ -24,7 +24,7 @@ export const games: {
     gameType: "公式戦",
   },
   {
-    seasonYear: 2024,
+    seasonYear: 2025,
     date: "2024-04-02",
     homeTeamId: "tigers",
     awayTeamId: "carp",
@@ -36,7 +36,7 @@ export const games: {
     gameType: "公式戦",
   },
   {
-    seasonYear: 2024,
+    seasonYear: 2025,
     date: "2024-04-03",
     homeTeamId: "baystars",
     awayTeamId: "dragons",
@@ -48,7 +48,7 @@ export const games: {
     gameType: "公式戦",
   },
   {
-    seasonYear: 2024,
+    seasonYear: 2025,
     date: "2024-04-05",
     homeTeamId: "hawks",
     awayTeamId: "marines",
@@ -60,7 +60,7 @@ export const games: {
     gameType: "公式戦",
   },
   {
-    seasonYear: 2024,
+    seasonYear: 2025,
     date: "2024-04-06",
     homeTeamId: "eagles",
     awayTeamId: "buffaloes",
@@ -72,7 +72,7 @@ export const games: {
     gameType: "公式戦",
   },
   {
-    seasonYear: 2024,
+    seasonYear: 2025,
     date: "2024-04-07",
     homeTeamId: "lions",
     awayTeamId: "fighters",
@@ -84,7 +84,7 @@ export const games: {
     gameType: "公式戦",
   },
   {
-    seasonYear: 2024,
+    seasonYear: 2025,
     date: "2024-04-12",
     homeTeamId: "carp",
     awayTeamId: "giants",
@@ -96,7 +96,7 @@ export const games: {
     gameType: "公式戦",
   },
   {
-    seasonYear: 2024,
+    seasonYear: 2025,
     date: "2024-04-13",
     homeTeamId: "dragons",
     awayTeamId: "tigers",
@@ -110,7 +110,7 @@ export const games: {
 
   // --- May ---
   {
-    seasonYear: 2024,
+    seasonYear: 2025,
     date: "2024-05-03",
     homeTeamId: "tigers",
     awayTeamId: "baystars",
@@ -122,7 +122,7 @@ export const games: {
     gameType: "公式戦",
   },
   {
-    seasonYear: 2024,
+    seasonYear: 2025,
     date: "2024-05-04",
     homeTeamId: "swallows",
     awayTeamId: "carp",
@@ -134,7 +134,7 @@ export const games: {
     gameType: "公式戦",
   },
   {
-    seasonYear: 2024,
+    seasonYear: 2025,
     date: "2024-05-05",
     homeTeamId: "marines",
     awayTeamId: "eagles",
@@ -146,7 +146,7 @@ export const games: {
     gameType: "公式戦",
   },
   {
-    seasonYear: 2024,
+    seasonYear: 2025,
     date: "2024-05-10",
     homeTeamId: "buffaloes",
     awayTeamId: "hawks",
@@ -158,7 +158,7 @@ export const games: {
     gameType: "公式戦",
   },
   {
-    seasonYear: 2024,
+    seasonYear: 2025,
     date: "2024-05-17",
     homeTeamId: "fighters",
     awayTeamId: "lions",
@@ -170,7 +170,7 @@ export const games: {
     gameType: "公式戦",
   },
   {
-    seasonYear: 2024,
+    seasonYear: 2025,
     date: "2024-05-24",
     homeTeamId: "giants",
     awayTeamId: "carp",
@@ -182,7 +182,7 @@ export const games: {
     gameType: "公式戦",
   },
   {
-    seasonYear: 2024,
+    seasonYear: 2025,
     date: "2024-05-31",
     homeTeamId: "hawks",
     awayTeamId: "eagles",
@@ -196,7 +196,7 @@ export const games: {
 
   // --- June ---
   {
-    seasonYear: 2024,
+    seasonYear: 2025,
     date: "2024-06-07",
     homeTeamId: "baystars",
     awayTeamId: "swallows",
@@ -208,7 +208,7 @@ export const games: {
     gameType: "公式戦",
   },
   {
-    seasonYear: 2024,
+    seasonYear: 2025,
     date: "2024-06-14",
     homeTeamId: "marines",
     awayTeamId: "buffaloes",
@@ -220,7 +220,7 @@ export const games: {
     gameType: "公式戦",
   },
   {
-    seasonYear: 2024,
+    seasonYear: 2025,
     date: "2024-06-21",
     homeTeamId: "carp",
     awayTeamId: "swallows",
@@ -232,7 +232,7 @@ export const games: {
     gameType: "公式戦",
   },
   {
-    seasonYear: 2024,
+    seasonYear: 2025,
     date: "2024-06-28",
     homeTeamId: "lions",
     awayTeamId: "marines",
@@ -246,7 +246,7 @@ export const games: {
 
   // --- July ---
   {
-    seasonYear: 2024,
+    seasonYear: 2025,
     date: "2024-07-05",
     homeTeamId: "tigers",
     awayTeamId: "giants",
@@ -258,7 +258,7 @@ export const games: {
     gameType: "公式戦",
   },
   {
-    seasonYear: 2024,
+    seasonYear: 2025,
     date: "2024-07-06",
     homeTeamId: "dragons",
     awayTeamId: "baystars",
@@ -270,7 +270,7 @@ export const games: {
     gameType: "公式戦",
   },
   {
-    seasonYear: 2024,
+    seasonYear: 2025,
     date: "2024-07-13",
     homeTeamId: "eagles",
     awayTeamId: "fighters",
@@ -282,7 +282,7 @@ export const games: {
     gameType: "公式戦",
   },
   {
-    seasonYear: 2024,
+    seasonYear: 2025,
     date: "2024-07-19",
     homeTeamId: "hawks",
     awayTeamId: "lions",
@@ -294,7 +294,7 @@ export const games: {
     gameType: "公式戦",
   },
   {
-    seasonYear: 2024,
+    seasonYear: 2025,
     date: "2024-07-26",
     homeTeamId: "swallows",
     awayTeamId: "giants",
@@ -308,7 +308,7 @@ export const games: {
 
   // --- August ---
   {
-    seasonYear: 2024,
+    seasonYear: 2025,
     date: "2024-08-02",
     homeTeamId: "buffaloes",
     awayTeamId: "fighters",
@@ -320,7 +320,7 @@ export const games: {
     gameType: "公式戦",
   },
   {
-    seasonYear: 2024,
+    seasonYear: 2025,
     date: "2024-08-09",
     homeTeamId: "baystars",
     awayTeamId: "carp",
@@ -332,7 +332,7 @@ export const games: {
     gameType: "公式戦",
   },
   {
-    seasonYear: 2024,
+    seasonYear: 2025,
     date: "2024-08-16",
     homeTeamId: "marines",
     awayTeamId: "hawks",
@@ -344,7 +344,7 @@ export const games: {
     gameType: "公式戦",
   },
   {
-    seasonYear: 2024,
+    seasonYear: 2025,
     date: "2024-08-23",
     homeTeamId: "fighters",
     awayTeamId: "eagles",
@@ -358,7 +358,7 @@ export const games: {
 
   // --- September ---
   {
-    seasonYear: 2024,
+    seasonYear: 2025,
     date: "2024-09-06",
     homeTeamId: "giants",
     awayTeamId: "dragons",
@@ -370,7 +370,7 @@ export const games: {
     gameType: "公式戦",
   },
   {
-    seasonYear: 2024,
+    seasonYear: 2025,
     date: "2024-09-20",
     homeTeamId: "tigers",
     awayTeamId: "swallows",

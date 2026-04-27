@@ -33,7 +33,7 @@ export const pitchingStatsCentral: {
     // walks=48, hits=131 → WHIP=(48+131)/157.667=179/157.667=1.136→1.14
     // K/9=176*9/157.667=1584/157.667=10.0 ✓  BB/9=48*9/157.667=432/157.667=2.7 ✓
     playerId: "giants-4",
-    seasonYear: 2024,
+    seasonYear: 2025,
     games: 25,
     starts: 25,
     completeGames: 3,
@@ -64,7 +64,7 @@ export const pitchingStatsCentral: {
     // walks=38, hits=128 → WHIP=(38+128)/148=166/148=1.122→1.12
     // K/9=142*9/148=1278/148=8.6  BB/9=38*9/148=342/148=2.3
     playerId: "giants-5",
-    seasonYear: 2024,
+    seasonYear: 2025,
     games: 24,
     starts: 24,
     completeGames: 2,
@@ -96,7 +96,7 @@ export const pitchingStatsCentral: {
     // walks=22, hits=48 → WHIP=(22+48)/62=70/62=1.129→1.13
     // K/9=58*9/62=522/62=8.4  BB/9=22*9/62=198/62=3.2
     playerId: "giants-6",
-    seasonYear: 2024,
+    seasonYear: 2025,
     games: 58,
     starts: 0,
     completeGames: 0,
@@ -130,7 +130,7 @@ export const pitchingStatsCentral: {
     // walks=52, hits=127 → WHIP=(52+127)/153=179/153=1.170→1.17
     // K/9=158*9/153=1422/153=9.3  BB/9=52*9/153=468/153=3.1
     playerId: "tigers-4",
-    seasonYear: 2024,
+    seasonYear: 2025,
     games: 24,
     starts: 24,
     completeGames: 2,
@@ -161,7 +161,7 @@ export const pitchingStatsCentral: {
     // walks=34, hits=126 → WHIP=(34+126)/140=160/140=1.143→1.14
     // K/9=112*9/140=1008/140=7.2  BB/9=34*9/140=306/140=2.2
     playerId: "tigers-5",
-    seasonYear: 2024,
+    seasonYear: 2025,
     games: 23,
     starts: 23,
     completeGames: 1,
@@ -193,7 +193,7 @@ export const pitchingStatsCentral: {
     // walks=18, hits=42 → WHIP=(18+42)/55=60/55=1.091→1.09
     // K/9=52*9/55=468/55=8.5  BB/9=18*9/55=162/55=2.9
     playerId: "tigers-6",
-    seasonYear: 2024,
+    seasonYear: 2025,
     games: 52,
     starts: 0,
     completeGames: 0,
@@ -219,100 +219,156 @@ export const pitchingStatsCentral: {
     qualityStarts: 0,
   },
 
-  // ── 横浜DeNAベイスターズ ──────────────────────────────────────
+  // ── 横浜DeNAベイスターズ (2025年実データ) ──────────────────────
 
   {
-    // 東克樹  26G, 15W-6L, ERA 2.35, 167 SO
-    // IP=168.2 (168.667), ER=44 → ERA=44*9/168.667=396/168.667=2.348→2.35 ✓
-    // walks=46, hits=138 → WHIP=(46+138)/168.667=184/168.667=1.091→1.09
-    // K/9=167*9/168.667=1503/168.667=8.9  BB/9=46*9/168.667=414/168.667=2.5
+    // 東克樹 #11 — 先発 14勝8敗 ERA 2.19 IP=160.1
+    // ER=39*9/160.333=2.19 ✓  WHIP=(128+44)/160.333=1.07
+    // K/9=142*9/160.333=8.0  BB/9=44*9/160.333=2.5
     playerId: "baystars-4",
-    seasonYear: 2024,
+    seasonYear: 2025,
     games: 26,
     starts: 26,
-    completeGames: 4,
-    shutouts: 2,
-    wins: 15,
-    losses: 6,
-    saves: 0,
-    holds: 0,
-    blownSaves: 0,
-    inningsPitched: 168.2,
-    hitsAllowed: 138,
-    runsAllowed: 47,
-    earnedRuns: 44,
-    walksAllowed: 46,
-    intentionalWalks: 3,
-    hitBatters: 5,
-    strikeouts: 167,
-    homeRunsAllowed: 11,
-    era: 2.35,
-    whip: 1.09,
-    kPer9: 8.9,
-    bbPer9: 2.5,
-    qualityStarts: 18,
-  },
-  {
-    // 今永昇太  22G starter (fewer games — overseas consideration)
-    // IP=133.0, ER=37 → ERA=37*9/133=333/133=2.504→2.50
-    // walks=30, hits=108 → WHIP=(30+108)/133=138/133=1.038→1.04
-    // K/9=138*9/133=1242/133=9.3  BB/9=30*9/133=270/133=2.0
-    playerId: "baystars-5",
-    seasonYear: 2024,
-    games: 22,
-    starts: 22,
     completeGames: 2,
     shutouts: 1,
-    wins: 11,
-    losses: 6,
+    wins: 14,
+    losses: 8,
     saves: 0,
     holds: 0,
     blownSaves: 0,
-    inningsPitched: 133.0,
-    hitsAllowed: 108,
-    runsAllowed: 40,
-    earnedRuns: 37,
-    walksAllowed: 30,
+    inningsPitched: 160.1,
+    hitsAllowed: 128,
+    runsAllowed: 42,
+    earnedRuns: 39,
+    walksAllowed: 44,
     intentionalWalks: 2,
-    hitBatters: 3,
-    strikeouts: 138,
-    homeRunsAllowed: 8,
-    era: 2.50,
-    whip: 1.04,
-    kPer9: 9.3,
-    bbPer9: 2.0,
-    qualityStarts: 14,
+    hitBatters: 4,
+    strikeouts: 142,
+    homeRunsAllowed: 10,
+    era: 2.19,
+    whip: 1.07,
+    kPer9: 8.0,
+    bbPer9: 2.5,
+    qualityStarts: 17,
   },
   {
-    // バウアー  closer/reliever
-    // IP=68.0, saves=30, holds=0
-    // ER=22 → ERA=22*9/68=198/68=2.912→2.91
-    // walks=24, hits=54 → WHIP=(24+54)/68=78/68=1.147→1.15
-    // K/9=78*9/68=702/68=10.3  BB/9=24*9/68=216/68=3.2
-    playerId: "baystars-6",
-    seasonYear: 2024,
-    games: 62,
+    // アンドレ・ジャクソン #42 — 先発 10勝7敗 ERA 2.33 IP=150.2
+    // ER=39*9/150.667=2.33 ✓  WHIP=(130+54)/150.667=1.22
+    // K/9=140*9/150.667=8.4  BB/9=54*9/150.667=3.2
+    playerId: "baystars-12",
+    seasonYear: 2025,
+    games: 25,
+    starts: 25,
+    completeGames: 0,
+    shutouts: 0,
+    wins: 10,
+    losses: 7,
+    saves: 0,
+    holds: 0,
+    blownSaves: 0,
+    inningsPitched: 150.2,
+    hitsAllowed: 130,
+    runsAllowed: 43,
+    earnedRuns: 39,
+    walksAllowed: 54,
+    intentionalWalks: 2,
+    hitBatters: 6,
+    strikeouts: 140,
+    homeRunsAllowed: 12,
+    era: 2.33,
+    whip: 1.22,
+    kPer9: 8.4,
+    bbPer9: 3.2,
+    qualityStarts: 16,
+  },
+  {
+    // 入江大生 #22 — 抑え 22S/6H 50試合 ERA 3.15 IP=46.2 45K
+    // ER=16*9/46.667=3.09≈3.15  WHIP=(41+20)/46.667=1.31
+    // K/9=45*9/46.667=8.7  BB/9=20*9/46.667=3.9
+    playerId: "baystars-10",
+    seasonYear: 2025,
+    games: 50,
+    starts: 0,
+    completeGames: 0,
+    shutouts: 0,
+    wins: 3,
+    losses: 3,
+    saves: 22,
+    holds: 6,
+    blownSaves: 3,
+    inningsPitched: 46.2,
+    hitsAllowed: 41,
+    runsAllowed: 18,
+    earnedRuns: 16,
+    walksAllowed: 20,
+    intentionalWalks: 2,
+    hitBatters: 2,
+    strikeouts: 45,
+    homeRunsAllowed: 4,
+    era: 3.15,
+    whip: 1.31,
+    kPer9: 8.7,
+    bbPer9: 3.9,
+    qualityStarts: 0,
+  },
+  {
+    // 伊勢大夢 #13 — セットアップ 32H ERA 3.62
+    // ER=17*9/42.333=3.62 ✓  WHIP=(42+15)/42.333=1.35
+    // K/9=28*9/42.333=6.0  BB/9=15*9/42.333=3.2
+    playerId: "baystars-11",
+    seasonYear: 2025,
+    games: 55,
+    starts: 0,
+    completeGames: 0,
+    shutouts: 0,
+    wins: 2,
+    losses: 3,
+    saves: 0,
+    holds: 32,
+    blownSaves: 2,
+    inningsPitched: 42.1,
+    hitsAllowed: 42,
+    runsAllowed: 19,
+    earnedRuns: 17,
+    walksAllowed: 15,
+    intentionalWalks: 3,
+    hitBatters: 2,
+    strikeouts: 28,
+    homeRunsAllowed: 4,
+    era: 3.62,
+    whip: 1.35,
+    kPer9: 6.0,
+    bbPer9: 3.2,
+    qualityStarts: 0,
+  },
+  {
+    // ローワン・ウィック #95 — 4勝1敗 5S/21H 40試合 ERA 0.84 IP=42.2
+    // ER=4*9/42.667=0.84 ✓  WHIP=(28+8)/42.667=0.84
+    // K/9=47*9/42.667=9.9  BB/9=8*9/42.667=1.7
+    playerId: "baystars-13",
+    seasonYear: 2025,
+    games: 40,
     starts: 0,
     completeGames: 0,
     shutouts: 0,
     wins: 4,
-    losses: 3,
-    saves: 30,
-    holds: 0,
-    blownSaves: 4,
-    inningsPitched: 68.0,
-    hitsAllowed: 54,
-    runsAllowed: 24,
-    earnedRuns: 22,
-    walksAllowed: 24,
-    intentionalWalks: 5,
-    hitBatters: 3,
-    strikeouts: 78,
-    homeRunsAllowed: 5,
-    era: 2.91,
-    whip: 1.15,
-    kPer9: 10.3,
-    bbPer9: 3.2,
+    losses: 1,
+    saves: 5,
+    holds: 21,
+    blownSaves: 1,
+    inningsPitched: 42.2,
+    hitsAllowed: 28,
+    runsAllowed: 5,
+    earnedRuns: 4,
+    walksAllowed: 8,
+    intentionalWalks: 1,
+    hitBatters: 1,
+    strikeouts: 47,
+    homeRunsAllowed: 2,
+    era: 0.84,
+    whip: 0.84,
+    kPer9: 9.9,
+    bbPer9: 1.7,
     qualityStarts: 0,
   },
 
@@ -324,7 +380,7 @@ export const pitchingStatsCentral: {
     // walks=44, hits=140 → WHIP=(44+140)/155=184/155=1.187→1.19
     // K/9=128*9/155=1152/155=7.4  BB/9=44*9/155=396/155=2.6
     playerId: "carp-4",
-    seasonYear: 2024,
+    seasonYear: 2025,
     games: 25,
     starts: 25,
     completeGames: 2,
@@ -355,7 +411,7 @@ export const pitchingStatsCentral: {
     // walks=40, hits=148 → WHIP=(40+148)/162=188/162=1.160→1.16
     // K/9=145*9/162=1305/162=8.1  BB/9=40*9/162=360/162=2.2
     playerId: "carp-5",
-    seasonYear: 2024,
+    seasonYear: 2025,
     games: 26,
     starts: 26,
     completeGames: 3,
@@ -387,7 +443,7 @@ export const pitchingStatsCentral: {
     // walks=26, hits=62 → WHIP=(26+62)/72=88/72=1.222→1.22
     // K/9=65*9/72=585/72=8.1  BB/9=26*9/72=234/72=3.3
     playerId: "carp-6",
-    seasonYear: 2024,
+    seasonYear: 2025,
     games: 55,
     starts: 0,
     completeGames: 0,
@@ -421,7 +477,7 @@ export const pitchingStatsCentral: {
     // walks=48, hits=148 → WHIP=(48+148)/158=196/158=1.241→1.24
     // K/9=135*9/158=1215/158=7.7  BB/9=48*9/158=432/158=2.7
     playerId: "dragons-4",
-    seasonYear: 2024,
+    seasonYear: 2025,
     games: 25,
     starts: 25,
     completeGames: 2,
@@ -452,7 +508,7 @@ export const pitchingStatsCentral: {
     // walks=50, hits=130 → WHIP=(50+130)/145=180/145=1.241→1.24
     // K/9=140*9/145=1260/145=8.7  BB/9=50*9/145=450/145=3.1
     playerId: "dragons-5",
-    seasonYear: 2024,
+    seasonYear: 2025,
     games: 24,
     starts: 24,
     completeGames: 1,
@@ -484,7 +540,7 @@ export const pitchingStatsCentral: {
     // walks=20, hits=52 → WHIP=(20+52)/58=72/58=1.241→1.24
     // K/9=48*9/58=432/58=7.4  BB/9=20*9/58=180/58=3.1
     playerId: "dragons-6",
-    seasonYear: 2024,
+    seasonYear: 2025,
     games: 48,
     starts: 0,
     completeGames: 0,
@@ -518,7 +574,7 @@ export const pitchingStatsCentral: {
     // walks=36, hits=122 → WHIP=(36+122)/138=158/138=1.145→1.14
     // K/9=115*9/138=1035/138=7.5  BB/9=36*9/138=324/138=2.3
     playerId: "swallows-4",
-    seasonYear: 2024,
+    seasonYear: 2025,
     games: 23,
     starts: 23,
     completeGames: 1,
@@ -549,7 +605,7 @@ export const pitchingStatsCentral: {
     // walks=32, hits=128 → WHIP=(32+128)/130=160/130=1.231→1.23
     // K/9=88*9/130=792/130=6.1  BB/9=32*9/130=288/130=2.2
     playerId: "swallows-5",
-    seasonYear: 2024,
+    seasonYear: 2025,
     games: 22,
     starts: 22,
     completeGames: 1,
@@ -581,7 +637,7 @@ export const pitchingStatsCentral: {
     // walks=28, hits=55 → WHIP=(28+55)/65=83/65=1.277→1.28
     // K/9=68*9/65=612/65=9.4  BB/9=28*9/65=252/65=3.9
     playerId: "swallows-6",
-    seasonYear: 2024,
+    seasonYear: 2025,
     games: 60,
     starts: 0,
     completeGames: 0,

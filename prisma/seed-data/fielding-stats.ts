@@ -2,7 +2,7 @@ export const fieldingStats = [
   // Giants
   {
     playerId: "giants-1",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "一塁手",
     games: 130,
     putouts: 1089,
@@ -13,7 +13,7 @@ export const fieldingStats = [
   },
   {
     playerId: "giants-2",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "遊撃手",
     games: 118,
     putouts: 178,
@@ -24,7 +24,7 @@ export const fieldingStats = [
   },
   {
     playerId: "giants-3",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "外野手",
     games: 122,
     putouts: 234,
@@ -35,7 +35,7 @@ export const fieldingStats = [
   },
   {
     playerId: "giants-4",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "投手",
     games: 25,
     putouts: 18,
@@ -46,7 +46,7 @@ export const fieldingStats = [
   },
   {
     playerId: "giants-5",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "投手",
     games: 22,
     putouts: 14,
@@ -57,7 +57,7 @@ export const fieldingStats = [
   },
   {
     playerId: "giants-6",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "投手",
     games: 20,
     putouts: 12,
@@ -70,7 +70,7 @@ export const fieldingStats = [
   // Tigers
   {
     playerId: "tigers-1",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "外野手",
     games: 125,
     putouts: 198,
@@ -81,7 +81,7 @@ export const fieldingStats = [
   },
   {
     playerId: "tigers-2",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "外野手",
     games: 140,
     putouts: 287,
@@ -92,7 +92,7 @@ export const fieldingStats = [
   },
   {
     playerId: "tigers-3",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "遊撃手",
     games: 132,
     putouts: 215,
@@ -103,7 +103,7 @@ export const fieldingStats = [
   },
   {
     playerId: "tigers-4",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "投手",
     games: 23,
     putouts: 16,
@@ -114,7 +114,7 @@ export const fieldingStats = [
   },
   {
     playerId: "tigers-5",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "投手",
     games: 21,
     putouts: 13,
@@ -125,7 +125,7 @@ export const fieldingStats = [
   },
   {
     playerId: "tigers-6",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "投手",
     games: 19,
     putouts: 11,
@@ -135,78 +135,78 @@ export const fieldingStats = [
     fieldingPct: 1.000,
   },
 
-  // BayStars
+  // BayStars (2025年)
   {
     playerId: "baystars-1",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "二塁手",
-    games: 135,
-    putouts: 248,
-    assists: 378,
-    errors: 9,
-    doublePlays: 82,
-    fieldingPct: 0.986,
+    games: 90,
+    putouts: 162,
+    assists: 244,
+    errors: 6,
+    doublePlays: 52,
+    fieldingPct: 0.985,
   },
   {
     playerId: "baystars-2",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "外野手",
     games: 128,
-    putouts: 212,
-    assists: 4,
+    putouts: 218,
+    assists: 5,
     errors: 2,
     doublePlays: 0,
     fieldingPct: 0.991,
   },
   {
     playerId: "baystars-3",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "捕手",
-    games: 115,
-    putouts: 742,
-    assists: 58,
-    errors: 6,
-    doublePlays: 9,
+    games: 100,
+    putouts: 648,
+    assists: 50,
+    errors: 5,
+    doublePlays: 8,
     fieldingPct: 0.993,
   },
   {
     playerId: "baystars-4",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "投手",
     games: 26,
-    putouts: 21,
-    assists: 38,
+    putouts: 18,
+    assists: 32,
     errors: 1,
-    doublePlays: 4,
-    fieldingPct: 0.983,
+    doublePlays: 3,
+    fieldingPct: 0.980,
   },
   {
     playerId: "baystars-5",
-    seasonYear: 2024,
-    position: "投手",
-    games: 18,
-    putouts: 10,
-    assists: 20,
-    errors: 0,
-    doublePlays: 1,
-    fieldingPct: 1.000,
+    seasonYear: 2025,
+    position: "三塁手",
+    games: 120,
+    putouts: 78,
+    assists: 218,
+    errors: 7,
+    doublePlays: 22,
+    fieldingPct: 0.977,
   },
   {
     playerId: "baystars-6",
-    seasonYear: 2024,
-    position: "投手",
-    games: 17,
-    putouts: 13,
-    assists: 25,
+    seasonYear: 2025,
+    position: "外野手",
+    games: 108,
+    putouts: 168,
+    assists: 3,
     errors: 2,
-    doublePlays: 2,
-    fieldingPct: 0.950,
+    doublePlays: 0,
+    fieldingPct: 0.988,
   },
 
   // Carp
   {
     playerId: "carp-1",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "外野手",
     games: 138,
     putouts: 271,
@@ -217,7 +217,7 @@ export const fieldingStats = [
   },
   {
     playerId: "carp-2",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "外野手",
     games: 130,
     putouts: 243,
@@ -228,7 +228,7 @@ export const fieldingStats = [
   },
   {
     playerId: "carp-3",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "外野手",
     games: 119,
     putouts: 187,
@@ -239,7 +239,7 @@ export const fieldingStats = [
   },
   {
     playerId: "carp-4",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "投手",
     games: 24,
     putouts: 17,
@@ -250,7 +250,7 @@ export const fieldingStats = [
   },
   {
     playerId: "carp-5",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "投手",
     games: 25,
     putouts: 19,
@@ -261,7 +261,7 @@ export const fieldingStats = [
   },
   {
     playerId: "carp-6",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "投手",
     games: 22,
     putouts: 15,
@@ -274,7 +274,7 @@ export const fieldingStats = [
   // Dragons
   {
     playerId: "dragons-1",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "外野手",
     games: 143,
     putouts: 295,
@@ -285,7 +285,7 @@ export const fieldingStats = [
   },
   {
     playerId: "dragons-2",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "外野手",
     games: 136,
     putouts: 258,
@@ -296,7 +296,7 @@ export const fieldingStats = [
   },
   {
     playerId: "dragons-3",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "三塁手",
     games: 124,
     putouts: 143,
@@ -307,7 +307,7 @@ export const fieldingStats = [
   },
   {
     playerId: "dragons-4",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "投手",
     games: 27,
     putouts: 22,
@@ -318,7 +318,7 @@ export const fieldingStats = [
   },
   {
     playerId: "dragons-5",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "投手",
     games: 24,
     putouts: 16,
@@ -329,7 +329,7 @@ export const fieldingStats = [
   },
   {
     playerId: "dragons-6",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "投手",
     games: 20,
     putouts: 11,
@@ -342,7 +342,7 @@ export const fieldingStats = [
   // Swallows
   {
     playerId: "swallows-1",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "三塁手",
     games: 137,
     putouts: 121,
@@ -353,7 +353,7 @@ export const fieldingStats = [
   },
   {
     playerId: "swallows-2",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "外野手",
     games: 116,
     putouts: 203,
@@ -364,7 +364,7 @@ export const fieldingStats = [
   },
   {
     playerId: "swallows-3",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "二塁手",
     games: 129,
     putouts: 232,
@@ -375,7 +375,7 @@ export const fieldingStats = [
   },
   {
     playerId: "swallows-4",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "投手",
     games: 23,
     putouts: 14,
@@ -386,7 +386,7 @@ export const fieldingStats = [
   },
   {
     playerId: "swallows-5",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "投手",
     games: 16,
     putouts: 10,
@@ -397,7 +397,7 @@ export const fieldingStats = [
   },
   {
     playerId: "swallows-6",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "投手",
     games: 22,
     putouts: 15,
@@ -410,7 +410,7 @@ export const fieldingStats = [
   // Hawks
   {
     playerId: "hawks-1",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "外野手",
     games: 141,
     putouts: 276,
@@ -421,7 +421,7 @@ export const fieldingStats = [
   },
   {
     playerId: "hawks-2",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "外野手",
     games: 134,
     putouts: 255,
@@ -432,7 +432,7 @@ export const fieldingStats = [
   },
   {
     playerId: "hawks-3",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "捕手",
     games: 120,
     putouts: 812,
@@ -443,7 +443,7 @@ export const fieldingStats = [
   },
   {
     playerId: "hawks-4",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "投手",
     games: 26,
     putouts: 20,
@@ -454,7 +454,7 @@ export const fieldingStats = [
   },
   {
     playerId: "hawks-5",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "投手",
     games: 24,
     putouts: 17,
@@ -465,7 +465,7 @@ export const fieldingStats = [
   },
   {
     playerId: "hawks-6",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "投手",
     games: 21,
     putouts: 14,
@@ -478,7 +478,7 @@ export const fieldingStats = [
   // Marines
   {
     playerId: "marines-1",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "外野手",
     games: 127,
     putouts: 222,
@@ -489,7 +489,7 @@ export const fieldingStats = [
   },
   {
     playerId: "marines-2",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "二塁手",
     games: 133,
     putouts: 265,
@@ -500,7 +500,7 @@ export const fieldingStats = [
   },
   {
     playerId: "marines-3",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "一塁手",
     games: 128,
     putouts: 1043,
@@ -511,7 +511,7 @@ export const fieldingStats = [
   },
   {
     playerId: "marines-4",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "投手",
     games: 25,
     putouts: 18,
@@ -522,7 +522,7 @@ export const fieldingStats = [
   },
   {
     playerId: "marines-5",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "投手",
     games: 23,
     putouts: 16,
@@ -533,7 +533,7 @@ export const fieldingStats = [
   },
   {
     playerId: "marines-6",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "投手",
     games: 19,
     putouts: 12,
@@ -546,7 +546,7 @@ export const fieldingStats = [
   // Eagles
   {
     playerId: "eagles-1",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "二塁手",
     games: 131,
     putouts: 241,
@@ -557,7 +557,7 @@ export const fieldingStats = [
   },
   {
     playerId: "eagles-2",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "外野手",
     games: 139,
     putouts: 263,
@@ -568,7 +568,7 @@ export const fieldingStats = [
   },
   {
     playerId: "eagles-3",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "外野手",
     games: 123,
     putouts: 197,
@@ -579,7 +579,7 @@ export const fieldingStats = [
   },
   {
     playerId: "eagles-4",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "投手",
     games: 27,
     putouts: 23,
@@ -590,7 +590,7 @@ export const fieldingStats = [
   },
   {
     playerId: "eagles-5",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "投手",
     games: 22,
     putouts: 15,
@@ -601,7 +601,7 @@ export const fieldingStats = [
   },
   {
     playerId: "eagles-6",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "投手",
     games: 20,
     putouts: 13,
@@ -614,7 +614,7 @@ export const fieldingStats = [
   // Buffaloes
   {
     playerId: "buffaloes-1",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "捕手",
     games: 118,
     putouts: 768,
@@ -625,7 +625,7 @@ export const fieldingStats = [
   },
   {
     playerId: "buffaloes-2",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "外野手",
     games: 132,
     putouts: 248,
@@ -636,7 +636,7 @@ export const fieldingStats = [
   },
   {
     playerId: "buffaloes-3",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "二塁手",
     games: 126,
     putouts: 218,
@@ -647,7 +647,7 @@ export const fieldingStats = [
   },
   {
     playerId: "buffaloes-4",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "投手",
     games: 26,
     putouts: 19,
@@ -658,7 +658,7 @@ export const fieldingStats = [
   },
   {
     playerId: "buffaloes-5",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "投手",
     games: 24,
     putouts: 16,
@@ -669,7 +669,7 @@ export const fieldingStats = [
   },
   {
     playerId: "buffaloes-6",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "投手",
     games: 21,
     putouts: 14,
@@ -682,7 +682,7 @@ export const fieldingStats = [
   // Lions
   {
     playerId: "lions-1",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "遊撃手",
     games: 136,
     putouts: 209,
@@ -693,7 +693,7 @@ export const fieldingStats = [
   },
   {
     playerId: "lions-2",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "二塁手",
     games: 129,
     putouts: 237,
@@ -704,7 +704,7 @@ export const fieldingStats = [
   },
   {
     playerId: "lions-3",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "一塁手",
     games: 133,
     putouts: 1127,
@@ -715,7 +715,7 @@ export const fieldingStats = [
   },
   {
     playerId: "lions-4",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "投手",
     games: 24,
     putouts: 17,
@@ -726,7 +726,7 @@ export const fieldingStats = [
   },
   {
     playerId: "lions-5",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "投手",
     games: 22,
     putouts: 15,
@@ -737,7 +737,7 @@ export const fieldingStats = [
   },
   {
     playerId: "lions-6",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "投手",
     games: 20,
     putouts: 12,
@@ -750,7 +750,7 @@ export const fieldingStats = [
   // Fighters
   {
     playerId: "fighters-1",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "外野手",
     games: 138,
     putouts: 266,
@@ -761,7 +761,7 @@ export const fieldingStats = [
   },
   {
     playerId: "fighters-2",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "外野手",
     games: 131,
     putouts: 239,
@@ -772,7 +772,7 @@ export const fieldingStats = [
   },
   {
     playerId: "fighters-3",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "捕手",
     games: 122,
     putouts: 851,
@@ -783,7 +783,7 @@ export const fieldingStats = [
   },
   {
     playerId: "fighters-4",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "投手",
     games: 25,
     putouts: 19,
@@ -794,7 +794,7 @@ export const fieldingStats = [
   },
   {
     playerId: "fighters-5",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "投手",
     games: 23,
     putouts: 16,
@@ -805,7 +805,7 @@ export const fieldingStats = [
   },
   {
     playerId: "fighters-6",
-    seasonYear: 2024,
+    seasonYear: 2025,
     position: "投手",
     games: 21,
     putouts: 13,

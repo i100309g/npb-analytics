@@ -47,8 +47,8 @@ async function main() {
   console.log(`✓ ${teams.length} teams`);
 
   // Season
-  await prisma.season.create({ data: { year: 2024 } });
-  console.log("✓ season 2024");
+  await prisma.season.create({ data: { year: 2025 } });
+  console.log("✓ season 2025");
 
   // Players
   const players = [...playersCentral, ...playersPacific];

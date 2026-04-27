@@ -1,0 +1,2 @@
+:HL["/npb-analytics/_next/static/chunks/0uvev0ukel5-d.css","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"/_not-found","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"Yr7w5KztRkV1btz-5AIUO"}

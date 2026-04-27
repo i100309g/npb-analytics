@@ -12,12 +12,12 @@ export default async function TeamPage({ params }: { params: Promise<{ id: strin
 
   const [team, standing, players] = await Promise.all([
     prisma.team.findUnique({ where: { id }, include: { stadium: true } }),
-    prisma.standing.findUnique({ where: { seasonYear_teamId: { seasonYear: 2024, teamId: id } } }),
+    prisma.standing.findUnique({ where: { seasonYear_teamId: { seasonYear: 2025, teamId: id } } }),
     prisma.player.findMany({
       where: { teamId: id },
       include: {
-        battingStats:  { where: { seasonYear: 2024 } },
-        pitchingStats: { where: { seasonYear: 2024 } },
+        battingStats:  { where: { seasonYear: 2025 } },
+        pitchingStats: { where: { seasonYear: 2025 } },
       },
     }),
   ]);

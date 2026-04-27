@@ -4,12 +4,12 @@ import Link from "next/link";
 export default async function PlayersPage() {
   const [batters, pitchers] = await Promise.all([
     prisma.battingStat.findMany({
-      where: { seasonYear: 2024 },
+      where: { seasonYear: 2025 },
       include: { player: { include: { team: true } } },
       orderBy: { avg: "desc" },
     }),
     prisma.pitchingStat.findMany({
-      where: { seasonYear: 2024, starts: { gt: 0 } },
+      where: { seasonYear: 2025, starts: { gt: 0 } },
       include: { player: { include: { team: true } } },
       orderBy: { era: "asc" },
     }),

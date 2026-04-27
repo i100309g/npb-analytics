@@ -29,7 +29,7 @@ export const battingStatsPacific: {
   {
     // 近藤健介
     playerId: "hawks-1",
-    seasonYear: 2024,
+    seasonYear: 2025,
     games: 138,
     plateAppearances: 582,
     atBats: 480,
@@ -57,7 +57,7 @@ export const battingStatsPacific: {
   {
     // 柳田悠岐
     playerId: "hawks-2",
-    seasonYear: 2024,
+    seasonYear: 2025,
     games: 120,
     plateAppearances: 461,
     atBats: 400,
@@ -85,7 +85,7 @@ export const battingStatsPacific: {
   {
     // 近藤大介 (hawks-3)
     playerId: "hawks-3",
-    seasonYear: 2024,
+    seasonYear: 2025,
     games: 130,
     plateAppearances: 491,
     atBats: 440,
@@ -115,7 +115,7 @@ export const battingStatsPacific: {
   {
     // 中村奨吾 (marines-1)
     playerId: "marines-1",
-    seasonYear: 2024,
+    seasonYear: 2025,
     games: 135,
     plateAppearances: 510,
     atBats: 454,
@@ -143,7 +143,7 @@ export const battingStatsPacific: {
   {
     // 安田尚憲 (marines-2)
     playerId: "marines-2",
-    seasonYear: 2024,
+    seasonYear: 2025,
     games: 128,
     plateAppearances: 472,
     atBats: 426,
@@ -171,7 +171,7 @@ export const battingStatsPacific: {
   {
     // 藤岡裕大 (marines-3)
     playerId: "marines-3",
-    seasonYear: 2024,
+    seasonYear: 2025,
     games: 122,
     plateAppearances: 442,
     atBats: 406,
@@ -201,7 +201,7 @@ export const battingStatsPacific: {
   {
     // 浅村栄斗
     playerId: "eagles-1",
-    seasonYear: 2024,
+    seasonYear: 2025,
     games: 140,
     plateAppearances: 544,
     atBats: 478,
@@ -229,7 +229,7 @@ export const battingStatsPacific: {
   {
     // 島内宏明 (eagles-2)
     playerId: "eagles-2",
-    seasonYear: 2024,
+    seasonYear: 2025,
     games: 132,
     plateAppearances: 492,
     atBats: 444,
@@ -257,7 +257,7 @@ export const battingStatsPacific: {
   {
     // 小郷裕哉 (eagles-3)
     playerId: "eagles-3",
-    seasonYear: 2024,
+    seasonYear: 2025,
     games: 118,
     plateAppearances: 412,
     atBats: 378,
@@ -287,7 +287,7 @@ export const battingStatsPacific: {
   {
     // 頓宮裕真
     playerId: "buffaloes-1",
-    seasonYear: 2024,
+    seasonYear: 2025,
     games: 135,
     plateAppearances: 519,
     atBats: 460,
@@ -315,7 +315,7 @@ export const battingStatsPacific: {
   {
     // 紅林弘太郎 (buffaloes-2)
     playerId: "buffaloes-2",
-    seasonYear: 2024,
+    seasonYear: 2025,
     games: 128,
     plateAppearances: 478,
     atBats: 432,
@@ -343,7 +343,7 @@ export const battingStatsPacific: {
   {
     // 西野真弘 (buffaloes-3)
     playerId: "buffaloes-3",
-    seasonYear: 2024,
+    seasonYear: 2025,
     games: 115,
     plateAppearances: 399,
     atBats: 361,
@@ -373,7 +373,7 @@ export const battingStatsPacific: {
   {
     // 外崎修汰 (lions-1)
     playerId: "lions-1",
-    seasonYear: 2024,
+    seasonYear: 2025,
     games: 125,
     plateAppearances: 463,
     atBats: 418,
@@ -401,7 +401,7 @@ export const battingStatsPacific: {
   {
     // 山村崇嘉 (lions-2)
     playerId: "lions-2",
-    seasonYear: 2024,
+    seasonYear: 2025,
     games: 119,
     plateAppearances: 430,
     atBats: 394,
@@ -429,7 +429,7 @@ export const battingStatsPacific: {
   {
     // 渡部健人 (lions-3)
     playerId: "lions-3",
-    seasonYear: 2024,
+    seasonYear: 2025,
     games: 108,
     plateAppearances: 370,
     atBats: 342,
@@ -459,7 +459,7 @@ export const battingStatsPacific: {
   {
     // 万波中正 (fighters-1)
     playerId: "fighters-1",
-    seasonYear: 2024,
+    seasonYear: 2025,
     games: 120,
     plateAppearances: 438,
     atBats: 396,
@@ -487,7 +487,7 @@ export const battingStatsPacific: {
   {
     // 清宮幸太郎 (fighters-2)
     playerId: "fighters-2",
-    seasonYear: 2024,
+    seasonYear: 2025,
     games: 112,
     plateAppearances: 400,
     atBats: 366,
@@ -515,7 +515,7 @@ export const battingStatsPacific: {
   {
     // 水谷瞬 (fighters-3)
     playerId: "fighters-3",
-    seasonYear: 2024,
+    seasonYear: 2025,
     games: 100,
     plateAppearances: 350,
     atBats: 324,
