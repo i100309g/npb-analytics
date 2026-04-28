@@ -28,7 +28,9 @@ export default async function TeamPage({ params }: { params: Promise<{ id: strin
   const batters  = players.filter((p) => p.position !== "投手");
   const pitchers = players.filter((p) => p.position === "投手");
 
-  const dash = <span className="text-gray-600">—</span>;
+  const d = (v: number | string | undefined | null, digits?: number) =>
+    v == null ? <span className="text-gray-600">—</span> :
+    typeof v === "number" && digits != null ? v.toFixed(digits) : v;
 
   return (
     <div className="space-y-8">
@@ -70,17 +72,31 @@ export default async function TeamPage({ params }: { params: Promise<{ id: strin
         <section>
           <h2 className="text-xl font-bold text-white mb-4">野手成績</h2>
           <div className="bg-gray-900 rounded-xl border border-gray-800 overflow-x-auto">
-            <table className="w-full text-sm">
+            <table className="w-full text-sm whitespace-nowrap">
               <thead>
                 <tr className="border-b border-gray-800 text-gray-500 text-xs">
-                  <th className="text-left px-4 py-3">選手名</th>
-                  <th className="text-left px-4 py-3">守備</th>
-                  <th className="text-right px-4 py-3">試合</th>
-                  <th className="text-right px-4 py-3">打率</th>
-                  <th className="text-right px-4 py-3">本塁打</th>
-                  <th className="text-right px-4 py-3">打点</th>
-                  <th className="text-right px-4 py-3">盗塁</th>
-                  <th className="text-right px-4 py-3">OPS</th>
+                  <th className="text-left px-4 py-3 sticky left-0 bg-gray-900 z-10">選手名</th>
+                  <th className="text-left px-3 py-3">守備</th>
+                  <th className="text-right px-3 py-3">試合</th>
+                  <th className="text-right px-3 py-3">打席</th>
+                  <th className="text-right px-3 py-3">打数</th>
+                  <th className="text-right px-3 py-3">安打</th>
+                  <th className="text-right px-3 py-3">二塁打</th>
+                  <th className="text-right px-3 py-3">三塁打</th>
+                  <th className="text-right px-3 py-3">本塁打</th>
+                  <th className="text-right px-3 py-3">打点</th>
+                  <th className="text-right px-3 py-3">得点</th>
+                  <th className="text-right px-3 py-3">四球</th>
+                  <th className="text-right px-3 py-3">死球</th>
+                  <th className="text-right px-3 py-3">三振</th>
+                  <th className="text-right px-3 py-3">盗塁</th>
+                  <th className="text-right px-3 py-3">盗塁死</th>
+                  <th className="text-right px-3 py-3">犠打</th>
+                  <th className="text-right px-3 py-3">犠飛</th>
+                  <th className="text-right px-3 py-3">打率</th>
+                  <th className="text-right px-3 py-3">出塁率</th>
+                  <th className="text-right px-3 py-3">長打率</th>
+                  <th className="text-right px-3 py-3">OPS</th>
                 </tr>
               </thead>
               <tbody>
@@ -88,16 +104,30 @@ export default async function TeamPage({ params }: { params: Promise<{ id: strin
                   const s = p.battingStats[0];
                   return (
                     <tr key={p.id} className="border-b border-gray-800/50 hover:bg-gray-800/50 transition-colors">
-                      <td className="px-4 py-3 font-medium text-white">
+                      <td className="px-4 py-3 font-medium text-white sticky left-0 bg-gray-900 hover:bg-gray-800 transition-colors">
                         <span className="text-gray-500 text-xs mr-2">#{p.jerseyNumber}</span>{p.name}
                       </td>
-                      <td className="px-4 py-3 text-gray-400 text-xs">{p.position}</td>
-                      <td className="px-4 py-3 text-right font-mono text-gray-300">{s ? s.games : dash}</td>
-                      <td className="px-4 py-3 text-right font-mono font-bold">{s ? s.avg.toFixed(3) : dash}</td>
-                      <td className="px-4 py-3 text-right font-mono text-yellow-400">{s ? s.homeRuns : dash}</td>
-                      <td className="px-4 py-3 text-right font-mono">{s ? s.rbi : dash}</td>
-                      <td className="px-4 py-3 text-right font-mono text-green-400">{s ? s.stolenBases : dash}</td>
-                      <td className="px-4 py-3 text-right font-mono text-blue-400">{s ? s.ops.toFixed(3) : dash}</td>
+                      <td className="px-3 py-3 text-gray-400 text-xs">{p.position}</td>
+                      <td className="px-3 py-3 text-right font-mono text-gray-300">{d(s?.games)}</td>
+                      <td className="px-3 py-3 text-right font-mono text-gray-300">{d(s?.plateAppearances)}</td>
+                      <td className="px-3 py-3 text-right font-mono text-gray-300">{d(s?.atBats)}</td>
+                      <td className="px-3 py-3 text-right font-mono text-gray-300">{d(s?.hits)}</td>
+                      <td className="px-3 py-3 text-right font-mono text-gray-300">{d(s?.doubles)}</td>
+                      <td className="px-3 py-3 text-right font-mono text-gray-300">{d(s?.triples)}</td>
+                      <td className="px-3 py-3 text-right font-mono text-yellow-400">{d(s?.homeRuns)}</td>
+                      <td className="px-3 py-3 text-right font-mono">{d(s?.rbi)}</td>
+                      <td className="px-3 py-3 text-right font-mono">{d(s?.runs)}</td>
+                      <td className="px-3 py-3 text-right font-mono">{d(s?.walks)}</td>
+                      <td className="px-3 py-3 text-right font-mono">{d(s?.hitByPitch)}</td>
+                      <td className="px-3 py-3 text-right font-mono text-red-400">{d(s?.strikeouts)}</td>
+                      <td className="px-3 py-3 text-right font-mono text-green-400">{d(s?.stolenBases)}</td>
+                      <td className="px-3 py-3 text-right font-mono">{d(s?.caughtStealing)}</td>
+                      <td className="px-3 py-3 text-right font-mono">{d(s?.sacrificeHits)}</td>
+                      <td className="px-3 py-3 text-right font-mono">{d(s?.sacrificeFlies)}</td>
+                      <td className="px-3 py-3 text-right font-mono font-bold text-blue-300">{d(s?.avg, 3)}</td>
+                      <td className="px-3 py-3 text-right font-mono text-blue-400">{d(s?.obp, 3)}</td>
+                      <td className="px-3 py-3 text-right font-mono text-blue-400">{d(s?.slg, 3)}</td>
+                      <td className="px-3 py-3 text-right font-mono font-bold text-blue-500">{d(s?.ops, 3)}</td>
                     </tr>
                   );
                 })}
@@ -112,18 +142,31 @@ export default async function TeamPage({ params }: { params: Promise<{ id: strin
         <section>
           <h2 className="text-xl font-bold text-white mb-4">投手成績</h2>
           <div className="bg-gray-900 rounded-xl border border-gray-800 overflow-x-auto">
-            <table className="w-full text-sm">
+            <table className="w-full text-sm whitespace-nowrap">
               <thead>
                 <tr className="border-b border-gray-800 text-gray-500 text-xs">
-                  <th className="text-left px-4 py-3">選手名</th>
-                  <th className="text-right px-4 py-3">試合</th>
-                  <th className="text-right px-4 py-3">防御率</th>
-                  <th className="text-right px-4 py-3">勝</th>
-                  <th className="text-right px-4 py-3">敗</th>
-                  <th className="text-right px-4 py-3">S</th>
-                  <th className="text-right px-4 py-3">H</th>
-                  <th className="text-right px-4 py-3">奪三振</th>
-                  <th className="text-right px-4 py-3">WHIP</th>
+                  <th className="text-left px-4 py-3 sticky left-0 bg-gray-900 z-10">選手名</th>
+                  <th className="text-right px-3 py-3">試合</th>
+                  <th className="text-right px-3 py-3">先発</th>
+                  <th className="text-right px-3 py-3">完投</th>
+                  <th className="text-right px-3 py-3">完封</th>
+                  <th className="text-right px-3 py-3">勝</th>
+                  <th className="text-right px-3 py-3">敗</th>
+                  <th className="text-right px-3 py-3">S</th>
+                  <th className="text-right px-3 py-3">H</th>
+                  <th className="text-right px-3 py-3">BS</th>
+                  <th className="text-right px-3 py-3">投球回</th>
+                  <th className="text-right px-3 py-3">被安打</th>
+                  <th className="text-right px-3 py-3">失点</th>
+                  <th className="text-right px-3 py-3">自責点</th>
+                  <th className="text-right px-3 py-3">四球</th>
+                  <th className="text-right px-3 py-3">三振</th>
+                  <th className="text-right px-3 py-3">被本塁打</th>
+                  <th className="text-right px-3 py-3">QS</th>
+                  <th className="text-right px-3 py-3">防御率</th>
+                  <th className="text-right px-3 py-3">WHIP</th>
+                  <th className="text-right px-3 py-3">K/9</th>
+                  <th className="text-right px-3 py-3">BB/9</th>
                 </tr>
               </thead>
               <tbody>
@@ -131,17 +174,30 @@ export default async function TeamPage({ params }: { params: Promise<{ id: strin
                   const s = p.pitchingStats[0];
                   return (
                     <tr key={p.id} className="border-b border-gray-800/50 hover:bg-gray-800/50 transition-colors">
-                      <td className="px-4 py-3 font-medium text-white">
+                      <td className="px-4 py-3 font-medium text-white sticky left-0 bg-gray-900 hover:bg-gray-800 transition-colors">
                         <span className="text-gray-500 text-xs mr-2">#{p.jerseyNumber}</span>{p.name}
                       </td>
-                      <td className="px-4 py-3 text-right font-mono text-gray-300">{s ? s.games : dash}</td>
-                      <td className="px-4 py-3 text-right font-mono font-bold text-green-400">{s ? s.era.toFixed(2) : dash}</td>
-                      <td className="px-4 py-3 text-right font-mono text-green-400">{s ? s.wins : dash}</td>
-                      <td className="px-4 py-3 text-right font-mono text-red-400">{s ? s.losses : dash}</td>
-                      <td className="px-4 py-3 text-right font-mono text-yellow-400">{s ? s.saves : dash}</td>
-                      <td className="px-4 py-3 text-right font-mono text-blue-400">{s ? s.holds : dash}</td>
-                      <td className="px-4 py-3 text-right font-mono">{s ? s.strikeouts : dash}</td>
-                      <td className="px-4 py-3 text-right font-mono text-gray-400">{s ? s.whip.toFixed(2) : dash}</td>
+                      <td className="px-3 py-3 text-right font-mono text-gray-300">{d(s?.games)}</td>
+                      <td className="px-3 py-3 text-right font-mono text-gray-300">{d(s?.starts)}</td>
+                      <td className="px-3 py-3 text-right font-mono text-gray-300">{d(s?.completeGames)}</td>
+                      <td className="px-3 py-3 text-right font-mono text-gray-300">{d(s?.shutouts)}</td>
+                      <td className="px-3 py-3 text-right font-mono text-green-400">{d(s?.wins)}</td>
+                      <td className="px-3 py-3 text-right font-mono text-red-400">{d(s?.losses)}</td>
+                      <td className="px-3 py-3 text-right font-mono text-yellow-400">{d(s?.saves)}</td>
+                      <td className="px-3 py-3 text-right font-mono text-blue-400">{d(s?.holds)}</td>
+                      <td className="px-3 py-3 text-right font-mono text-orange-400">{d(s?.blownSaves)}</td>
+                      <td className="px-3 py-3 text-right font-mono">{d(s?.inningsPitched, 1)}</td>
+                      <td className="px-3 py-3 text-right font-mono">{d(s?.hitsAllowed)}</td>
+                      <td className="px-3 py-3 text-right font-mono">{d(s?.runsAllowed)}</td>
+                      <td className="px-3 py-3 text-right font-mono">{d(s?.earnedRuns)}</td>
+                      <td className="px-3 py-3 text-right font-mono">{d(s?.walksAllowed)}</td>
+                      <td className="px-3 py-3 text-right font-mono">{d(s?.strikeouts)}</td>
+                      <td className="px-3 py-3 text-right font-mono">{d(s?.homeRunsAllowed)}</td>
+                      <td className="px-3 py-3 text-right font-mono">{d(s?.qualityStarts)}</td>
+                      <td className="px-3 py-3 text-right font-mono font-bold text-green-400">{d(s?.era, 2)}</td>
+                      <td className="px-3 py-3 text-right font-mono text-gray-300">{d(s?.whip, 2)}</td>
+                      <td className="px-3 py-3 text-right font-mono text-purple-400">{d(s?.kPer9, 1)}</td>
+                      <td className="px-3 py-3 text-right font-mono text-purple-400">{d(s?.bbPer9, 1)}</td>
                     </tr>
                   );
                 })}
