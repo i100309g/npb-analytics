@@ -19,6 +19,7 @@ export default async function TeamPage({ params }: { params: Promise<{ id: strin
       include: {
         battingStats:  { where: { seasonYear: 2025 } },
         pitchingStats: { where: { seasonYear: 2025 } },
+        fieldingStats: { where: { seasonYear: 2025 } },
       },
     }),
   ]);
@@ -200,6 +201,50 @@ export default async function TeamPage({ params }: { params: Promise<{ id: strin
                       <td className="px-3 py-3 text-right font-mono text-purple-400">{d(s?.bbPer9, 1)}</td>
                     </tr>
                   );
+                })}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      )}
+
+      {/* Fielding */}
+      {batters.length > 0 && (
+        <section>
+          <h2 className="text-xl font-bold text-white mb-4">守備成績</h2>
+          <div className="bg-gray-900 rounded-xl border border-gray-800 overflow-x-auto">
+            <table className="w-full text-sm whitespace-nowrap">
+              <thead>
+                <tr className="border-b border-gray-800 text-gray-500 text-xs">
+                  <th className="text-left px-4 py-3 sticky left-0 bg-gray-900 z-10">選手名</th>
+                  <th className="text-left px-3 py-3">守備位置</th>
+                  <th className="text-right px-3 py-3">試合</th>
+                  <th className="text-right px-3 py-3">刺殺</th>
+                  <th className="text-right px-3 py-3">補殺</th>
+                  <th className="text-right px-3 py-3">失策</th>
+                  <th className="text-right px-3 py-3">併殺</th>
+                  <th className="text-right px-3 py-3">守備率</th>
+                </tr>
+              </thead>
+              <tbody>
+                {batters.map((p) => {
+                  const rows = p.fieldingStats.length > 0 ? p.fieldingStats : [null];
+                  return rows.map((f, i) => (
+                    <tr key={`${p.id}-${i}`} className="border-b border-gray-800/50 hover:bg-gray-800/50 transition-colors">
+                      {i === 0 && (
+                        <td className="px-4 py-3 font-medium text-white sticky left-0 bg-gray-900 hover:bg-gray-800 transition-colors" rowSpan={rows.length}>
+                          <span className="text-gray-500 text-xs mr-2">#{p.jerseyNumber}</span>{p.name}
+                        </td>
+                      )}
+                      <td className="px-3 py-3 text-gray-400 text-xs">{f?.position ?? p.position}</td>
+                      <td className="px-3 py-3 text-right font-mono text-gray-300">{d(f?.games)}</td>
+                      <td className="px-3 py-3 text-right font-mono">{d(f?.putouts)}</td>
+                      <td className="px-3 py-3 text-right font-mono">{d(f?.assists)}</td>
+                      <td className="px-3 py-3 text-right font-mono text-red-400">{d(f?.errors)}</td>
+                      <td className="px-3 py-3 text-right font-mono">{d(f?.doublePlays)}</td>
+                      <td className="px-3 py-3 text-right font-mono text-blue-400">{d(f?.fieldingPct, 3)}</td>
+                    </tr>
+                  ));
                 })}
               </tbody>
             </table>
