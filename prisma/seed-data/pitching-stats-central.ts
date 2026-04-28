@@ -373,6 +373,100 @@ export const pitchingStatsCentral: {
   },
 
   {
+    // 山崎康晃 #20 — クローザー 1勝2敗 18S/5H ERA 2.84 IP=38.0
+    // (5/29 IL入り → 8/23復帰)
+    // ER=12*9/38=2.842≈2.84  WHIP=(32+12)/38=1.16
+    // K/9=38*9/38=9.0  BB/9=12*9/38=2.8
+    playerId: "baystars-38",
+    seasonYear: 2025,
+    games: 35,
+    starts: 0,
+    completeGames: 0,
+    shutouts: 0,
+    wins: 1,
+    losses: 2,
+    saves: 18,
+    holds: 5,
+    blownSaves: 3,
+    inningsPitched: 38.0,
+    hitsAllowed: 32,
+    runsAllowed: 13,
+    earnedRuns: 12,
+    walksAllowed: 12,
+    intentionalWalks: 2,
+    hitBatters: 1,
+    strikeouts: 38,
+    homeRunsAllowed: 3,
+    era: 2.84,
+    whip: 1.16,
+    kPer9: 9.0,
+    bbPer9: 2.8,
+    qualityStarts: 0,
+  },
+  {
+    // 大貫晋一 #18 — 先発 2勝6敗 ERA 3.42 IP=79.0
+    // (7/20 登録抹消・体調不良)
+    // ER=30*9/79=3.418≈3.42  WHIP=(72+32)/79=1.32
+    // K/9=70*9/79=8.0  BB/9=32*9/79=3.6
+    playerId: "baystars-39",
+    seasonYear: 2025,
+    games: 14,
+    starts: 14,
+    completeGames: 0,
+    shutouts: 0,
+    wins: 2,
+    losses: 6,
+    saves: 0,
+    holds: 0,
+    blownSaves: 0,
+    inningsPitched: 79.0,
+    hitsAllowed: 72,
+    runsAllowed: 32,
+    earnedRuns: 30,
+    walksAllowed: 32,
+    intentionalWalks: 1,
+    hitBatters: 4,
+    strikeouts: 70,
+    homeRunsAllowed: 9,
+    era: 3.42,
+    whip: 1.32,
+    kPer9: 8.0,
+    bbPer9: 3.6,
+    qualityStarts: 7,
+  },
+  {
+    // トレバー・バウアー #96 — 先発 9勝7敗 ERA 3.15 IP=125.2
+    // (1/27 再契約発表)
+    // ER=44*9/125.667=3.146≈3.15  WHIP=(112+44)/125.667=1.24
+    // K/9=142*9/125.667=10.2  BB/9=44*9/125.667=3.1
+    playerId: "baystars-40",
+    seasonYear: 2025,
+    games: 20,
+    starts: 20,
+    completeGames: 1,
+    shutouts: 0,
+    wins: 9,
+    losses: 7,
+    saves: 0,
+    holds: 0,
+    blownSaves: 0,
+    inningsPitched: 125.2,
+    hitsAllowed: 112,
+    runsAllowed: 48,
+    earnedRuns: 44,
+    walksAllowed: 44,
+    intentionalWalks: 2,
+    hitBatters: 5,
+    strikeouts: 142,
+    homeRunsAllowed: 12,
+    era: 3.15,
+    whip: 1.24,
+    kPer9: 10.2,
+    bbPer9: 3.1,
+    qualityStarts: 12,
+  },
+
+  {
     // 吉野光樹 #46 — 先発 7勝8敗 ERA 3.45 IP=112.0
     // ER=43*9/112=3.455≈3.45  WHIP=(100+43)/112=1.28
     // K/9=110*9/112=8.8  BB/9=43*9/112=3.5
