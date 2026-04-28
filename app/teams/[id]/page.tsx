@@ -15,6 +15,7 @@ export default async function TeamPage({ params }: { params: Promise<{ id: strin
     prisma.standing.findUnique({ where: { seasonYear_teamId: { seasonYear: 2025, teamId: id } } }),
     prisma.player.findMany({
       where: { teamId: id },
+      orderBy: { jerseyNumber: "asc" },
       include: {
         battingStats:  { where: { seasonYear: 2025 } },
         pitchingStats: { where: { seasonYear: 2025 } },
@@ -24,8 +25,10 @@ export default async function TeamPage({ params }: { params: Promise<{ id: strin
 
   if (!team) notFound();
 
-  const batters  = players.filter((p) => p.battingStats.length > 0);
-  const pitchers = players.filter((p) => p.pitchingStats.length > 0);
+  const batters  = players.filter((p) => p.position !== "投手");
+  const pitchers = players.filter((p) => p.position === "投手");
+
+  const dash = <span className="text-gray-600">—</span>;
 
   return (
     <div className="space-y-8">
@@ -89,12 +92,12 @@ export default async function TeamPage({ params }: { params: Promise<{ id: strin
                         <span className="text-gray-500 text-xs mr-2">#{p.jerseyNumber}</span>{p.name}
                       </td>
                       <td className="px-4 py-3 text-gray-400 text-xs">{p.position}</td>
-                      <td className="px-4 py-3 text-right font-mono text-gray-300">{s.games}</td>
-                      <td className="px-4 py-3 text-right font-mono font-bold">{s.avg.toFixed(3)}</td>
-                      <td className="px-4 py-3 text-right font-mono text-yellow-400">{s.homeRuns}</td>
-                      <td className="px-4 py-3 text-right font-mono">{s.rbi}</td>
-                      <td className="px-4 py-3 text-right font-mono text-green-400">{s.stolenBases}</td>
-                      <td className="px-4 py-3 text-right font-mono text-blue-400">{s.ops.toFixed(3)}</td>
+                      <td className="px-4 py-3 text-right font-mono text-gray-300">{s ? s.games : dash}</td>
+                      <td className="px-4 py-3 text-right font-mono font-bold">{s ? s.avg.toFixed(3) : dash}</td>
+                      <td className="px-4 py-3 text-right font-mono text-yellow-400">{s ? s.homeRuns : dash}</td>
+                      <td className="px-4 py-3 text-right font-mono">{s ? s.rbi : dash}</td>
+                      <td className="px-4 py-3 text-right font-mono text-green-400">{s ? s.stolenBases : dash}</td>
+                      <td className="px-4 py-3 text-right font-mono text-blue-400">{s ? s.ops.toFixed(3) : dash}</td>
                     </tr>
                   );
                 })}
@@ -131,14 +134,14 @@ export default async function TeamPage({ params }: { params: Promise<{ id: strin
                       <td className="px-4 py-3 font-medium text-white">
                         <span className="text-gray-500 text-xs mr-2">#{p.jerseyNumber}</span>{p.name}
                       </td>
-                      <td className="px-4 py-3 text-right font-mono text-gray-300">{s.games}</td>
-                      <td className="px-4 py-3 text-right font-mono font-bold text-green-400">{s.era.toFixed(2)}</td>
-                      <td className="px-4 py-3 text-right font-mono text-green-400">{s.wins}</td>
-                      <td className="px-4 py-3 text-right font-mono text-red-400">{s.losses}</td>
-                      <td className="px-4 py-3 text-right font-mono text-yellow-400">{s.saves}</td>
-                      <td className="px-4 py-3 text-right font-mono text-blue-400">{s.holds}</td>
-                      <td className="px-4 py-3 text-right font-mono">{s.strikeouts}</td>
-                      <td className="px-4 py-3 text-right font-mono text-gray-400">{s.whip.toFixed(2)}</td>
+                      <td className="px-4 py-3 text-right font-mono text-gray-300">{s ? s.games : dash}</td>
+                      <td className="px-4 py-3 text-right font-mono font-bold text-green-400">{s ? s.era.toFixed(2) : dash}</td>
+                      <td className="px-4 py-3 text-right font-mono text-green-400">{s ? s.wins : dash}</td>
+                      <td className="px-4 py-3 text-right font-mono text-red-400">{s ? s.losses : dash}</td>
+                      <td className="px-4 py-3 text-right font-mono text-yellow-400">{s ? s.saves : dash}</td>
+                      <td className="px-4 py-3 text-right font-mono text-blue-400">{s ? s.holds : dash}</td>
+                      <td className="px-4 py-3 text-right font-mono">{s ? s.strikeouts : dash}</td>
+                      <td className="px-4 py-3 text-right font-mono text-gray-400">{s ? s.whip.toFixed(2) : dash}</td>
                     </tr>
                   );
                 })}
