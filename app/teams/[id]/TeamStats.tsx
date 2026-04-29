@@ -3,13 +3,13 @@
 import { useState } from "react";
 
 type BattingStat = {
-  games: number; plateAppearances: number; atBats: number; hits: number;
-  singles: number; doubles: number; triples: number; homeRuns: number;
-  rbi: number; runs: number; walks: number; intentionalWalks: number;
-  hitByPitch: number; strikeouts: number; stolenBases: number;
-  caughtStealing: number; doublePlayGrounded: number;
-  sacrificeHits: number; sacrificeFlies: number;
-  avg: number; obp: number; slg: number; ops: number;
+  games: number; plateAppearances: number | null; atBats: number | null; hits: number | null;
+  singles: number | null; doubles: number | null; triples: number | null; homeRuns: number | null;
+  rbi: number | null; runs: number | null; walks: number | null; intentionalWalks: number | null;
+  hitByPitch: number | null; strikeouts: number | null; stolenBases: number | null;
+  caughtStealing: number | null; doublePlayGrounded: number | null;
+  sacrificeHits: number | null; sacrificeFlies: number | null;
+  avg: number | null; obp: number | null; slg: number | null; ops: number | null;
 };
 
 type PitchingStat = {
@@ -143,10 +143,10 @@ export default function TeamStats({ players, color }: { players: Player[]; color
                     <Td className="text-right text-gray-400">{fmt(s?.caughtStealing)}</Td>
                     <Td className="text-right text-gray-300">{fmt(s?.sacrificeHits)}</Td>
                     <Td className="text-right text-gray-300">{fmt(s?.sacrificeFlies)}</Td>
-                    <Td className={`text-right font-bold ${s?.avg >= 0.3 ? "text-yellow-300" : s?.avg >= 0.25 ? "text-blue-300" : "text-gray-300"}`}>{fmt(s?.avg, 3)}</Td>
+                    <Td className={`text-right font-bold ${(s?.avg ?? 0) >= 0.3 ? "text-yellow-300" : (s?.avg ?? 0) >= 0.25 ? "text-blue-300" : "text-gray-300"}`}>{fmt(s?.avg, 3)}</Td>
                     <Td className="text-right text-blue-400">{fmt(s?.obp, 3)}</Td>
                     <Td className="text-right text-blue-400">{fmt(s?.slg, 3)}</Td>
-                    <Td className={`text-right font-bold ${s?.ops >= 0.85 ? "text-yellow-300" : s?.ops >= 0.7 ? "text-blue-400" : "text-gray-300"}`}>{fmt(s?.ops, 3)}</Td>
+                    <Td className={`text-right font-bold ${(s?.ops ?? 0) >= 0.85 ? "text-yellow-300" : (s?.ops ?? 0) >= 0.7 ? "text-blue-400" : "text-gray-300"}`}>{fmt(s?.ops, 3)}</Td>
                   </tr>
                 );
               })}

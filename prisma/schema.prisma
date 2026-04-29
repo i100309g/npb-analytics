@@ -108,28 +108,28 @@ model BattingStat {
   player          Player  @relation(fields: [playerId], references: [id])
   seasonYear      Int
   games           Int
-  plateAppearances Int
-  atBats          Int
-  hits            Int
-  singles         Int
-  doubles         Int
-  triples         Int
-  homeRuns        Int
-  rbi             Int
-  runs            Int
-  walks           Int
-  intentionalWalks Int
-  hitByPitch      Int
-  strikeouts      Int
-  stolenBases     Int
-  caughtStealing  Int
-  doublePlayGrounded Int
-  sacrificeHits   Int
-  sacrificeFlies  Int
-  avg             Float   // 打率
-  obp             Float   // 出塁率
-  slg             Float   // 長打率
-  ops             Float   // OPS
+  plateAppearances Int?
+  atBats          Int?
+  hits            Int?
+  singles         Int?
+  doubles         Int?
+  triples         Int?
+  homeRuns        Int?
+  rbi             Int?
+  runs            Int?
+  walks           Int?
+  intentionalWalks Int?
+  hitByPitch      Int?
+  strikeouts      Int?
+  stolenBases     Int?
+  caughtStealing  Int?
+  doublePlayGrounded Int?
+  sacrificeHits   Int?
+  sacrificeFlies  Int?
+  avg             Float?  // 打率
+  obp             Float?  // 出塁率
+  slg             Float?  // 長打率
+  ops             Float?  // OPS
   @@unique([playerId, seasonYear])
 }
 

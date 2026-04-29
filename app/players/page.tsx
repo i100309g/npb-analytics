@@ -53,12 +53,12 @@ export default async function PlayersPage() {
                       </span>
                     </Link>
                   </td>
-                  <td className="px-4 py-3 text-right font-mono font-bold text-white">{s.avg.toFixed(3)}</td>
-                  <td className="px-4 py-3 text-right font-mono text-yellow-400">{s.homeRuns}</td>
-                  <td className="px-4 py-3 text-right font-mono">{s.rbi}</td>
-                  <td className="px-4 py-3 text-right font-mono text-green-400">{s.stolenBases}</td>
-                  <td className="px-4 py-3 text-right font-mono text-gray-300">{s.obp.toFixed(3)}</td>
-                  <td className="px-4 py-3 text-right font-mono text-blue-400">{s.ops.toFixed(3)}</td>
+                  <td className="px-4 py-3 text-right font-mono font-bold text-white">{s.avg != null ? s.avg.toFixed(3) : "—"}</td>
+                  <td className="px-4 py-3 text-right font-mono text-yellow-400">{s.homeRuns ?? "—"}</td>
+                  <td className="px-4 py-3 text-right font-mono">{s.rbi ?? "—"}</td>
+                  <td className="px-4 py-3 text-right font-mono text-green-400">{s.stolenBases ?? "—"}</td>
+                  <td className="px-4 py-3 text-right font-mono text-gray-300">{s.obp != null ? s.obp.toFixed(3) : "—"}</td>
+                  <td className="px-4 py-3 text-right font-mono text-blue-400">{s.ops != null ? s.ops.toFixed(3) : "—"}</td>
                 </tr>
               ))}
             </tbody>

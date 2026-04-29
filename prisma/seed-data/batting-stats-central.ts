@@ -2,28 +2,28 @@ export const battingStatsCentral: {
   playerId: string;
   seasonYear: number;
   games: number;
-  plateAppearances: number;
-  atBats: number;
-  hits: number;
-  singles: number;
-  doubles: number;
-  triples: number;
-  homeRuns: number;
-  rbi: number;
-  runs: number;
-  walks: number;
-  intentionalWalks: number;
-  hitByPitch: number;
-  strikeouts: number;
-  stolenBases: number;
-  caughtStealing: number;
-  doublePlayGrounded: number;
-  sacrificeHits: number;
-  sacrificeFlies: number;
-  avg: number;
-  obp: number;
-  slg: number;
-  ops: number;
+  plateAppearances?: number | null;
+  atBats?: number | null;
+  hits?: number | null;
+  singles?: number | null;
+  doubles?: number | null;
+  triples?: number | null;
+  homeRuns?: number | null;
+  rbi?: number | null;
+  runs?: number | null;
+  walks?: number | null;
+  intentionalWalks?: number | null;
+  hitByPitch?: number | null;
+  strikeouts?: number | null;
+  stolenBases?: number | null;
+  caughtStealing?: number | null;
+  doublePlayGrounded?: number | null;
+  sacrificeHits?: number | null;
+  sacrificeFlies?: number | null;
+  avg?: number | null;
+  obp?: number | null;
+  slg?: number | null;
+  ops?: number | null;
 }[] = [
   // ── 読売ジャイアンツ ──────────────────────────────────────────
   {
@@ -907,35 +907,16 @@ export const battingStatsCentral: {
     ops: 0.785,
   },
   {
-    // 度会隆輝 #4 — .255/3HR/24打点/75試合
+    // 度会隆輝 #4 — 確認済み: 75試合 .255 3HR 24打点 / 内訳は調査中
     playerId: "baystars-41",
     seasonYear: 2025,
     games: 75,
-    plateAppearances: 268,
-    atBats: 243,
-    hits: 62,
-    singles: 49,
-    doubles: 10,
-    triples: 0,
     homeRuns: 3,
     rbi: 24,
-    runs: 32,
-    walks: 21,
-    intentionalWalks: 1,
-    hitByPitch: 2,
-    strikeouts: 58,
-    stolenBases: 7,
-    caughtStealing: 3,
-    doublePlayGrounded: 4,
-    sacrificeHits: 1,
-    sacrificeFlies: 1,
     avg: 0.255,
-    obp: 0.316,
-    slg: 0.350,
-    ops: 0.666,
   },
   {
-    // 伊藤光 #29 — 6試合/限定出場
+    // 伊藤光 #29 — 確認済み: 6試合 9打数0安打
     playerId: "baystars-42",
     seasonYear: 2025,
     games: 6,
@@ -963,32 +944,14 @@ export const battingStatsCentral: {
     ops: 0.000,
   },
   {
-    // 三森大貴 #26 — .213/0HR/10打点/22盗塁(リーグ3位)
+    // 三森大貴 #26 — 確認済み: 91試合 .213 0HR 10打点 22盗塁(リーグ3位) / 内訳は調査中
     playerId: "baystars-43",
     seasonYear: 2025,
     games: 91,
-    plateAppearances: 320,
-    atBats: 300,
-    hits: 64,
-    singles: 52,
-    doubles: 9,
-    triples: 3,
     homeRuns: 0,
     rbi: 10,
-    runs: 41,
-    walks: 17,
-    intentionalWalks: 0,
-    hitByPitch: 2,
-    strikeouts: 54,
     stolenBases: 22,
-    caughtStealing: 5,
-    doublePlayGrounded: 6,
-    sacrificeHits: 1,
-    sacrificeFlies: 0,
     avg: 0.213,
-    obp: 0.262,
-    slg: 0.270,
-    ops: 0.532,
   },
   {
     // ドミンゴ・サンタナ
