@@ -907,13 +907,15 @@ export const battingStatsCentral: {
     ops: 0.785,
   },
   {
-    // 度会隆輝 #4 — 確認済み: 75試合 .255 3HR 24打点 / 内訳は調査中
+    // 度会隆輝 #4 — 確認済み: 86試合 .241 6HR 25打点 270打数65安打
     playerId: "baystars-41",
     seasonYear: 2025,
-    games: 75,
-    homeRuns: 3,
-    rbi: 24,
-    avg: 0.255,
+    games: 86,
+    atBats: 270,
+    hits: 65,
+    homeRuns: 6,
+    rbi: 25,
+    avg: 0.241,
   },
   {
     // 伊藤光 #29 — 確認済み: 6試合 9打数0安打
@@ -944,13 +946,16 @@ export const battingStatsCentral: {
     ops: 0.000,
   },
   {
-    // 三森大貴 #26 — 確認済み: 91試合 .213 0HR 10打点 22盗塁(リーグ3位) / 内訳は調査中
+    // 三森大貴 #26 — 確認済み: 91試合 160打数34安打 .213 0HR 10打点 22盗塁8盗塁死
     playerId: "baystars-43",
     seasonYear: 2025,
     games: 91,
+    atBats: 160,
+    hits: 34,
     homeRuns: 0,
     rbi: 10,
     stolenBases: 22,
+    caughtStealing: 8,
     avg: 0.213,
   },
   {
