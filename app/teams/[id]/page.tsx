@@ -74,6 +74,19 @@ export default async function TeamPage({ params }: { params: Promise<{ id: strin
         </div>
       </div>
 
+      {/* Lineup simulator link */}
+      <Link
+        href={`/lineup/${id}`}
+        className="flex items-center justify-between rounded-xl px-5 py-4 border border-gray-800 hover:border-gray-600 transition-all group"
+        style={{ background: `linear-gradient(90deg, ${team.color}12 0%, transparent 60%)` }}
+      >
+        <div>
+          <p className="font-semibold text-white group-hover:text-white">打順シミュレーター</p>
+          <p className="text-xs text-gray-500 mt-0.5">選手を選んで打順を組むと、Markov Chainで得点期待値を計算</p>
+        </div>
+        <span className="text-gray-500 group-hover:text-gray-300 transition-colors text-lg">→</span>
+      </Link>
+
       {/* Stats tabs */}
       <TeamStats players={players} color={team.color} />
     </div>
