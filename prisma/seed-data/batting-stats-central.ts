@@ -28,7 +28,7 @@ export const battingStatsCentral: {
   // ── 読売ジャイアンツ ──────────────────────────────────────────
   {
     // 岡本和真
-    playerId: "giants-1",
+    playerId: "giants-48",
     seasonYear: 2025,
     games: 143,
     plateAppearances: 617,
@@ -56,7 +56,7 @@ export const battingStatsCentral: {
   },
   {
     // 坂本勇人
-    playerId: "giants-2",
+    playerId: "giants-46",
     seasonYear: 2025,
     games: 128,
     plateAppearances: 534,
@@ -84,7 +84,7 @@ export const battingStatsCentral: {
   },
   {
     // 丸佳浩
-    playerId: "giants-3",
+    playerId: "giants-56",
     seasonYear: 2025,
     games: 125,
     plateAppearances: 503,

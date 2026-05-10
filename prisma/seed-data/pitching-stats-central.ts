@@ -32,7 +32,7 @@ export const pitchingStatsCentral: {
     // IP=157.667 (157.2), ER=44 → ERA=44*9/157.667=396/157.667=2.511→2.51 ✓
     // walks=48, hits=131 → WHIP=(48+131)/157.667=179/157.667=1.136→1.14
     // K/9=176*9/157.667=1584/157.667=10.0 ✓  BB/9=48*9/157.667=432/157.667=2.7 ✓
-    playerId: "giants-4",
+    playerId: "giants-5",
     seasonYear: 2025,
     games: 25,
     starts: 25,
@@ -59,43 +59,12 @@ export const pitchingStatsCentral: {
     qualityStarts: 17,
   },
   {
-    // 菅野智之  24G starter
-    // IP=148.0, ER=40 → ERA=40*9/148=360/148=2.432→2.43
-    // walks=38, hits=128 → WHIP=(38+128)/148=166/148=1.122→1.12
-    // K/9=142*9/148=1278/148=8.6  BB/9=38*9/148=342/148=2.3
-    playerId: "giants-5",
-    seasonYear: 2025,
-    games: 24,
-    starts: 24,
-    completeGames: 2,
-    shutouts: 1,
-    wins: 11,
-    losses: 7,
-    saves: 0,
-    holds: 0,
-    blownSaves: 0,
-    inningsPitched: 148.0,
-    hitsAllowed: 128,
-    runsAllowed: 43,
-    earnedRuns: 40,
-    walksAllowed: 38,
-    intentionalWalks: 2,
-    hitBatters: 3,
-    strikeouts: 142,
-    homeRunsAllowed: 10,
-    era: 2.43,
-    whip: 1.12,
-    kPer9: 8.6,
-    bbPer9: 2.3,
-    qualityStarts: 15,
-  },
-  {
     // 高橋礼  closer/reliever
     // IP=62.0, saves=22, holds=0
     // ER=18 → ERA=18*9/62=162/62=2.613→2.61
     // walks=22, hits=48 → WHIP=(22+48)/62=70/62=1.129→1.13
     // K/9=58*9/62=522/62=8.4  BB/9=22*9/62=198/62=3.2
-    playerId: "giants-6",
+    playerId: "giants-7",
     seasonYear: 2025,
     games: 58,
     starts: 0,
