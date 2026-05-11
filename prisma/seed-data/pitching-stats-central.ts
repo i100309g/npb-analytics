@@ -787,37 +787,6 @@ export const pitchingStatsCentral: {
   // ── 阪神タイガース ────────────────────────────────────────────
 
   {
-    // 青柳晃洋  24G, 12W-7L, ERA 2.65, 158 SO
-    // IP=153.0, ER=45 → ERA=45*9/153=405/153=2.647→2.65 ✓
-    // walks=52, hits=127 → WHIP=(52+127)/153=179/153=1.170→1.17
-    // K/9=158*9/153=1422/153=9.3  BB/9=52*9/153=468/153=3.1
-    playerId: "tigers-4",
-    seasonYear: 2025,
-    games: 24,
-    starts: 24,
-    completeGames: 2,
-    shutouts: 1,
-    wins: 12,
-    losses: 7,
-    saves: 0,
-    holds: 0,
-    blownSaves: 0,
-    inningsPitched: 153.0,
-    hitsAllowed: 127,
-    runsAllowed: 48,
-    earnedRuns: 45,
-    walksAllowed: 52,
-    intentionalWalks: 4,
-    hitBatters: 6,
-    strikeouts: 158,
-    homeRunsAllowed: 9,
-    era: 2.65,
-    whip: 1.17,
-    kPer9: 9.3,
-    bbPer9: 3.1,
-    qualityStarts: 15,
-  },
-  {
     // 西勇輝  23G starter
     // IP=140.0, ER=41 → ERA=41*9/140=369/140=2.636→2.64
     // walks=34, hits=126 → WHIP=(34+126)/140=160/140=1.143→1.14
@@ -854,7 +823,7 @@ export const pitchingStatsCentral: {
     // ER=14 → ERA=14*9/55=126/55=2.291→2.29
     // walks=18, hits=42 → WHIP=(18+42)/55=60/55=1.091→1.09
     // K/9=52*9/55=468/55=8.5  BB/9=18*9/55=162/55=2.9
-    playerId: "tigers-6",
+    playerId: "tigers-11",
     seasonYear: 2025,
     games: 52,
     starts: 0,

@@ -1346,7 +1346,7 @@ export const battingStatsCentral: {
   // ── 阪神タイガース ────────────────────────────────────────────
   {
     // 大山悠輔
-    playerId: "tigers-1",
+    playerId: "tigers-46",
     seasonYear: 2025,
     games: 138,
     plateAppearances: 580,
@@ -1374,7 +1374,7 @@ export const battingStatsCentral: {
   },
   {
     // 佐藤輝明
-    playerId: "tigers-2",
+    playerId: "tigers-48",
     seasonYear: 2025,
     games: 134,
     plateAppearances: 554,
@@ -1402,7 +1402,7 @@ export const battingStatsCentral: {
   },
   {
     // 中野拓夢
-    playerId: "tigers-3",
+    playerId: "tigers-53",
     seasonYear: 2025,
     games: 140,
     plateAppearances: 535,
