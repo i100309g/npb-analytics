@@ -1430,42 +1430,11 @@ export const pitchingStatsCentral: {
   // ── 広島東洋カープ ────────────────────────────────────────────
 
   {
-    // 九里亜蓮  25G starter
-    // IP=155.0, ER=46 → ERA=46*9/155=414/155=2.671→2.67
-    // walks=44, hits=140 → WHIP=(44+140)/155=184/155=1.187→1.19
-    // K/9=128*9/155=1152/155=7.4  BB/9=44*9/155=396/155=2.6
-    playerId: "carp-4",
-    seasonYear: 2025,
-    games: 25,
-    starts: 25,
-    completeGames: 2,
-    shutouts: 0,
-    wins: 11,
-    losses: 9,
-    saves: 0,
-    holds: 0,
-    blownSaves: 0,
-    inningsPitched: 155.0,
-    hitsAllowed: 140,
-    runsAllowed: 50,
-    earnedRuns: 46,
-    walksAllowed: 44,
-    intentionalWalks: 3,
-    hitBatters: 5,
-    strikeouts: 128,
-    homeRunsAllowed: 13,
-    era: 2.67,
-    whip: 1.19,
-    kPer9: 7.4,
-    bbPer9: 2.6,
-    qualityStarts: 14,
-  },
-  {
     // 床田寛樹  26G starter
     // IP=162.0, ER=48 → ERA=48*9/162=432/162=2.667→2.67
     // walks=40, hits=148 → WHIP=(40+148)/162=188/162=1.160→1.16
     // K/9=145*9/162=1305/162=8.1  BB/9=40*9/162=360/162=2.2
-    playerId: "carp-5",
+    playerId: "carp-7",
     seasonYear: 2025,
     games: 26,
     starts: 26,
@@ -1497,7 +1466,7 @@ export const pitchingStatsCentral: {
     // ER=24 → ERA=24*9/72=216/72=3.000→3.00
     // walks=26, hits=62 → WHIP=(26+62)/72=88/72=1.222→1.22
     // K/9=65*9/72=585/72=8.1  BB/9=26*9/72=234/72=3.3
-    playerId: "carp-6",
+    playerId: "carp-3",
     seasonYear: 2025,
     games: 55,
     starts: 0,

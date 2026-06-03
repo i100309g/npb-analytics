@@ -14,7 +14,7 @@ export default async function Home() {
   return (
     <div className="space-y-10">
       <div>
-        <h1 className="text-3xl font-bold text-white mb-1">2024年 NPB 順位表</h1>
+        <h1 className="text-3xl font-bold text-white mb-1">2025年 NPB 順位表</h1>
         <p className="text-gray-400 text-sm">日本プロ野球 全12球団のデータ</p>
       </div>
       {[{ label: "セントラル・リーグ", data: central, color: "#3B82F6" }, { label: "パシフィック・リーグ", data: pacific, color: "#F59E0B" }].map(({ label, data, color }) => (

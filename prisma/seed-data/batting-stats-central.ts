@@ -1868,7 +1868,7 @@ export const battingStatsCentral: {
   // ── 広島東洋カープ ────────────────────────────────────────────
   {
     // 秋山翔吾
-    playerId: "carp-1",
+    playerId: "carp-59",
     seasonYear: 2025,
     games: 138,
     plateAppearances: 550,
@@ -1896,7 +1896,7 @@ export const battingStatsCentral: {
   },
   {
     // 小園海斗
-    playerId: "carp-2",
+    playerId: "carp-45",
     seasonYear: 2025,
     games: 132,
     plateAppearances: 516,
@@ -1922,35 +1922,6 @@ export const battingStatsCentral: {
     slg: 0.393,
     ops: 0.728,
   },
-  {
-    // 西川龍馬
-    playerId: "carp-3",
-    seasonYear: 2025,
-    games: 128,
-    plateAppearances: 498,
-    atBats: 446,
-    hits: 125,
-    singles: 88,
-    doubles: 22,
-    triples: 2,
-    homeRuns: 13,
-    rbi: 60,
-    runs: 62,
-    walks: 44,
-    intentionalWalks: 3,
-    hitByPitch: 4,
-    strikeouts: 82,
-    stolenBases: 14,
-    caughtStealing: 3,
-    doublePlayGrounded: 10,
-    sacrificeHits: 0,
-    sacrificeFlies: 4,
-    avg: 0.280,
-    obp: 0.347,
-    slg: 0.426,
-    ops: 0.773,
-  },
-
   // ── 中日ドラゴンズ ────────────────────────────────────────────
   {
     // 中田翔

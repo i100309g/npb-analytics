@@ -19,7 +19,7 @@ export default async function PlayersPage() {
     <div className="space-y-10">
       <div>
         <h1 className="text-3xl font-bold text-white mb-1">選手成績</h1>
-        <p className="text-gray-400 text-sm">2024年シーズン個人成績</p>
+        <p className="text-gray-400 text-sm">2025年シーズン個人成績</p>
       </div>
 
       {/* Batting */}
