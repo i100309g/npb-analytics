@@ -32,6 +32,16 @@ type Props = {
 
 const PITCHER_POSITIONS = ["投手"];
 
+// 守備位置（DHなし / DHあり）
+const FIELDING_POSITIONS_NO_DH = ["投手", "捕手", "一塁手", "二塁手", "三塁手", "遊撃手", "左翼手", "中堅手", "右翼手"];
+const FIELDING_POSITIONS_DH    = ["指名打者", "捕手", "一塁手", "二塁手", "三塁手", "遊撃手", "左翼手", "中堅手", "右翼手"];
+
+// 守備位置の略称
+const POS_SHORT: Record<string, string> = {
+  投手: "P", 捕手: "C", 一塁手: "1B", 二塁手: "2B", 三塁手: "3B",
+  遊撃手: "SS", 左翼手: "LF", 中堅手: "CF", 右翼手: "RF", 指名打者: "DH",
+};
+
 function wOBAColor(v: number): string {
   if (v >= 0.400) return "text-yellow-300";
   if (v >= 0.370) return "text-green-400";
@@ -69,9 +79,10 @@ export default function LineupOptimizer({ players, color, isDH = false }: Props)
   const [showShrink, setShowShrink] = useState(true);
   const [dhMode, setDhMode] = useState(isDH);
   const [posFilter, setPosFilter] = useState<string>("all");
-  const [activeTab, setActiveTab] = useState<"lineup" | "compare" | "inning" | "reason">("lineup");
+  const [activeTab, setActiveTab] = useState<"lineup" | "compare" | "inning" | "reason" | "defense">("lineup");
   const [savedLineups, setSavedLineups] = useState<SavedLineup[]>([]);
   const [rationaleOrder, setRationaleOrder] = useState<number[] | null>(null);
+  const [assignedPositions, setAssignedPositions] = useState<Record<string, string>>({});
 
   // 全選手の生SaberStats
   const rawSaberMap = useMemo(() => {
@@ -137,11 +148,22 @@ export default function LineupOptimizer({ players, color, isDH = false }: Props)
   );
 
   const addPlayer = useCallback((id: string) => {
-    setLineupIds(prev => (prev.length >= 9 ? prev : [...prev, id]));
-  }, []);
+    setLineupIds(prev => {
+      if (prev.length >= 9) return prev;
+      const player = playerMap.get(id);
+      if (player) {
+        setAssignedPositions(ap => ({ ...ap, [id]: player.position }));
+      }
+      return [...prev, id];
+    });
+  }, [playerMap]);
 
   const removePlayer = useCallback((idx: number) => {
-    setLineupIds(prev => prev.filter((_, i) => i !== idx));
+    setLineupIds(prev => {
+      const removed = prev[idx];
+      setAssignedPositions(ap => { const n = { ...ap }; delete n[removed]; return n; });
+      return prev.filter((_, i) => i !== idx);
+    });
     setRationaleOrder(null);
   }, []);
 
@@ -210,7 +232,7 @@ export default function LineupOptimizer({ players, color, isDH = false }: Props)
       {/* ツールバー */}
       <div className="flex flex-wrap gap-2 items-center">
         <button
-          onClick={() => { setDhMode(v => !v); setLineupIds([]); setRationaleOrder(null); }}
+          onClick={() => { setDhMode(v => !v); setLineupIds([]); setRationaleOrder(null); setAssignedPositions({}); }}
           className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors border ${
             dhMode
               ? "border-blue-600 bg-blue-600/20 text-blue-300"
@@ -245,7 +267,7 @@ export default function LineupOptimizer({ players, color, isDH = false }: Props)
 
         {lineupIds.length > 0 && (
           <button
-            onClick={() => { setLineupIds([]); setRationaleOrder(null); }}
+            onClick={() => { setLineupIds([]); setRationaleOrder(null); setAssignedPositions({}); }}
             className="px-3 py-1.5 rounded-lg text-xs font-medium border border-gray-700 bg-gray-800 text-gray-400 hover:text-red-400 transition-colors"
           >
             リセット
@@ -377,7 +399,7 @@ export default function LineupOptimizer({ players, color, isDH = false }: Props)
           {/* Tabs */}
           {lineupIds.length > 0 && (
             <div className="flex gap-1 bg-gray-900/60 rounded-lg p-1 border border-gray-800">
-              {(["lineup", "inning", "reason", "compare"] as const).map(tab => (
+              {(["lineup", "defense", "inning", "reason", "compare"] as const).map(tab => (
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
@@ -387,7 +409,7 @@ export default function LineupOptimizer({ players, color, isDH = false }: Props)
                       : "text-gray-500 hover:text-gray-300"
                   }`}
                 >
-                  {tab === "lineup" ? "打順" : tab === "inning" ? "イニング別" : tab === "reason" ? "根拠" : "比較"}
+                  {tab === "lineup" ? "打順" : tab === "defense" ? "守備" : tab === "inning" ? "回別" : tab === "reason" ? "根拠" : "比較"}
                 </button>
               ))}
             </div>
@@ -424,7 +446,16 @@ export default function LineupOptimizer({ players, color, isDH = false }: Props)
                             <div className="flex items-center gap-2 flex-wrap">
                               <span className="text-gray-500 text-xs">{player.jerseyNumber}</span>
                               <span className="font-medium text-white text-sm">{player.name}</span>
-                              <span className="text-xs text-gray-600 bg-gray-800 px-1.5 py-0.5 rounded">{player.position}</span>
+                              <select
+                                value={assignedPositions[player.id] ?? player.position}
+                                onChange={e => setAssignedPositions(ap => ({ ...ap, [player.id]: e.target.value }))}
+                                onClick={e => e.stopPropagation()}
+                                className="text-xs bg-gray-800 border border-gray-700 text-gray-300 rounded px-1 py-0.5 focus:outline-none"
+                              >
+                                {(dhMode ? FIELDING_POSITIONS_DH : FIELDING_POSITIONS_NO_DH).map(pos => (
+                                  <option key={pos} value={pos}>{pos}</option>
+                                ))}
+                              </select>
                               {showShrink && raw && <ShrinkBadge pa={raw.pa} />}
                             </div>
                             <div className="flex gap-2 mt-0.5 flex-wrap">
@@ -459,6 +490,89 @@ export default function LineupOptimizer({ players, color, isDH = false }: Props)
                   );
                 })}
               </div>
+            </div>
+          )}
+
+          {/* Tab: 守備位置 */}
+          {activeTab === "defense" && (
+            <div className="bg-gray-900 rounded-xl border border-gray-800">
+              <div className="px-4 py-3 border-b border-gray-800">
+                <h2 className="font-semibold text-white text-sm">守備位置</h2>
+              </div>
+              {(() => {
+                const fieldPositions = dhMode ? FIELDING_POSITIONS_DH : FIELDING_POSITIONS_NO_DH;
+                // 割り当て済み守備位置のカウント（重複検出用）
+                const posCounts: Record<string, number> = {};
+                for (const id of lineupIds) {
+                  const pos = assignedPositions[id] ?? playerMap.get(id)?.position ?? "";
+                  posCounts[pos] = (posCounts[pos] ?? 0) + 1;
+                }
+                // 守備位置 → 打者インデックスのマップ
+                const posToPlayer: Record<string, string[]> = {};
+                for (const id of lineupIds) {
+                  const pos = assignedPositions[id] ?? playerMap.get(id)?.position ?? "";
+                  if (!posToPlayer[pos]) posToPlayer[pos] = [];
+                  posToPlayer[pos].push(id);
+                }
+                // 未割り当てポジション
+                const unassigned = fieldPositions.filter(pos => !posToPlayer[pos]?.length);
+
+                return (
+                  <div className="p-4 space-y-2">
+                    {fieldPositions.map(pos => {
+                      const ids = posToPlayer[pos] ?? [];
+                      const isDup = ids.length > 1;
+                      const isEmpty = ids.length === 0;
+                      return (
+                        <div
+                          key={pos}
+                          className={`flex items-center gap-3 px-3 py-2 rounded-lg ${
+                            isDup ? "bg-red-900/20 border border-red-800/50"
+                            : isEmpty ? "bg-gray-800/30 border border-gray-800/30"
+                            : "bg-gray-800/50"
+                          }`}
+                        >
+                          <span className="w-8 text-center text-xs font-bold text-gray-500 font-mono flex-shrink-0">
+                            {POS_SHORT[pos] ?? pos}
+                          </span>
+                          <span className="text-xs text-gray-600 w-14 flex-shrink-0">{pos}</span>
+                          {ids.length > 0 ? (
+                            <div className="flex-1 flex items-center gap-2 flex-wrap">
+                              {ids.map(id => {
+                                const p = playerMap.get(id);
+                                const battingSlot = lineupIds.indexOf(id) + 1;
+                                return p ? (
+                                  <span key={id} className={`flex items-center gap-1.5 ${isDup ? "text-red-400" : "text-white"}`}>
+                                    <span
+                                      className="w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold"
+                                      style={{ backgroundColor: color + "33", color }}
+                                    >
+                                      {battingSlot}
+                                    </span>
+                                    <span className="text-sm">{p.name}</span>
+                                    <span className="text-xs text-gray-600">#{p.jerseyNumber}</span>
+                                  </span>
+                                ) : null;
+                              })}
+                              {isDup && (
+                                <span className="text-xs text-red-500">重複</span>
+                              )}
+                            </div>
+                          ) : (
+                            <span className="text-xs text-gray-700">— 未割り当て</span>
+                          )}
+                        </div>
+                      );
+                    })}
+                    {lineupIds.length > 0 && unassigned.length === 0 && Object.values(posCounts).every(c => c <= 1) && (
+                      <p className="text-xs text-green-600 text-center pt-1">守備位置が揃っています</p>
+                    )}
+                    {lineupIds.length === 0 && (
+                      <p className="text-xs text-gray-700 text-center py-4">打順に選手を追加すると表示されます</p>
+                    )}
+                  </div>
+                );
+              })()}
             </div>
           )}
 
