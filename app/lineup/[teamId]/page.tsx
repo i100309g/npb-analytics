@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import LineupOptimizer from "./LineupOptimizer";
 
@@ -63,11 +64,11 @@ export default async function LineupPage({
     <div className="space-y-6">
       {/* Breadcrumb */}
       <div className="flex items-center gap-2 text-sm text-gray-500">
-        <a href="/" className="hover:text-white transition-colors">チーム一覧</a>
+        <Link href="/" className="hover:text-white transition-colors">チーム一覧</Link>
         <span>/</span>
-        <a href={`/teams/${teamId}`} className="hover:text-white transition-colors">
+        <Link href={`/teams/${teamId}`} className="hover:text-white transition-colors">
           {team.shortName}
-        </a>
+        </Link>
         <span>/</span>
         <span className="text-gray-300">打順シミュレーター</span>
       </div>
