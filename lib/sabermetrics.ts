@@ -8,6 +8,9 @@ const W = {
   hr:    2.101,
 };
 
+// PA shrinkage定数: この打席数で「実績50% + リーグ平均50%」の重み
+export const SHRINK_C = 200;
+
 export interface RawBattingStats {
   plateAppearances: number | null;
   atBats:           number | null;
@@ -45,6 +48,10 @@ export interface SaberStats {
   pStrikeout: number;
   pDP:        number;  // ゲッツー（打席あたり概算）
   pOut:       number;  // その他のアウト
+  // サンプルサイズ
+  pa: number;
+  // 案分適用後フラグ
+  shrunk: boolean;
 }
 
 export function calcSaber(s: RawBattingStats, minAB = 10): SaberStats | null {
@@ -100,7 +107,97 @@ export function calcSaber(s: RawBattingStats, minAB = 10): SaberStats | null {
   );
 
   return { wOBA, iso, babip, kRate, bbRate,
-           pSingle, pDouble, pTriple, pHR, pWalk, pStrikeout, pDP, pOut };
+           pSingle, pDouble, pTriple, pHR, pWalk, pStrikeout, pDP, pOut,
+           pa, shrunk: false };
+}
+
+/**
+ * リーグ平均SaberStatsを計算する（全選手の加重平均）
+ */
+export function calcLeagueAvg(allStats: SaberStats[]): SaberStats {
+  if (allStats.length === 0) {
+    // フォールバック: NPBリーグ平均近似値
+    return {
+      wOBA: 0.315, iso: 0.130, babip: 0.290, kRate: 0.175, bbRate: 0.095,
+      pSingle: 0.155, pDouble: 0.038, pTriple: 0.004, pHR: 0.025,
+      pWalk: 0.095, pStrikeout: 0.175, pDP: 0.022, pOut: 0.486,
+      pa: 0, shrunk: false,
+    };
+  }
+
+  const totalPA = allStats.reduce((s, p) => s + p.pa, 0);
+  if (totalPA === 0) return calcLeagueAvg([]);
+
+  const w = (key: keyof SaberStats) =>
+    allStats.reduce((s, p) => s + (p[key] as number) * p.pa, 0) / totalPA;
+
+  return {
+    wOBA:       w("wOBA"),
+    iso:        w("iso"),
+    babip:      w("babip"),
+    kRate:      w("kRate"),
+    bbRate:     w("bbRate"),
+    pSingle:    w("pSingle"),
+    pDouble:    w("pDouble"),
+    pTriple:    w("pTriple"),
+    pHR:        w("pHR"),
+    pWalk:      w("pWalk"),
+    pStrikeout: w("pStrikeout"),
+    pDP:        w("pDP"),
+    pOut:       w("pOut"),
+    pa: totalPA / allStats.length,
+    shrunk: false,
+  };
+}
+
+/**
+ * 打席数案分（Bayesian shrinkage）
+ *
+ * 少ない打席数の選手はリーグ平均に引き寄せる。
+ * weight = PA / (PA + C): PAが多いほど実績値を重視。
+ * C = SHRINK_C (200PA) のとき、200PA で実績50%/平均50%。
+ */
+export function shrinkStats(
+  stats: SaberStats,
+  league: SaberStats,
+  C = SHRINK_C
+): SaberStats {
+  const pa = stats.pa;
+  const w  = pa / (pa + C); // 実績への重み
+  const wL = 1 - w;         // リーグ平均への重み
+
+  const blend = (key: keyof SaberStats) =>
+    w * (stats[key] as number) + wL * (league[key] as number);
+
+  const pSingle    = blend("pSingle");
+  const pDouble    = blend("pDouble");
+  const pTriple    = blend("pTriple");
+  const pHR        = blend("pHR");
+  const pWalk      = blend("pWalk");
+  const pStrikeout = blend("pStrikeout");
+  const pDP        = blend("pDP");
+  const pOut       = Math.max(
+    0,
+    1 - pSingle - pDouble - pTriple - pHR - pWalk - pStrikeout - pDP
+  );
+
+  // wOBAも確率から再計算
+  const wOBADenom = pSingle + pDouble + pTriple + pHR + pWalk + pOut + pStrikeout;
+  const wOBA = wOBADenom > 0
+    ? (W.uBB * pWalk + W.single * pSingle + W.double * pDouble +
+       W.triple * pTriple + W.hr * pHR) / wOBADenom * (pa + C) / pa
+    : blend("wOBA");
+
+  return {
+    wOBA:       blend("wOBA"),  // 表示用は元のブレンドを使用
+    iso:        blend("iso"),
+    babip:      blend("babip"),
+    kRate:      blend("kRate"),
+    bbRate:     blend("bbRate"),
+    pSingle, pDouble, pTriple, pHR, pWalk, pStrikeout, pDP, pOut,
+    pa,
+    shrunk: true,
+  };
 }
 
 /** wOBAをラベル付き文字列で返す */
@@ -111,4 +208,10 @@ export function wOBALabel(v: number): string {
   if (v >= 0.310) return "平均";
   if (v >= 0.280) return "平均以下";
   return "低い";
+}
+
+/** 案分適用の重みを文字列で返す（UI表示用） */
+export function shrinkLabel(pa: number, C = SHRINK_C): string {
+  const w = pa / (pa + C);
+  return `${Math.round(w * 100)}%`;
 }
