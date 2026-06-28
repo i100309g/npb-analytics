@@ -14,7 +14,9 @@
     "update:stats": "tsx scripts/update-stats.ts",
     "update:batting": "tsx scripts/update-stats.ts --type batting",
     "update:pitching": "tsx scripts/update-stats.ts --type pitching",
-    "update:players": "tsx scripts/update-stats.ts --type players"
+    "update:players": "tsx scripts/update-stats.ts --type players",
+    "update:2025": "tsx scripts/update-stats.ts --year 2025",
+    "update:2026": "tsx scripts/update-stats.ts --year 2026"
   },
   "dependencies": {
     "@prisma/adapter-better-sqlite3": "^7.8.0",

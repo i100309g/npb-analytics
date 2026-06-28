@@ -16,9 +16,16 @@ import * as fs from "fs";
 import * as path from "path";
 import { buildLookup, lookupId } from "./lib/player-lookup";
 
-const teamId = process.argv[2];
+const args = process.argv.slice(2);
+const teamId = args[0];
 if (!teamId) {
-  console.error("Usage: tsx scripts/import-pitching.ts <teamId>");
+  console.error("Usage: tsx scripts/import-pitching.ts <teamId> [--year <year>]");
+  process.exit(1);
+}
+const yearFlag = args.indexOf("--year");
+const year = yearFlag !== -1 ? parseInt(args[yearFlag + 1], 10) : 2025;
+if (isNaN(year)) {
+  console.error("--year には数値を指定してください");
   process.exit(1);
 }
 
@@ -124,7 +131,7 @@ rl.on("close", () => {
     const ip = r.inningsPitched;
     const bbPer9 = ip > 0 ? (r.walksAllowed * 9) / ip : 0;
     return (
-      `  { playerId: "${r.playerId.padEnd(14)}", seasonYear: 2025, ` +
+      `  { playerId: "${r.playerId.padEnd(14)}", seasonYear: ${year}, ` +
       `games: ${String(r.games).padStart(3)}, ` +
       `starts: ${String(r.starts).padStart(2)}, ` +
       `completeGames: ${r.completeGames}, ` +
@@ -154,14 +161,14 @@ rl.on("close", () => {
   const seedFile = path.join(__dirname, "../prisma/seed-data/pitching-stats-central.ts");
   const content = fs.readFileSync(seedFile, "utf-8");
 
-  const sectionComment = `// ── ${teamId}`;
+  const sectionComment = `// ── ${teamId} ${year}`;
   const startIdx = content.indexOf(sectionComment);
   if (startIdx === -1) {
     const insertPos = content.lastIndexOf("];");
-    const newSection = `\n  // ── ${teamId} (2025年実データ) ──────────────────────\n${tsLines.join("\n")}\n`;
+    const newSection = `\n  // ── ${teamId} ${year} ──────────────────────\n${tsLines.join("\n")}\n`;
     const updated = content.slice(0, insertPos) + newSection + content.slice(insertPos);
     fs.writeFileSync(seedFile, updated);
-    console.log(`✅ ${teamId}: ${rows.length}件追加（新規セクション）`);
+    console.log(`✅ ${teamId} ${year}: ${rows.length}件追加（新規セクション）`);
     return;
   }
 
@@ -177,7 +184,7 @@ rl.on("close", () => {
     content.slice(endIdx);
 
   fs.writeFileSync(seedFile, newContent);
-  console.log(`✅ ${teamId}: ${rows.length}件で投手成績を更新`);
+  console.log(`✅ ${teamId} ${year}: ${rows.length}件で投手成績を更新`);
   if (unmatched.length > 0) {
     console.log(`⚠️  スキップ: ${unmatched.join(", ")}`);
   }

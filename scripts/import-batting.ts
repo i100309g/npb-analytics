@@ -3,7 +3,7 @@
  * 打撃成績インポートスクリプト
  *
  * Usage:
- *   echo "<TSV>" | ./node_modules/.bin/tsx scripts/import-batting.ts <teamId>
+ *   echo "<TSV>" | ./node_modules/.bin/tsx scripts/import-batting.ts <teamId> [--year <year>]
  *
  * TSV列順（公式サイト形式）:
  *   選手名 打率 試合 打席 打数 安打 二塁打 三塁打 本塁打 塁打 打点 得点 三振 四球 死球 犠打 犠飛 盗塁 盗塁死 併殺打 出塁率 長打率 OPS 得点圏打率 失策
@@ -16,9 +16,16 @@ import * as fs from "fs";
 import * as path from "path";
 import { buildLookup, lookupId } from "./lib/player-lookup";
 
-const teamId = process.argv[2];
+const args = process.argv.slice(2);
+const teamId = args[0];
 if (!teamId) {
-  console.error("Usage: tsx scripts/import-batting.ts <teamId>");
+  console.error("Usage: tsx scripts/import-batting.ts <teamId> [--year <year>]");
+  process.exit(1);
+}
+const yearFlag = args.indexOf("--year");
+const year = yearFlag !== -1 ? parseInt(args[yearFlag + 1], 10) : 2025;
+if (isNaN(year)) {
+  console.error("--year には数値を指定してください");
   process.exit(1);
 }
 
@@ -128,7 +135,7 @@ rl.on("close", () => {
 
   // TypeScript行を生成
   const tsLines = rows.map(r =>
-    `  { playerId: "${r.playerId.padEnd(14)}", seasonYear: 2025, ` +
+    `  { playerId: "${r.playerId.padEnd(14)}", seasonYear: ${year}, ` +
     `games: ${String(r.games).padStart(3)}, ` +
     `plateAppearances: ${String(r.plateAppearances).padStart(3)}, ` +
     `atBats: ${String(r.atBats).padStart(3)}, ` +
@@ -156,15 +163,14 @@ rl.on("close", () => {
   const content = fs.readFileSync(seedFile, "utf-8");
 
   // チームセクションの開始・終了マーカーを探す
-  const sectionComment = `// ── ${teamId}`;
+  const sectionComment = `// ── ${teamId} ${year}`;
   const startIdx = content.indexOf(sectionComment);
   if (startIdx === -1) {
-    // セクションが存在しない場合は末尾の]; の前に追加
     const insertPos = content.lastIndexOf("];");
-    const newSection = `\n  // ── ${teamId} (2025年実データ) ──────────────────────\n${tsLines.join("\n")}\n`;
+    const newSection = `\n  // ── ${teamId} ${year} ──────────────────────\n${tsLines.join("\n")}\n`;
     const updated = content.slice(0, insertPos) + newSection + content.slice(insertPos);
     fs.writeFileSync(seedFile, updated);
-    console.log(`✅ ${teamId}: ${rows.length}件追加（新規セクション）`);
+    console.log(`✅ ${teamId} ${year}: ${rows.length}件追加（新規セクション）`);
     return;
   }
 
@@ -182,7 +188,7 @@ rl.on("close", () => {
     content.slice(endIdx);
 
   fs.writeFileSync(seedFile, newContent);
-  console.log(`✅ ${teamId}: ${rows.length}件でバッティング成績を更新`);
+  console.log(`✅ ${teamId} ${year}: ${rows.length}件でバッティング成績を更新`);
   if (unmatched.length > 0) {
     console.log(`⚠️  スキップ: ${unmatched.join(", ")}`);
   }
