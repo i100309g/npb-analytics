@@ -28,6 +28,7 @@ type Props = {
   players: PlayerData[];
   color: string;
   isDH?: boolean;
+  dataYear?: number;
 };
 
 const PITCHER_POSITIONS = ["投手"];
@@ -73,7 +74,7 @@ function ShrinkBadge({ pa }: { pa: number }) {
   );
 }
 
-export default function LineupOptimizer({ players, color, isDH = false }: Props) {
+export default function LineupOptimizer({ players, color, isDH = false, dataYear }: Props) {
   const [lineupIds, setLineupIds] = useState<string[]>([]);
   const [optimizing, setOptimizing] = useState(false);
   const [showShrink, setShowShrink] = useState(true);

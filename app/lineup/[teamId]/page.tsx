@@ -18,25 +18,29 @@ export default async function LineupPage({
   const team = await prisma.team.findUnique({ where: { id: teamId } });
   if (!team) notFound();
 
-  // 打撃成績があり、かつ野手（投手除く打撃データも含む）の選手を取得
+  // 最新シーズン優先（2026 → 2025）で打撃成績を取得
   const players = await prisma.player.findMany({
     where: { teamId, active: true },
     orderBy: { jerseyNumber: "asc" },
     include: {
-      battingStats: { where: { seasonYear: 2025 } },
+      battingStats: {
+        where: { seasonYear: { in: [2025, 2026] } },
+        orderBy: { seasonYear: "desc" }, // 最新年が先頭
+      },
     },
   });
 
-  // クライアントに渡すデータを整形
+  // クライアントに渡すデータを整形（最新年のみ使用）
   const playerData = players
     .filter((p) => p.battingStats.length > 0)
     .map((p) => {
-      const s = p.battingStats[0];
+      const s = p.battingStats[0]; // orderBy desc → 最新年
       return {
         id: p.id,
         name: p.name,
         jerseyNumber: p.jerseyNumber,
         position: p.position,
+        dataYear: s.seasonYear,
         stats: {
           plateAppearances: s.plateAppearances,
           atBats:           s.atBats,
@@ -59,6 +63,11 @@ export default async function LineupPage({
         },
       };
     });
+
+  // 表示用の最新年度（データが存在する最大の年）
+  const dataYear = playerData.length > 0
+    ? Math.max(...playerData.map((p) => p.dataYear))
+    : 2025;
 
   return (
     <div className="space-y-6">
@@ -87,11 +96,11 @@ export default async function LineupPage({
         <div className="mt-3 flex flex-wrap gap-4 text-xs text-gray-500">
           <span>使用モデル: <span className="text-gray-300">24状態 Markov Chain</span></span>
           <span>指標: <span className="text-gray-300">wOBA / ISO / BABIP / K% / BB%</span></span>
-          <span>データ: <span className="text-gray-300">2025年シーズン実績</span></span>
+          <span>データ: <span className="text-gray-300">{dataYear}年シーズン実績</span></span>
         </div>
       </div>
 
-      <LineupOptimizer players={playerData} color={team.color} />
+      <LineupOptimizer players={playerData} color={team.color} dataYear={dataYear} />
     </div>
   );
 }
