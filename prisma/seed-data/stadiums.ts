@@ -1,0 +1,118 @@
+export const stadiums: {
+  id: string;
+  name: string;
+  city: string;
+  capacity: number;
+  surface: "天然芝" | "人工芝";
+  roofType: "開放型" | "ドーム";
+  openedYear: number;
+}[] = [
+  {
+    id: "tokyo-dome",
+    name: "東京ドーム",
+    city: "東京",
+    capacity: 55000,
+    surface: "人工芝",
+    roofType: "ドーム",
+    openedYear: 1988,
+  },
+  {
+    id: "hanshin-koshien",
+    name: "阪神甲子園球場",
+    city: "兵庫",
+    capacity: 47508,
+    surface: "天然芝",
+    roofType: "開放型",
+    openedYear: 1924,
+  },
+  {
+    id: "yokohama-stadium",
+    name: "横浜スタジアム",
+    city: "神奈川",
+    capacity: 35000,
+    surface: "人工芝",
+    roofType: "開放型",
+    openedYear: 1978,
+  },
+  {
+    id: "mazda-stadium",
+    name: "MAZDA Zoom-Zoom スタジアム広島",
+    city: "広島",
+    capacity: 33000,
+    surface: "天然芝",
+    roofType: "開放型",
+    openedYear: 2009,
+  },
+  {
+    id: "bantelink-nagoya",
+    name: "バンテリンドームナゴヤ",
+    city: "愛知",
+    capacity: 40500,
+    surface: "人工芝",
+    roofType: "ドーム",
+    openedYear: 1997,
+  },
+  {
+    id: "jingu-stadium",
+    name: "明治神宮野球場",
+    city: "東京",
+    capacity: 31000,
+    surface: "天然芝",
+    roofType: "開放型",
+    openedYear: 1926,
+  },
+  {
+    id: "fukuoka-paypay",
+    name: "福岡PayPayドーム",
+    city: "福岡",
+    capacity: 40000,
+    surface: "人工芝",
+    roofType: "ドーム",
+    openedYear: 1993,
+  },
+  {
+    id: "zozo-marine",
+    name: "ZOZOマリンスタジアム",
+    city: "千葉",
+    capacity: 30000,
+    surface: "人工芝",
+    roofType: "開放型",
+    openedYear: 1990,
+  },
+  {
+    id: "miyagi-baseball",
+    name: "楽天モバイルパーク宮城",
+    city: "宮城",
+    capacity: 23000,
+    surface: "天然芝",
+    roofType: "開放型",
+    openedYear: 1950,
+  },
+  {
+    id: "kyocera-dome",
+    name: "京セラドーム大阪",
+    city: "大阪",
+    capacity: 36000,
+    surface: "人工芝",
+    roofType: "ドーム",
+    openedYear: 1997,
+  },
+  {
+    id: "belluna-dome",
+    name: "ベルーナドーム",
+    city: "埼玉",
+    capacity: 33000,
+    surface: "人工芝",
+    roofType: "開放型",
+    openedYear: 1979,
+  },
+  {
+    id: "escon-field",
+    name: "エスコンフィールドHOKKAIDO",
+    city: "北海道",
+    capacity: 35000,
+    surface: "天然芝",
+    roofType: "開放型",
+    openedYear: 2023,
+  },
+];

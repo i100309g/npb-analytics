@@ -1,0 +1,213 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../lib/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Stadium {
+  id           String @id
+  name         String
+  city         String
+  capacity     Int
+  surface      String // 天然芝 / 人工芝
+  roofType     String // 開放型 / ドーム
+  openedYear   Int
+  teams        Team[]
+  games        Game[]
+}
+
+model Team {
+  id           String @id
+  name         String
+  shortName    String
+  league       String // セントラル / パシフィック
+  city         String
+  color        String
+  foundedYear  Int
+  stadiumId    String
+  stadium      Stadium       @relation(fields: [stadiumId], references: [id])
+  players      Player[]
+  homeGames    Game[]        @relation("HomeTeam")
+  awayGames    Game[]        @relation("AwayTeam")
+  standings    Standing[]
+}
+
+model Player {
+  id            String  @id
+  teamId        String
+  team          Team    @relation(fields: [teamId], references: [id])
+  name          String
+  nameKana      String
+  jerseyNumber  Int
+  position      String  // 投手/捕手/一塁手/二塁手/三塁手/遊撃手/外野手
+  bats          String  // 右/左/両
+  throws        String  // 右/左
+  birthDate     String
+  birthPlace    String
+  height        Int     // cm
+  weight        Int     // kg
+  nationality   String
+  active        Boolean @default(true)
+  battingStats  BattingStat[]
+  pitchingStats PitchingStat[]
+  fieldingStats FieldingStat[]
+  awards        Award[]
+  matchupsAsBatter  Matchup[] @relation("MatchupBatter")
+  matchupsAsPitcher Matchup[] @relation("MatchupPitcher")
+}
+
+model Season {
+  year       Int        @id
+  standings  Standing[]
+  games      Game[]
+  awards     Award[]
+}
+
+model Standing {
+  id          Int     @id @default(autoincrement())
+  seasonYear  Int
+  season      Season  @relation(fields: [seasonYear], references: [year])
+  teamId      String
+  team        Team    @relation(fields: [teamId], references: [id])
+  league      String
+  rank        Int
+  wins        Int
+  losses      Int
+  draws       Int
+  winRate     Float
+  gamesBehind Float
+  runsFor     Int
+  runsAgainst Int
+  @@unique([seasonYear, teamId])
+}
+
+model Game {
+  id           Int     @id @default(autoincrement())
+  seasonYear   Int
+  season       Season  @relation(fields: [seasonYear], references: [year])
+  date         String  // YYYY-MM-DD
+  homeTeamId   String
+  homeTeam     Team    @relation("HomeTeam", fields: [homeTeamId], references: [id])
+  awayTeamId   String
+  awayTeam     Team    @relation("AwayTeam", fields: [awayTeamId], references: [id])
+  homeScore    Int
+  awayScore    Int
+  stadiumId    String
+  stadium      Stadium @relation(fields: [stadiumId], references: [id])
+  attendance   Int
+  duration     Int     // 試合時間（分）
+  gameType     String  // 公式戦/クライマックス/日本シリーズ
+}
+
+model BattingStat {
+  id              Int     @id @default(autoincrement())
+  playerId        String
+  player          Player  @relation(fields: [playerId], references: [id])
+  seasonYear      Int
+  games           Int
+  plateAppearances Int?
+  atBats          Int?
+  hits            Int?
+  singles         Int?
+  doubles         Int?
+  triples         Int?
+  homeRuns        Int?
+  rbi             Int?
+  runs            Int?
+  walks           Int?
+  intentionalWalks Int?
+  hitByPitch      Int?
+  strikeouts      Int?
+  stolenBases     Int?
+  caughtStealing  Int?
+  doublePlayGrounded Int?
+  sacrificeHits   Int?
+  sacrificeFlies  Int?
+  avg             Float?  // 打率
+  obp             Float?  // 出塁率
+  slg             Float?  // 長打率
+  ops             Float?  // OPS
+  @@unique([playerId, seasonYear])
+}
+
+model PitchingStat {
+  id              Int     @id @default(autoincrement())
+  playerId        String
+  player          Player  @relation(fields: [playerId], references: [id])
+  seasonYear      Int
+  games           Int
+  starts          Int
+  completeGames   Int
+  shutouts        Int
+  wins            Int
+  losses          Int
+  saves           Int
+  holds           Int
+  blownSaves      Int
+  inningsPitched  Float
+  hitsAllowed     Int
+  runsAllowed     Int
+  earnedRuns      Int
+  walksAllowed    Int
+  intentionalWalks Int
+  hitBatters      Int
+  strikeouts      Int
+  homeRunsAllowed Int
+  era             Float   // 防御率
+  whip            Float   // WHIP
+  kPer9           Float   // K/9
+  bbPer9          Float   // BB/9
+  qualityStarts   Int
+  @@unique([playerId, seasonYear])
+}
+
+model FieldingStat {
+  id           Int     @id @default(autoincrement())
+  playerId     String
+  player       Player  @relation(fields: [playerId], references: [id])
+  seasonYear   Int
+  position     String
+  games        Int
+  putouts      Int
+  assists      Int
+  errors       Int
+  doublePlays  Int
+  fieldingPct  Float
+  @@unique([playerId, seasonYear, position])
+}
+
+model Award {
+  id          Int     @id @default(autoincrement())
+  seasonYear  Int
+  season      Season  @relation(fields: [seasonYear], references: [year])
+  playerId    String
+  player      Player  @relation(fields: [playerId], references: [id])
+  awardName   String  // MVP/首位打者/本塁打王/打点王/最多勝/最優秀防御率/最多奪三振/沢村賞/新人王/GG賞
+  league      String
+}
+
+model Matchup {
+  id              Int    @id @default(autoincrement())
+  seasonYear      Int
+  batterId        String
+  batter          Player @relation("MatchupBatter",  fields: [batterId],  references: [id])
+  pitcherId       String
+  pitcher         Player @relation("MatchupPitcher", fields: [pitcherId], references: [id])
+  atBats          Int    // 打数
+  hits            Int    // 安打
+  doubles         Int    // 二塁打
+  triples         Int    // 三塁打
+  homeRuns        Int    // 本塁打
+  rbi             Int    // 打点
+  walks           Int    // 四球
+  intentionalWalks Int   // 故意四球
+  strikeouts      Int    // 三振
+  hitByPitch      Int    // 死球
+  sacrificeFlies  Int    // 犠飛
+  avg             Float  // 打率
+  ops             Float  // OPS
+  @@unique([seasonYear, batterId, pitcherId])
+}

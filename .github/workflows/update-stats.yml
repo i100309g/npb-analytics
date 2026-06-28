@@ -1,0 +1,104 @@
+name: 成績自動更新 (Daily Stats Update)
+
+on:
+  schedule:
+    # 毎日 15:00 UTC = 00:00 JST
+    - cron: "0 15 * * *"
+  workflow_dispatch:
+    inputs:
+      year:
+        description: "更新対象年度 (例: 2026)"
+        required: false
+        default: ""
+      team:
+        description: "特定チームのみ (例: baystars、空白で全チーム)"
+        required: false
+        default: ""
+      type:
+        description: "種別 (batting / pitching / players / all)"
+        required: false
+        default: "all"
+
+permissions:
+  contents: write
+
+jobs:
+  update-stats:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate Prisma client
+        run: npx prisma generate
+
+      - name: Seed database (initial state)
+        run: npm run seed
+
+      # ── 選手ロスター更新 ─────────────────────────────────────────
+      - name: Update player rosters
+        if: ${{ inputs.type == 'all' || inputs.type == 'players' || inputs.type == '' }}
+        run: |
+          ARGS="--type players"
+          [ -n "${{ inputs.team }}" ] && ARGS="$ARGS --team ${{ inputs.team }}"
+          npx tsx scripts/update-stats.ts $ARGS
+        continue-on-error: true
+
+      # ── 打撃成績更新 ─────────────────────────────────────────────
+      - name: Update batting stats
+        if: ${{ inputs.type == 'all' || inputs.type == 'batting' || inputs.type == '' }}
+        run: |
+          ARGS="--type batting"
+          [ -n "${{ inputs.team }}" ] && ARGS="$ARGS --team ${{ inputs.team }}"
+          [ -n "${{ inputs.year  }}" ] && ARGS="$ARGS --year ${{ inputs.year }}"
+          npx tsx scripts/update-stats.ts $ARGS
+        continue-on-error: true
+
+      # ── 投手成績更新 ─────────────────────────────────────────────
+      - name: Update pitching stats
+        if: ${{ inputs.type == 'all' || inputs.type == 'pitching' || inputs.type == '' }}
+        run: |
+          ARGS="--type pitching"
+          [ -n "${{ inputs.team }}" ] && ARGS="$ARGS --team ${{ inputs.team }}"
+          [ -n "${{ inputs.year  }}" ] && ARGS="$ARGS --year ${{ inputs.year }}"
+          npx tsx scripts/update-stats.ts $ARGS
+        continue-on-error: true
+
+      # ── DB再シード ────────────────────────────────────────────────
+      - name: Re-seed database with updated data
+        run: npm run seed
+
+      # ── 変更をコミット＆プッシュ ─────────────────────────────────
+      - name: Commit updated seed files
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add prisma/seed-data/
+          if git diff --staged --quiet; then
+            echo "変更なし — スキップ"
+          else
+            TODAY=$(date +'%Y-%m-%d')
+            git commit -m "chore: auto-update stats ${TODAY}"
+            git push
+            echo "PUSHED=true" >> $GITHUB_ENV
+          fi
+
+      - name: Summary
+        run: |
+          echo "## 更新完了" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- 実行日時: $(date +'%Y-%m-%d %H:%M UTC')" >> $GITHUB_STEP_SUMMARY
+          if [ "${PUSHED}" = "true" ]; then
+            echo "- ステータス: ✅ シードファイル更新済み → デプロイworkflowが起動します" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "- ステータス: ℹ️ 変更なし（前回から更新なし）" >> $GITHUB_STEP_SUMMARY
+          fi
