@@ -10,7 +10,10 @@
     "seed": "tsx prisma/seed.ts",
     "import:batting": "tsx scripts/import-batting.ts",
     "import:pitching": "tsx scripts/import-pitching.ts",
-    "import:players": "tsx scripts/import-players.ts"
+    "import:players": "tsx scripts/import-players.ts",
+    "update:stats": "tsx scripts/update-stats.ts",
+    "update:batting": "tsx scripts/update-stats.ts --type batting",
+    "update:pitching": "tsx scripts/update-stats.ts --type pitching"
   },
   "dependencies": {
     "@prisma/adapter-better-sqlite3": "^7.8.0",
