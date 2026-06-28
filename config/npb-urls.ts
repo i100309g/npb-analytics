@@ -1,8 +1,8 @@
 /**
  * NPB公式サイトのURL設定
  *
- * 各チームの成績ページURLをここに設定する。
- * 未設定（空文字）のチームはスキップされる。
+ * 選手一覧（rosterUrl）は全チーム設定済み。
+ * 打撃/投手成績URL（battingUrl/pitchingUrl）はチームの成績ページURLを設定すること。
  *
  * リーグ: "central" | "pacific"
  */
@@ -11,85 +11,84 @@ export interface TeamUrlConfig {
   league: "central" | "pacific";
   battingUrl?: string;    // 打撃成績ページ
   pitchingUrl?: string;   // 投手成績ページ
-  rosterUrl?: string;     // ロスターページ（選手データ）
-  tableIndex?: {          // 1ページに複数テーブルがある場合のインデックス（0始まり）
-    batting?: number;
-    pitching?: number;
-    roster?: number;
-  };
+  rosterUrl?: string;     // 選手一覧ページ（自動設定済み）
 }
 
+const BASE = "https://npb.jp/bis/teams";
+
 export const teamUrls: Record<string, TeamUrlConfig> = {
+  // ── セントラル・リーグ ──────────────────────────────────────────
   giants: {
     league: "central",
+    rosterUrl:   `${BASE}/rst_g.html`,
     battingUrl:  "",
     pitchingUrl: "",
-    rosterUrl:   "",
   },
   tigers: {
     league: "central",
+    rosterUrl:   `${BASE}/rst_t.html`,
     battingUrl:  "",
     pitchingUrl: "",
-    rosterUrl:   "",
   },
   baystars: {
     league: "central",
+    rosterUrl:   `${BASE}/rst_db.html`,
     battingUrl:  "",
     pitchingUrl: "",
-    rosterUrl:   "",
   },
   carp: {
     league: "central",
+    rosterUrl:   `${BASE}/rst_c.html`,
     battingUrl:  "",
     pitchingUrl: "",
-    rosterUrl:   "",
   },
   dragons: {
     league: "central",
+    rosterUrl:   `${BASE}/rst_d.html`,
     battingUrl:  "",
     pitchingUrl: "",
-    rosterUrl:   "",
   },
   swallows: {
     league: "central",
+    rosterUrl:   `${BASE}/rst_s.html`,
     battingUrl:  "",
     pitchingUrl: "",
-    rosterUrl:   "",
   },
+  // ── パシフィック・リーグ ──────────────────────────────────────────
   hawks: {
     league: "pacific",
+    rosterUrl:   `${BASE}/rst_h.html`,
     battingUrl:  "",
     pitchingUrl: "",
-    rosterUrl:   "",
   },
   lions: {
     league: "pacific",
+    rosterUrl:   `${BASE}/rst_l.html`,
     battingUrl:  "",
     pitchingUrl: "",
-    rosterUrl:   "",
   },
   fighters: {
     league: "pacific",
+    rosterUrl:   `${BASE}/rst_f.html`,
     battingUrl:  "",
     pitchingUrl: "",
-    rosterUrl:   "",
   },
   marines: {
     league: "pacific",
+    rosterUrl:   `${BASE}/rst_m.html`,
     battingUrl:  "",
     pitchingUrl: "",
-    rosterUrl:   "",
   },
   eagles: {
     league: "pacific",
+    rosterUrl:   `${BASE}/rst_e.html`,
     battingUrl:  "",
     pitchingUrl: "",
-    rosterUrl:   "",
   },
   buffaloes: {
     league: "pacific",
+    rosterUrl:   `${BASE}/rst_b.html`,
     battingUrl:  "",
     pitchingUrl: "",
-    rosterUrl:   "",
   },
 };

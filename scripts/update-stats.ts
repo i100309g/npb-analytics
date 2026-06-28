@@ -98,24 +98,40 @@ function runImport(script: string, teamId: string, tsv: string, extraArgs: strin
 
 // ── メイン処理 ────────────────────────────────────────────────
 
+/** NPBロスターページを専用スクレイパーで取得してTSVに変換 */
+function fetchRosterTsv(url: string): string {
+  const scriptPath = path.join(ROOT, "scripts", "fetch-npb-roster.ts");
+  const result = spawnSync("npx", ["tsx", scriptPath, url], {
+    encoding: "utf-8", cwd: ROOT,
+  });
+  if (result.stderr) process.stderr.write(result.stderr);
+  if (result.status !== 0 || !result.stdout) {
+    throw new Error(`fetch-npb-roster.ts が失敗（exit ${result.status}）`);
+  }
+  return result.stdout;
+}
+
 async function processTeam(teamId: string, cfg: TeamUrlConfig) {
   const types: Array<"batting" | "pitching" | "players"> =
     typeFilter ? [typeFilter] : ["batting", "pitching"];
 
   for (const type of types) {
-    const urlKey = `${type}Url` as keyof TeamUrlConfig;
-    const url = cfg[urlKey] as string | undefined;
+    const urlKey = type === "players" ? "rosterUrl" : `${type}Url` as keyof TeamUrlConfig;
+    const url = cfg[urlKey as keyof TeamUrlConfig] as string | undefined;
     if (!url) {
-      warn(`${teamId} の ${type}Url が未設定 → スキップ`);
+      warn(`${teamId} の ${type === "players" ? "rosterUrl" : type + "Url"} が未設定 → スキップ`);
       continue;
     }
 
-    const tableIdx = cfg.tableIndex?.[type as "batting" | "pitching" | "roster"] ?? 0;
     log(`${teamId} / ${type} フェッチ中: ${url}`);
 
     let tsv: string;
     try {
-      tsv = await fetchTsv(url, tableIdx);
+      if (type === "players") {
+        tsv = fetchRosterTsv(url);
+      } else {
+        tsv = await fetchTsv(url, 0);
+      }
     } catch (e) {
       warn(`${teamId} / ${type} フェッチ失敗: ${e}`);
       continue;

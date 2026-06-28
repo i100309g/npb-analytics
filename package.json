@@ -13,7 +13,8 @@
     "import:players": "tsx scripts/import-players.ts",
     "update:stats": "tsx scripts/update-stats.ts",
     "update:batting": "tsx scripts/update-stats.ts --type batting",
-    "update:pitching": "tsx scripts/update-stats.ts --type pitching"
+    "update:pitching": "tsx scripts/update-stats.ts --type pitching",
+    "update:players": "tsx scripts/update-stats.ts --type players"
   },
   "dependencies": {
     "@prisma/adapter-better-sqlite3": "^7.8.0",
