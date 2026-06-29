@@ -540,4 +540,17 @@ export const battingStatsPacific: {
     slg: 0.364,
     ops: 0.635,
   },
+
+  // ── lions 2026 ──────────────────────
+  { playerId: "lions-2", seasonYear: 2026, games:  11, plateAppearances:  42, atBats:  37, hits:   3, singles:   0, doubles:  7, triples: 1, homeRuns:  0, rbi:  11, runs:   5, walks:  1, intentionalWalks: 0, hitByPitch:  0, strikeouts:   0, stolenBases:  0, caughtStealing: 1, doublePlayGrounded:  6, sacrificeHits:  1, sacrificeFlies:  3, avg: 0.000, obp: 0.189, slg: 0.297, ops: 0.262 },
+
+  // ── fighters 2026 ──────────────────────
+  { playerId: "fighters-1", seasonYear: 2026, games:  72, plateAppearances: 272, atBats: 240, hits:  32, singles:   0, doubles: 57, triples: 6, homeRuns:  0, rbi: 105, runs:  31, walks:  0, intentionalWalks: 0, hitByPitch:  0, strikeouts:   0, stolenBases:  2, caughtStealing: 3, doublePlayGrounded: 75, sacrificeHits:  1, sacrificeFlies: 27, avg: 11.000, obp: 0.238, slg: 0.438, ops: 0.321 },
+
+  // ── eagles 2026 ──────────────────────
+  { playerId: "eagles-1", seasonYear: 2026, games:  64, plateAppearances: 243, atBats: 212, hits:  19, singles:   0, doubles: 50, triples: 6, homeRuns:  0, rbi:  74, runs:  25, walks:  0, intentionalWalks: 0, hitByPitch:  0, strikeouts:   1, stolenBases:  1, caughtStealing: 2, doublePlayGrounded: 48, sacrificeHits:  2, sacrificeFlies: 27, avg: 7.000, obp: 0.236, slg: 0.349, ops: 0.325 },
+  { playerId: "eagles-6", seasonYear: 2026, games:  12, plateAppearances:   4, atBats:   3, hits:   0, singles:   0, doubles:  0, triples: 0, homeRuns:  0, rbi:   0, runs:   0, walks:  0, intentionalWalks: 0, hitByPitch:  1, strikeouts:   0, stolenBases:  0, caughtStealing: 0, doublePlayGrounded:  2, sacrificeHits:  0, sacrificeFlies:  0, avg: 0.000, obp: 0.000, slg: 0.000, ops: 0.000 },
+
+  // ── buffaloes 2026 ──────────────────────
+  { playerId: "buffaloes-2", seasonYear: 2026, games:  65, plateAppearances: 261, atBats: 236, hits:  32, singles:   0, doubles: 63, triples: 11, homeRuns:  1, rbi:  88, runs:  24, walks:  2, intentionalWalks: 0, hitByPitch:  1, strikeouts:   2, stolenBases:  0, caughtStealing: 3, doublePlayGrounded: 29, sacrificeHits:  3, sacrificeFlies: 18, avg: 1.000, obp: 0.267, slg: 0.373, ops: 0.323 },
 ];
