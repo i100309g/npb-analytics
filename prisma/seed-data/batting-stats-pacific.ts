@@ -553,4 +553,28 @@ export const battingStatsPacific: {
 
   // ── buffaloes 2026 ──────────────────────
   { playerId: "buffaloes-2", seasonYear: 2026, games:  65, plateAppearances: 261, atBats: 236, hits:  32, singles:   0, doubles: 63, triples: 11, homeRuns:  1, rbi:  88, runs:  24, walks:  2, intentionalWalks: 0, hitByPitch:  1, strikeouts:   2, stolenBases:  0, caughtStealing: 3, doublePlayGrounded: 29, sacrificeHits:  3, sacrificeFlies: 18, avg: 1.000, obp: 0.267, slg: 0.373, ops: 0.323 },
+
+  // ── hawks 2025 ──────────────────────
+  { playerId: "hawks-4", seasonYear: 2025, games:  26, plateAppearances:   2, atBats:   1, hits:   0, singles:   0, doubles:  0, triples: 0, homeRuns:  0, rbi:   0, runs:   0, walks:  0, intentionalWalks: 0, hitByPitch:  1, strikeouts:   0, stolenBases:  0, caughtStealing: 0, doublePlayGrounded:  1, sacrificeHits:  0, sacrificeFlies:  0, avg: 0.000, obp: 0.000, slg: 0.000, ops: 0.000 },
+
+  // ── lions 2025 ──────────────────────
+  { playerId: "lions-4", seasonYear: 2025, games:  24, plateAppearances:   6, atBats:   6, hits:   0, singles:   0, doubles:  0, triples: 0, homeRuns:  0, rbi:   0, runs:   0, walks:  0, intentionalWalks: 0, hitByPitch:  0, strikeouts:   0, stolenBases:  0, caughtStealing: 0, doublePlayGrounded:  4, sacrificeHits:  0, sacrificeFlies:  0, avg: 0.000, obp: 0.000, slg: 0.000, ops: 0.000 },
+  { playerId: "lions-2", seasonYear: 2025, games: 115, plateAppearances: 415, atBats: 359, hits:  29, singles:   0, doubles: 84, triples: 13, homeRuns:  1, rbi: 114, runs:  34, walks:  2, intentionalWalks: 0, hitByPitch:  5, strikeouts:   6, stolenBases:  3, caughtStealing: 4, doublePlayGrounded: 72, sacrificeHits:  8, sacrificeFlies: 39, avg: 11.000, obp: 0.234, slg: 0.318, ops: 0.310 },
+  { playerId: "lions-3", seasonYear: 2025, games:  44, plateAppearances: 110, atBats:  96, hits:   3, singles:   0, doubles: 23, triples: 5, homeRuns:  0, rbi:  37, runs:  10, walks:  0, intentionalWalks: 0, hitByPitch:  0, strikeouts:   0, stolenBases:  2, caughtStealing: 1, doublePlayGrounded: 28, sacrificeHits:  0, sacrificeFlies: 13, avg: 2.000, obp: 0.240, slg: 0.385, ops: 0.336 },
+
+  // ── fighters 2025 ──────────────────────
+  { playerId: "fighters-6", seasonYear: 2025, games:  28, plateAppearances:   3, atBats:   3, hits:   0, singles:   0, doubles:  0, triples: 0, homeRuns:  0, rbi:   0, runs:   0, walks:  0, intentionalWalks: 0, hitByPitch:  0, strikeouts:   0, stolenBases:  0, caughtStealing: 0, doublePlayGrounded:  2, sacrificeHits:  0, sacrificeFlies:  0, avg: 0.000, obp: 0.000, slg: 0.000, ops: 0.000 },
+  { playerId: "fighters-2", seasonYear: 2025, games:  66, plateAppearances: 185, atBats: 160, hits:  13, singles:   0, doubles: 30, triples: 4, homeRuns:  1, rbi:  36, runs:   7, walks:  4, intentionalWalks: 0, hitByPitch:  4, strikeouts:   3, stolenBases:  0, caughtStealing: 4, doublePlayGrounded: 24, sacrificeHits:  0, sacrificeFlies: 17, avg: 5.000, obp: 0.188, slg: 0.225, ops: 0.282 },
+  { playerId: "fighters-1", seasonYear: 2025, games: 127, plateAppearances: 465, atBats: 420, hits:  48, singles:   0, doubles: 96, triples: 23, homeRuns:  1, rbi: 181, runs:  56, walks:  3, intentionalWalks: 0, hitByPitch:  1, strikeouts:   3, stolenBases:  6, caughtStealing: 1, doublePlayGrounded: 125, sacrificeHits:  0, sacrificeFlies: 43, avg: 10.000, obp: 0.229, slg: 0.431, ops: 0.302 },
+
+  // ── marines 2025 ──────────────────────
+  { playerId: "marines-6", seasonYear: 2025, games:  24, plateAppearances:   2, atBats:   1, hits:   0, singles:   0, doubles:  0, triples: 0, homeRuns:  0, rbi:   0, runs:   0, walks:  0, intentionalWalks: 0, hitByPitch:  1, strikeouts:   0, stolenBases:  0, caughtStealing: 0, doublePlayGrounded:  1, sacrificeHits:  0, sacrificeFlies:  0, avg: 0.000, obp: 0.000, slg: 0.000, ops: 0.000 },
+  { playerId: "marines-2", seasonYear: 2025, games:  20, plateAppearances:  64, atBats:  59, hits:   2, singles:   0, doubles: 11, triples: 2, homeRuns:  0, rbi:  16, runs:   3, walks:  0, intentionalWalks: 0, hitByPitch:  0, strikeouts:   0, stolenBases:  0, caughtStealing: 1, doublePlayGrounded:  9, sacrificeHits:  0, sacrificeFlies:  4, avg: 0.000, obp: 0.186, slg: 0.271, ops: 0.250 },
+
+  // ── eagles 2025 ──────────────────────
+  { playerId: "eagles-1", seasonYear: 2025, games:  96, plateAppearances: 389, atBats: 331, hits:  27, singles:   0, doubles: 79, triples: 13, homeRuns:  1, rbi: 121, runs:  34, walks:  0, intentionalWalks: 0, hitByPitch:  0, strikeouts:   1, stolenBases:  4, caughtStealing: 6, doublePlayGrounded: 81, sacrificeHits:  1, sacrificeFlies: 51, avg: 11.000, obp: 0.239, slg: 0.366, ops: 0.350 },
+
+  // ── buffaloes 2025 ──────────────────────
+  { playerId: "buffaloes-1", seasonYear: 2025, games: 129, plateAppearances: 525, atBats: 473, hits:  41, singles:   0, doubles: 118, triples: 20, homeRuns:  0, rbi: 177, runs:  54, walks:  0, intentionalWalks: 0, hitByPitch:  0, strikeouts:   1, stolenBases:  2, caughtStealing: 5, doublePlayGrounded: 81, sacrificeHits:  4, sacrificeFlies: 43, avg: 10.000, obp: 0.249, slg: 0.374, ops: 0.316 },
+  { playerId: "buffaloes-2", seasonYear: 2025, games: 119, plateAppearances: 463, atBats: 433, hits:  54, singles:   0, doubles: 123, triples: 26, homeRuns:  1, rbi: 187, runs:  53, walks:  2, intentionalWalks: 0, hitByPitch:  5, strikeouts:  10, stolenBases:  1, caughtStealing: 1, doublePlayGrounded: 49, sacrificeHits:  4, sacrificeFlies: 20, avg: 9.000, obp: 0.284, slg: 0.432, ops: 0.314 },
 ];
