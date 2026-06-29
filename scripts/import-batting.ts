@@ -5,8 +5,10 @@
  * Usage:
  *   echo "<TSV>" | ./node_modules/.bin/tsx scripts/import-batting.ts <teamId> [--year <year>]
  *
- * TSV列順（公式サイト形式）:
- *   選手名 打率 試合 打席 打数 安打 二塁打 三塁打 本塁打 塁打 打点 得点 三振 四球 死球 犠打 犠飛 盗塁 盗塁死 併殺打 出塁率 長打率 OPS 得点圏打率 失策
+ * TSV列順（npb.jp 実際の順序）:
+ *   選手名(0) 試合(1) 打席(2) 打数(3) 安打(4) 二塁打(5) 三塁打(6) 本塁打(7) 塁打(8)
+ *   打点(9) 得点(10) 三振(11) 四球(12) 死球(13) 犠打(14) 犠飛(15) 盗塁(16)
+ *   盗塁死(17) 併殺打(18) 打率(19) 出塁率(20) 長打率(21) OPS(22)
  *
  * - "-" は 0 として扱う（打席なし選手）
  * - 推論なし: マッチしない選手名は WARN を出力してスキップ
@@ -77,9 +79,9 @@ rl.on("line", (line) => {
   if (cols.slice(1).every(c => c.trim() === "-" || c.trim() === "")) return;
 
   // 打席数=0(または"-")かつ試合もなし → スキップ
-  const games = num(cols[2]);
-  const pa = num(cols[3]);
-  const ab = num(cols[4]);
+  const games = num(cols[1]);
+  const pa    = num(cols[2]);
+  const ab    = num(cols[3]);
   if (pa === 0 && ab === 0) return;
 
   const id = lookupId(lookup, name);
@@ -88,10 +90,10 @@ rl.on("line", (line) => {
     return;
   }
 
-  const hits    = num(cols[5]);
-  const doubles = num(cols[6]);
-  const triples = num(cols[7]);
-  const hr      = num(cols[8]);
+  const hits    = num(cols[4]);
+  const doubles = num(cols[5]);
+  const triples = num(cols[6]);
+  const hr      = num(cols[7]);
   const singles = Math.max(0, hits - doubles - triples - hr);
 
   rows.push({
@@ -104,17 +106,17 @@ rl.on("line", (line) => {
     doubles,
     triples,
     homeRuns:           hr,
-    rbi:                num(cols[10]),
-    runs:               num(cols[11]),
-    strikeouts:         num(cols[12]),
-    walks:              num(cols[13]),
-    hitByPitch:         num(cols[14]),
-    sacrificeHits:      num(cols[15]),
-    sacrificeFlies:     num(cols[16]),
-    stolenBases:        num(cols[17]),
-    caughtStealing:     num(cols[18]),
-    doublePlayGrounded: num(cols[19]),
-    avg: num(cols[1]),
+    rbi:                num(cols[9]),
+    runs:               num(cols[10]),
+    strikeouts:         num(cols[11]),
+    walks:              num(cols[12]),
+    hitByPitch:         num(cols[13]),
+    sacrificeHits:      num(cols[14]),
+    sacrificeFlies:     num(cols[15]),
+    stolenBases:        num(cols[16]),
+    caughtStealing:     num(cols[17]),
+    doublePlayGrounded: num(cols[18]),
+    avg: num(cols[19]),
     obp: num(cols[20]),
     slg: num(cols[21]),
     ops: num(cols[22]),
@@ -135,7 +137,7 @@ rl.on("close", () => {
 
   // TypeScript行を生成
   const tsLines = rows.map(r =>
-    `  { playerId: "${r.playerId.padEnd(14)}", seasonYear: ${year}, ` +
+    `  { playerId: "${r.playerId}", seasonYear: ${year}, ` +
     `games: ${String(r.games).padStart(3)}, ` +
     `plateAppearances: ${String(r.plateAppearances).padStart(3)}, ` +
     `atBats: ${String(r.atBats).padStart(3)}, ` +
@@ -158,8 +160,10 @@ rl.on("close", () => {
     `avg: ${r.avg.toFixed(3)}, obp: ${r.obp.toFixed(3)}, slg: ${r.slg.toFixed(3)}, ops: ${r.ops.toFixed(3)} },`
   );
 
-  // シードファイルを更新
-  const seedFile = path.join(__dirname, "../prisma/seed-data/batting-stats-central.ts");
+  // シードファイルを更新（リーグ別）
+  const PACIFIC = ["hawks", "lions", "fighters", "marines", "eagles", "buffaloes"];
+  const league  = PACIFIC.includes(teamId) ? "pacific" : "central";
+  const seedFile = path.join(__dirname, `../prisma/seed-data/batting-stats-${league}.ts`);
   const content = fs.readFileSync(seedFile, "utf-8");
 
   // チームセクションの開始・終了マーカーを探す
