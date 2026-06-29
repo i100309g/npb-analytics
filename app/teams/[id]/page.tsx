@@ -18,12 +18,17 @@ export default async function TeamPage({ params }: { params: Promise<{ id: strin
       where: { teamId: id },
       orderBy: { jerseyNumber: "asc" },
       include: {
-        battingStats:  { where: { seasonYear: 2025 } },
-        pitchingStats: { where: { seasonYear: 2025 } },
-        fieldingStats: { where: { seasonYear: 2025 } },
+        battingStats:  { where: { seasonYear: { in: [2025, 2026] } }, orderBy: { seasonYear: "asc" } },
+        pitchingStats: { where: { seasonYear: { in: [2025, 2026] } }, orderBy: { seasonYear: "asc" } },
+        fieldingStats: { where: { seasonYear: { in: [2025, 2026] } }, orderBy: { seasonYear: "asc" } },
       },
     }),
   ]);
+
+  const availableYears = [...new Set(players.flatMap(p => [
+    ...p.battingStats.map(s => s.seasonYear),
+    ...p.pitchingStats.map(s => s.seasonYear),
+  ]))].sort();
 
   if (!team) notFound();
 
@@ -32,14 +37,12 @@ export default async function TeamPage({ params }: { params: Promise<{ id: strin
 
   return (
     <div className="space-y-6">
-      {/* Breadcrumb */}
       <div className="flex items-center gap-2 text-sm text-gray-500">
         <Link href="/" className="hover:text-white transition-colors">チーム一覧</Link>
         <span>/</span>
         <span className="text-gray-300">{team.shortName}</span>
       </div>
 
-      {/* Team Header */}
       <div className="rounded-2xl p-6 border border-gray-800" style={{ background: `linear-gradient(135deg, ${team.color}18 0%, #111827 60%)` }}>
         <div className="flex items-start justify-between gap-4">
           <div>
@@ -66,7 +69,6 @@ export default async function TeamPage({ params }: { params: Promise<{ id: strin
           </div>
         )}
 
-        {/* Roster summary */}
         <div className="mt-4 flex gap-4 text-xs text-gray-400">
           <span>登録選手 <strong className="text-white">{players.length}</strong>名</span>
           <span>野手 <strong className="text-white">{batters.length}</strong>名</span>
@@ -74,7 +76,6 @@ export default async function TeamPage({ params }: { params: Promise<{ id: strin
         </div>
       </div>
 
-      {/* Lineup simulator link */}
       <Link
         href={`/lineup/${id}`}
         className="flex items-center justify-between rounded-xl px-5 py-4 border border-gray-800 hover:border-gray-600 transition-all group"
@@ -87,8 +88,7 @@ export default async function TeamPage({ params }: { params: Promise<{ id: strin
         <span className="text-gray-500 group-hover:text-gray-300 transition-colors text-lg">→</span>
       </Link>
 
-      {/* Stats tabs */}
-      <TeamStats players={players} color={team.color} />
+      <TeamStats players={players} color={team.color} availableYears={availableYears} />
     </div>
   );
 }
