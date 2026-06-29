@@ -6,7 +6,7 @@
  *   echo "<TSV>" | ./node_modules/.bin/tsx scripts/import-pitching.ts <teamId>
  *
  * TSV列順（npb.jp 実際の順序）:
- *   選手名(0) 試合(1) 勝(2) 負(3) SV(4) H(5) HP(6) 完封(7) 先発(8) 完投(9) 勝率(10)
+ *   選手名(0) 試合(1) 勝(2) 負(3) SV(4) H(5) HP(6) 完投(7) 先発(8) 完封(9) 勝率(10)
  *   被打者(11) 投球回(12) 被安打(13) 被本塁打(14) 与四球(15) 暴投(16) 与死球(17)
  *   奪三振(18) 奪三振率(19) ?(20) 失点(21) 自責点(22) 防御率(23)
  *
@@ -102,8 +102,8 @@ rl.on("line", (line) => {
     playerId:        id,
     games,
     starts:          num(cols[8]),
-    completeGames:   num(cols[9]),
-    shutouts:        num(cols[7]),
+    completeGames:   num(cols[7]),
+    shutouts:        num(cols[9]),
     wins:            num(cols[2]),
     losses:          num(cols[3]),
     holds:           num(cols[5]),
