@@ -3,6 +3,7 @@
 import { useState } from "react";
 
 type BattingStat = {
+  seasonYear: number;
   games: number; plateAppearances: number | null; atBats: number | null; hits: number | null;
   singles: number | null; doubles: number | null; triples: number | null; homeRuns: number | null;
   rbi: number | null; runs: number | null; walks: number | null; intentionalWalks: number | null;
@@ -13,6 +14,7 @@ type BattingStat = {
 };
 
 type PitchingStat = {
+  seasonYear: number;
   games: number; starts: number; completeGames: number; shutouts: number;
   wins: number; losses: number; saves: number; holds: number; blownSaves: number;
   inningsPitched: number; hitsAllowed: number; runsAllowed: number;
@@ -22,6 +24,7 @@ type PitchingStat = {
 };
 
 type FieldingStat = {
+  seasonYear: number;
   position: string; games: number; putouts: number; assists: number;
   errors: number; doublePlays: number; fieldingPct: number;
 };
@@ -50,13 +53,14 @@ const Td = ({ children, className = "" }: { children: React.ReactNode; className
   <td className={`px-3 py-2.5 font-mono text-sm ${className}`}>{children}</td>
 );
 
-export default function TeamStats({ players, color }: { players: Player[]; color: string }) {
+export default function TeamStats({ players, color, availableYears = [2025] }: { players: Player[]; color: string; availableYears?: number[] }) {
   const [tab, setTab] = useState<Tab>("batting");
+  const [year, setYear] = useState(availableYears[availableYears.length - 1] ?? 2025);
 
   const batters  = [...players.filter(p => p.position !== "投手")]
-    .sort((a, b) => (b.battingStats[0]?.ops ?? -1) - (a.battingStats[0]?.ops ?? -1));
+    .sort((a, b) => (b.battingStats.find(s => s.seasonYear === year)?.ops ?? -1) - (a.battingStats.find(s => s.seasonYear === year)?.ops ?? -1));
   const pitchers = [...players.filter(p => p.position === "投手")]
-    .sort((a, b) => (a.pitchingStats[0]?.era ?? 99) - (b.pitchingStats[0]?.era ?? 99));
+    .sort((a, b) => (a.pitchingStats.find(s => s.seasonYear === year)?.era ?? 99) - (b.pitchingStats.find(s => s.seasonYear === year)?.era ?? 99));
 
   const tabs: { key: Tab; label: string; count: number }[] = [
     { key: "batting",  label: "打撃成績", count: batters.length },
@@ -66,7 +70,26 @@ export default function TeamStats({ players, color }: { players: Player[]; color
 
   return (
     <div className="space-y-4">
-      {/* Tab bar */}
+      {availableYears.length > 1 && (
+        <div className="flex gap-1 items-center">
+          <span className="text-xs text-gray-500 mr-1">年度：</span>
+          {availableYears.map(y => (
+            <button
+              key={y}
+              onClick={() => setYear(y)}
+              className={`px-3 py-1 rounded-lg text-xs font-medium transition-all border ${
+                year === y
+                  ? "text-white border-transparent"
+                  : "text-gray-400 border-gray-700 hover:text-gray-200"
+              }`}
+              style={year === y ? { backgroundColor: color + "44", borderColor: color } : {}}
+            >
+              {y}年
+            </button>
+          ))}
+        </div>
+      )}
+
       <div className="flex gap-1 bg-gray-900 rounded-xl p-1 border border-gray-800">
         {tabs.map(({ key, label, count }) => (
           <button
@@ -85,39 +108,21 @@ export default function TeamStats({ players, color }: { players: Player[]; color
         ))}
       </div>
 
-      {/* Batting */}
       {tab === "batting" && (
         <div className="bg-gray-900 rounded-xl border border-gray-800 overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-gray-800">
-                <Th>選手名</Th>
-                <Th>守備</Th>
-                <Th right>試合</Th>
-                <Th right>打席</Th>
-                <Th right>打数</Th>
-                <Th right>安打</Th>
-                <Th right>二塁打</Th>
-                <Th right>三塁打</Th>
-                <Th right>本塁打</Th>
-                <Th right>打点</Th>
-                <Th right>得点</Th>
-                <Th right>四球</Th>
-                <Th right>死球</Th>
-                <Th right>三振</Th>
-                <Th right>盗塁</Th>
-                <Th right>盗塁死</Th>
-                <Th right>犠打</Th>
-                <Th right>犠飛</Th>
-                <Th right>打率</Th>
-                <Th right>出塁率</Th>
-                <Th right>長打率</Th>
-                <Th right>OPS</Th>
+                <Th>選手名</Th><Th>守備</Th>
+                <Th right>試合</Th><Th right>打席</Th><Th right>打数</Th><Th right>安打</Th>
+                <Th right>二塁打</Th><Th right>三塁打</Th><Th right>本塁打</Th><Th right>打点</Th><Th right>得点</Th>
+                <Th right>四球</Th><Th right>死球</Th><Th right>三振</Th><Th right>盗塁</Th><Th right>盗塁死</Th>
+                <Th right>犠打</Th><Th right>犠飛</Th><Th right>打率</Th><Th right>出塁率</Th><Th right>長打率</Th><Th right>OPS</Th>
               </tr>
             </thead>
             <tbody>
               {batters.map((p, idx) => {
-                const s = p.battingStats[0];
+                const s = p.battingStats.find(st => st.seasonYear === year);
                 const isTop = idx < 3 && s;
                 return (
                   <tr key={p.id} className={`border-b border-gray-800/40 hover:bg-gray-800/40 transition-colors ${isTop ? "bg-gray-800/20" : ""}`}>
@@ -155,39 +160,22 @@ export default function TeamStats({ players, color }: { players: Player[]; color
         </div>
       )}
 
-      {/* Pitching */}
       {tab === "pitching" && (
         <div className="bg-gray-900 rounded-xl border border-gray-800 overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-gray-800">
                 <Th>選手名</Th>
-                <Th right>試合</Th>
-                <Th right>先発</Th>
-                <Th right>完投</Th>
-                <Th right>完封</Th>
-                <Th right>勝</Th>
-                <Th right>敗</Th>
-                <Th right>S</Th>
-                <Th right>H</Th>
-                <Th right>BS</Th>
-                <Th right>投球回</Th>
-                <Th right>被安打</Th>
-                <Th right>失点</Th>
-                <Th right>自責点</Th>
-                <Th right>四球</Th>
-                <Th right>三振</Th>
-                <Th right>被本塁打</Th>
-                <Th right>QS</Th>
-                <Th right>防御率</Th>
-                <Th right>WHIP</Th>
-                <Th right>K/9</Th>
-                <Th right>BB/9</Th>
+                <Th right>試合</Th><Th right>先発</Th><Th right>完投</Th><Th right>完封</Th>
+                <Th right>勝</Th><Th right>敗</Th><Th right>S</Th><Th right>H</Th><Th right>BS</Th>
+                <Th right>投球回</Th><Th right>被安打</Th><Th right>失点</Th><Th right>自責点</Th>
+                <Th right>四球</Th><Th right>三振</Th><Th right>被本塁打</Th><Th right>QS</Th>
+                <Th right>防御率</Th><Th right>WHIP</Th><Th right>K/9</Th><Th right>BB/9</Th>
               </tr>
             </thead>
             <tbody>
               {pitchers.map((p, idx) => {
-                const s = p.pitchingStats[0];
+                const s = p.pitchingStats.find(st => st.seasonYear === year);
                 const isTop = idx < 3 && s;
                 return (
                   <tr key={p.id} className={`border-b border-gray-800/40 hover:bg-gray-800/40 transition-colors ${isTop ? "bg-gray-800/20" : ""}`}>
@@ -213,8 +201,8 @@ export default function TeamStats({ players, color }: { players: Player[]; color
                     <Td className="text-right text-purple-400">{fmt(s?.strikeouts)}</Td>
                     <Td className="text-right text-gray-300">{fmt(s?.homeRunsAllowed)}</Td>
                     <Td className="text-right text-gray-300">{fmt(s?.qualityStarts)}</Td>
-                    <Td className={`text-right font-bold ${s?.era < 2.5 ? "text-yellow-300" : s?.era < 3.5 ? "text-green-400" : "text-gray-300"}`}>{fmt(s?.era, 2)}</Td>
-                    <Td className={`text-right ${s?.whip < 1.1 ? "text-green-400" : "text-gray-300"}`}>{fmt(s?.whip, 2)}</Td>
+                    <Td className={`text-right font-bold ${(s?.era ?? 99) < 2.5 ? "text-yellow-300" : (s?.era ?? 99) < 3.5 ? "text-green-400" : "text-gray-300"}`}>{fmt(s?.era, 2)}</Td>
+                    <Td className={`text-right ${(s?.whip ?? 99) < 1.1 ? "text-green-400" : "text-gray-300"}`}>{fmt(s?.whip, 2)}</Td>
                     <Td className="text-right text-purple-400">{fmt(s?.kPer9, 1)}</Td>
                     <Td className="text-right text-gray-400">{fmt(s?.bbPer9, 1)}</Td>
                   </tr>
@@ -225,25 +213,20 @@ export default function TeamStats({ players, color }: { players: Player[]; color
         </div>
       )}
 
-      {/* Fielding */}
       {tab === "fielding" && (
         <div className="bg-gray-900 rounded-xl border border-gray-800 overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-gray-800">
-                <Th>選手名</Th>
-                <Th>守備位置</Th>
-                <Th right>試合</Th>
-                <Th right>刺殺</Th>
-                <Th right>補殺</Th>
-                <Th right>失策</Th>
-                <Th right>併殺</Th>
-                <Th right>守備率</Th>
+                <Th>選手名</Th><Th>守備位置</Th>
+                <Th right>試合</Th><Th right>刺殺</Th><Th right>補殺</Th>
+                <Th right>失策</Th><Th right>併殺</Th><Th right>守備率</Th>
               </tr>
             </thead>
             <tbody>
               {batters.map((p) => {
-                const fStats = p.fieldingStats.length > 0 ? p.fieldingStats : [null as unknown as FieldingStat];
+                const yearFielding = p.fieldingStats.filter(s => s.seasonYear === year);
+                const fStats = yearFielding.length > 0 ? yearFielding : [null as unknown as FieldingStat];
                 return fStats.map((f, i) => (
                   <tr key={`${p.id}-${i}`} className="border-b border-gray-800/40 hover:bg-gray-800/40 transition-colors">
                     <td className="px-4 py-2.5 whitespace-nowrap">
