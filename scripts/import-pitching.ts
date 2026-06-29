@@ -5,11 +5,14 @@
  * Usage:
  *   echo "<TSV>" | ./node_modules/.bin/tsx scripts/import-pitching.ts <teamId>
  *
- * TSV列順（公式サイト形式）:
- *   選手名 防御率 登板 先発 交代完了 勝利 敗戦 ホールド HP セーブ 勝率 投球回 打者 被安打 被本塁打 奪三振 奪三振率 与四球 与死球 暴投 失点 自責点 被打率 K/BB WHIP
+ * TSV列順（npb.jp 実際の順序）:
+ *   選手名(0) 試合(1) 勝(2) 負(3) SV(4) H(5) HP(6) 完封(7) 先発(8) 完投(9) 勝率(10)
+ *   被打者(11) 投球回(12) 被安打(13) 被本塁打(14) 与四球(15) 暴投(16) 与死球(17)
+ *   奪三振(18) 奪三振率(19) ?(20) 失点(21) 自責点(22) 防御率(23)
  *
  * - "-" は 0 として扱う（登板なし選手）
  * - 推論なし: マッチしない選手名は WARN を出力してスキップ
+ * - WHIP・K/9 は列が存在しないため IP・奪三振・四球から算出
  */
 import * as readline from "readline";
 import * as fs from "fs";
@@ -50,6 +53,7 @@ interface PitchingRow {
   games: number;
   starts: number;
   completeGames: number;
+  shutouts: number;
   wins: number;
   losses: number;
   saves: number;
@@ -80,7 +84,7 @@ rl.on("line", (line) => {
 
   if (cols.slice(1).every(c => c.trim() === "-" || c.trim() === "")) return;
 
-  const games = num(cols[2]);
+  const games = num(cols[1]);
   if (games === 0) return;
 
   const id = lookupId(lookup, name);
@@ -89,29 +93,32 @@ rl.on("line", (line) => {
     return;
   }
 
-  const ip = parseIP(cols[11]);
-  const walks = num(cols[17]);
+  const ip    = parseIP(cols[12]);
+  const walks = num(cols[15]);
+  const ks    = num(cols[18]);
+  const ha    = num(cols[13]);
 
   rows.push({
-    playerId:      id,
+    playerId:        id,
     games,
-    starts:        num(cols[3]),
-    completeGames: num(cols[4]),
-    wins:          num(cols[5]),
-    losses:        num(cols[6]),
-    holds:         num(cols[7]),
-    saves:         num(cols[9]),
-    inningsPitched: ip,
-    hitsAllowed:   num(cols[13]),
+    starts:          num(cols[8]),
+    completeGames:   num(cols[9]),
+    shutouts:        num(cols[7]),
+    wins:            num(cols[2]),
+    losses:          num(cols[3]),
+    holds:           num(cols[5]),
+    saves:           num(cols[4]),
+    inningsPitched:  ip,
+    hitsAllowed:     ha,
     homeRunsAllowed: num(cols[14]),
-    strikeouts:    num(cols[15]),
-    walksAllowed:  walks,
-    hitBatters:    num(cols[18]),
-    runsAllowed:   num(cols[20]),
-    earnedRuns:    num(cols[21]),
-    era:           num(cols[1]),
-    whip:          num(cols[24]),
-    kPer9:         num(cols[16]),
+    strikeouts:      ks,
+    walksAllowed:    walks,
+    hitBatters:      num(cols[17]),
+    runsAllowed:     num(cols[21]),
+    earnedRuns:      num(cols[22]),
+    era:             num(cols[23]),
+    whip:            ip > 0 ? (ha + walks) / ip : 0,
+    kPer9:           ip > 0 ? (ks * 9) / ip : 0,
   });
 });
 
@@ -131,11 +138,11 @@ rl.on("close", () => {
     const ip = r.inningsPitched;
     const bbPer9 = ip > 0 ? (r.walksAllowed * 9) / ip : 0;
     return (
-      `  { playerId: "${r.playerId.padEnd(14)}", seasonYear: ${year}, ` +
+      `  { playerId: "${r.playerId}", seasonYear: ${year}, ` +
       `games: ${String(r.games).padStart(3)}, ` +
       `starts: ${String(r.starts).padStart(2)}, ` +
       `completeGames: ${r.completeGames}, ` +
-      `shutouts: 0, ` +
+      `shutouts: ${r.shutouts}, ` +
       `wins: ${String(r.wins).padStart(2)}, ` +
       `losses: ${String(r.losses).padStart(2)}, ` +
       `saves: ${String(r.saves).padStart(2)}, ` +
@@ -158,7 +165,9 @@ rl.on("close", () => {
     );
   });
 
-  const seedFile = path.join(__dirname, "../prisma/seed-data/pitching-stats-central.ts");
+  const PACIFIC = ["hawks", "lions", "fighters", "marines", "eagles", "buffaloes"];
+  const league  = PACIFIC.includes(teamId) ? "pacific" : "central";
+  const seedFile = path.join(__dirname, `../prisma/seed-data/pitching-stats-${league}.ts`);
   const content = fs.readFileSync(seedFile, "utf-8");
 
   const sectionComment = `// ── ${teamId} ${year}`;
