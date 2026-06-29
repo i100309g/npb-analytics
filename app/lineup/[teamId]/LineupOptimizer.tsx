@@ -25,19 +25,17 @@ type SavedLineup = {
 };
 
 type Props = {
-  players: PlayerData[];
+  playersByYear: Record<number, PlayerData[]>;
+  availableYears: number[];
   color: string;
   isDH?: boolean;
-  dataYear?: number;
 };
 
 const PITCHER_POSITIONS = ["投手"];
 
-// 守備位置（DHなし / DHあり）
 const FIELDING_POSITIONS_NO_DH = ["投手", "捕手", "一塁手", "二塁手", "三塁手", "遊撃手", "左翼手", "中堅手", "右翼手"];
 const FIELDING_POSITIONS_DH    = ["指名打者", "捕手", "一塁手", "二塁手", "三塁手", "遊撃手", "左翼手", "中堅手", "右翼手"];
 
-// 守備位置の略称
 const POS_SHORT: Record<string, string> = {
   投手: "P", 捕手: "C", 一塁手: "1B", 二塁手: "2B", 三塁手: "3B",
   遊撃手: "SS", 左翼手: "LF", 中堅手: "CF", 右翼手: "RF", 指名打者: "DH",
@@ -74,7 +72,9 @@ function ShrinkBadge({ pa }: { pa: number }) {
   );
 }
 
-export default function LineupOptimizer({ players, color, isDH = false, dataYear }: Props) {
+export default function LineupOptimizer({ playersByYear, availableYears, color, isDH = false }: Props) {
+  const defaultYear = availableYears[availableYears.length - 1] ?? 2025;
+  const [selectedYear, setSelectedYear] = useState(defaultYear);
   const [lineupIds, setLineupIds] = useState<string[]>([]);
   const [optimizing, setOptimizing] = useState(false);
   const [showShrink, setShowShrink] = useState(true);
@@ -85,7 +85,8 @@ export default function LineupOptimizer({ players, color, isDH = false, dataYear
   const [rationaleOrder, setRationaleOrder] = useState<number[] | null>(null);
   const [assignedPositions, setAssignedPositions] = useState<Record<string, string>>({});
 
-  // 全選手の生SaberStats
+  const players = playersByYear[selectedYear] ?? [];
+
   const rawSaberMap = useMemo(() => {
     const m = new Map<string, SaberStats>();
     for (const p of players) {
@@ -95,7 +96,6 @@ export default function LineupOptimizer({ players, color, isDH = false, dataYear
     return m;
   }, [players]);
 
-  // リーグ平均（DH設定によって対象選手が変わる）
   const leagueAvg = useMemo(() => {
     const pool = players
       .filter(p => dhMode ? !PITCHER_POSITIONS.includes(p.position) : true)
@@ -104,7 +104,6 @@ export default function LineupOptimizer({ players, color, isDH = false, dataYear
     return calcLeagueAvg(pool);
   }, [players, rawSaberMap, dhMode]);
 
-  // 案分適用後のSaberStats
   const saberMap = useMemo(() => {
     const m = new Map<string, SaberStats>();
     for (const [id, raw] of rawSaberMap) {
@@ -119,7 +118,6 @@ export default function LineupOptimizer({ players, color, isDH = false, dataYear
     return m;
   }, [players]);
 
-  // ポジション一覧（フィルター用）
   const positions = useMemo(() => {
     const s = new Set(players.map(p => p.position));
     return Array.from(s).sort();
@@ -152,9 +150,7 @@ export default function LineupOptimizer({ players, color, isDH = false, dataYear
     setLineupIds(prev => {
       if (prev.length >= 9) return prev;
       const player = playerMap.get(id);
-      if (player) {
-        setAssignedPositions(ap => ({ ...ap, [id]: player.position }));
-      }
+      if (player) setAssignedPositions(ap => ({ ...ap, [id]: player.position }));
       return [...prev, id];
     });
   }, [playerMap]);
@@ -170,20 +166,14 @@ export default function LineupOptimizer({ players, color, isDH = false, dataYear
 
   const moveUp = useCallback((idx: number) => {
     if (idx === 0) return;
-    setLineupIds(prev => {
-      const next = [...prev];
-      [next[idx - 1], next[idx]] = [next[idx], next[idx - 1]];
-      return next;
-    });
+    setLineupIds(prev => { const next = [...prev]; [next[idx - 1], next[idx]] = [next[idx], next[idx - 1]]; return next; });
     setRationaleOrder(null);
   }, []);
 
   const moveDown = useCallback((idx: number) => {
     setLineupIds(prev => {
       if (idx >= prev.length - 1) return prev;
-      const next = [...prev];
-      [next[idx], next[idx + 1]] = [next[idx + 1], next[idx]];
-      return next;
+      const next = [...prev]; [next[idx], next[idx + 1]] = [next[idx + 1], next[idx]]; return next;
     });
     setRationaleOrder(null);
   }, []);
@@ -192,9 +182,7 @@ export default function LineupOptimizer({ players, color, isDH = false, dataYear
     if (lineupIds.length < 2) return;
     setOptimizing(true);
     setTimeout(() => {
-      const stats = lineupIds
-        .map(id => saberMap.get(id))
-        .filter((s): s is SaberStats => s !== undefined);
+      const stats = lineupIds.map(id => saberMap.get(id)).filter((s): s is SaberStats => s !== undefined);
       const order = optimizeLineup(stats);
       setLineupIds(prev => order.map(i => prev[i]));
       setRationaleOrder(order);
@@ -215,12 +203,9 @@ export default function LineupOptimizer({ players, color, isDH = false, dataYear
     setActiveTab("lineup");
   }, []);
 
-  // 根拠表示用データ
   const rationale = useMemo(() => {
     if (!rationaleOrder || lineupIds.length < 9) return null;
-    const stats = lineupIds
-      .map(id => saberMap.get(id))
-      .filter((s): s is SaberStats => s !== undefined);
+    const stats = lineupIds.map(id => saberMap.get(id)).filter((s): s is SaberStats => s !== undefined);
     if (stats.length < 9) return null;
     const names = lineupIds.map(id => playerMap.get(id)?.name ?? "");
     return explainLineup(rationaleOrder, stats, names);
@@ -230,42 +215,50 @@ export default function LineupOptimizer({ players, color, isDH = false, dataYear
 
   return (
     <div className="space-y-4">
-      {/* ツールバー */}
+      {availableYears.length > 1 && (
+        <div className="flex gap-1 items-center">
+          <span className="text-xs text-gray-500 mr-1">年度：</span>
+          {availableYears.map(y => (
+            <button
+              key={y}
+              onClick={() => { setSelectedYear(y); setLineupIds([]); setRationaleOrder(null); setAssignedPositions({}); }}
+              className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-all border ${
+                selectedYear === y ? "text-white border-transparent" : "text-gray-400 border-gray-700 hover:text-gray-200"
+              }`}
+              style={selectedYear === y ? { backgroundColor: color + "44", borderColor: color } : {}}
+            >
+              {y}年
+            </button>
+          ))}
+        </div>
+      )}
+
       <div className="flex flex-wrap gap-2 items-center">
         <button
           onClick={() => { setDhMode(v => !v); setLineupIds([]); setRationaleOrder(null); setAssignedPositions({}); }}
           className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors border ${
-            dhMode
-              ? "border-blue-600 bg-blue-600/20 text-blue-300"
-              : "border-gray-700 bg-gray-800 text-gray-400 hover:text-gray-200"
+            dhMode ? "border-blue-600 bg-blue-600/20 text-blue-300" : "border-gray-700 bg-gray-800 text-gray-400 hover:text-gray-200"
           }`}
         >
           {dhMode ? "DH あり" : "DH なし"}
         </button>
-
         <button
           onClick={() => setShowShrink(v => !v)}
           className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors border ${
-            showShrink
-              ? "border-green-700 bg-green-700/20 text-green-300"
-              : "border-gray-700 bg-gray-800 text-gray-400 hover:text-gray-200"
+            showShrink ? "border-green-700 bg-green-700/20 text-green-300" : "border-gray-700 bg-gray-800 text-gray-400 hover:text-gray-200"
           }`}
           title={`打席数で案分 (基準: ${SHRINK_C}PA)`}
         >
           {showShrink ? "PA案分 オン" : "PA案分 オフ"}
         </button>
-
         <select
           value={posFilter}
           onChange={e => setPosFilter(e.target.value)}
           className="px-3 py-1.5 rounded-lg text-xs bg-gray-800 border border-gray-700 text-gray-300 focus:outline-none"
         >
           <option value="all">全ポジション</option>
-          {positions.map(p => (
-            <option key={p} value={p}>{p}</option>
-          ))}
+          {positions.map(p => <option key={p} value={p}>{p}</option>)}
         </select>
-
         {lineupIds.length > 0 && (
           <button
             onClick={() => { setLineupIds([]); setRationaleOrder(null); setAssignedPositions({}); }}
@@ -277,15 +270,12 @@ export default function LineupOptimizer({ players, color, isDH = false, dataYear
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Left: Player pool */}
         <div className="bg-gray-900 rounded-xl border border-gray-800 flex flex-col">
           <div className="px-4 py-3 border-b border-gray-800 flex items-center justify-between flex-shrink-0">
             <h2 className="font-semibold text-white text-sm">選手プール</h2>
             <div className="flex items-center gap-3">
               <span className="text-xs text-gray-500">{availablePlayers.length}名</span>
-              {isFull && (
-                <span className="text-xs px-2 py-0.5 rounded-full bg-gray-800 text-gray-500">打順が埋まっています</span>
-              )}
+              {isFull && <span className="text-xs px-2 py-0.5 rounded-full bg-gray-800 text-gray-500">打順が埋まっています</span>}
             </div>
           </div>
           <div className="divide-y divide-gray-800/50 overflow-y-auto max-h-[560px]">
@@ -293,10 +283,7 @@ export default function LineupOptimizer({ players, color, isDH = false, dataYear
               const raw = rawSaberMap.get(p.id)!;
               const s = saberMap.get(p.id)!;
               return (
-                <button
-                  key={p.id}
-                  onClick={() => addPlayer(p.id)}
-                  disabled={isFull}
+                <button key={p.id} onClick={() => addPlayer(p.id)} disabled={isFull}
                   className={`w-full text-left px-4 py-3 transition-colors ${
                     isFull ? "opacity-40 cursor-not-allowed" : "hover:bg-gray-800/60 cursor-pointer"
                   }`}
@@ -313,9 +300,7 @@ export default function LineupOptimizer({ players, color, isDH = false, dataYear
                       <div className="flex gap-3 mt-1 flex-wrap">
                         <span className={`text-xs font-mono font-bold ${wOBAColor(s.wOBA)}`}>
                           wOBA {s.wOBA.toFixed(3)}
-                          {showShrink && (
-                            <span className="text-gray-600 font-normal ml-1">(生:{raw.wOBA.toFixed(3)})</span>
-                          )}
+                          {showShrink && <span className="text-gray-600 font-normal ml-1">(生:{raw.wOBA.toFixed(3)})</span>}
                         </span>
                         <StatBadge label="ISO" value={s.iso.toFixed(3)} />
                         <StatBadge label="BABIP" value={s.babip.toFixed(3)} />
@@ -323,9 +308,7 @@ export default function LineupOptimizer({ players, color, isDH = false, dataYear
                         <StatBadge label="BB%" value={`${(s.bbRate * 100).toFixed(1)}%`} />
                       </div>
                     </div>
-                    {!isFull && (
-                      <span className="text-gray-600 text-xl flex-shrink-0">＋</span>
-                    )}
+                    {!isFull && <span className="text-gray-600 text-xl flex-shrink-0">＋</span>}
                   </div>
                 </button>
               );
@@ -338,13 +321,8 @@ export default function LineupOptimizer({ players, color, isDH = false, dataYear
           </div>
         </div>
 
-        {/* Right */}
         <div className="space-y-4">
-          {/* Expected runs card */}
-          <div
-            className="rounded-xl p-5 border border-gray-800"
-            style={{ background: `linear-gradient(135deg, ${color}18 0%, #111827 70%)` }}
-          >
+          <div className="rounded-xl p-5 border border-gray-800" style={{ background: `linear-gradient(135deg, ${color}18 0%, #111827 70%)` }}>
             {runsDetail !== null ? (
               <div className="flex items-start justify-between gap-4">
                 <div>
@@ -354,39 +332,26 @@ export default function LineupOptimizer({ players, color, isDH = false, dataYear
                     <span className="text-gray-400 mb-1.5">点</span>
                   </div>
                   <p className="text-sm font-medium mt-1" style={{ color }}>{runsLabel(runsDetail.total)}</p>
-                  <p className="text-xs text-gray-600 mt-1">
-                    24状態 Markov Chain{showShrink ? ` · PA案分(基準${SHRINK_C}打席)` : ""}
-                  </p>
+                  <p className="text-xs text-gray-600 mt-1">24状態 Markov Chain{showShrink ? ` · PA案分(基準${SHRINK_C}打席)` : ""}</p>
                 </div>
                 <div className="flex flex-col gap-2 items-end flex-shrink-0">
-                  <button
-                    onClick={handleOptimize}
-                    disabled={optimizing}
+                  <button onClick={handleOptimize} disabled={optimizing}
                     className="px-4 py-2.5 rounded-lg text-sm font-medium text-white transition-all disabled:opacity-50 hover:brightness-110"
                     style={{ backgroundColor: color }}
                   >
                     {optimizing ? "計算中…" : "最適打順を提案"}
                   </button>
-                  <button
-                    onClick={handleSaveLineup}
-                    className="px-3 py-1.5 rounded-lg text-xs font-medium text-gray-400 bg-gray-800 hover:text-white transition-colors"
-                  >
-                    この打順を保存
-                  </button>
+                  <button onClick={handleSaveLineup} className="px-3 py-1.5 rounded-lg text-xs font-medium text-gray-400 bg-gray-800 hover:text-white transition-colors">この打順を保存</button>
                 </div>
               </div>
             ) : (
               <div className="flex items-center justify-between gap-4">
                 <div>
                   <p className="text-xs text-gray-500 mb-1">1試合期待得点（9イニング）</p>
-                  <p className="text-gray-600 text-base">
-                    あと {9 - lineupIds.length} 名追加すると計算できます
-                  </p>
+                  <p className="text-gray-600 text-base">あと {9 - lineupIds.length} 名追加すると計算できます</p>
                 </div>
                 {lineupIds.length >= 2 && (
-                  <button
-                    onClick={handleOptimize}
-                    disabled={optimizing}
+                  <button onClick={handleOptimize} disabled={optimizing}
                     className="flex-shrink-0 px-4 py-2.5 rounded-lg text-sm font-medium text-white transition-all disabled:opacity-50"
                     style={{ backgroundColor: color + "99" }}
                   >
@@ -397,17 +362,12 @@ export default function LineupOptimizer({ players, color, isDH = false, dataYear
             )}
           </div>
 
-          {/* Tabs */}
           {lineupIds.length > 0 && (
             <div className="flex gap-1 bg-gray-900/60 rounded-lg p-1 border border-gray-800">
               {(["lineup", "defense", "inning", "reason", "compare"] as const).map(tab => (
-                <button
-                  key={tab}
-                  onClick={() => setActiveTab(tab)}
+                <button key={tab} onClick={() => setActiveTab(tab)}
                   className={`flex-1 py-1.5 text-xs rounded-md font-medium transition-colors ${
-                    activeTab === tab
-                      ? "bg-gray-700 text-white"
-                      : "text-gray-500 hover:text-gray-300"
+                    activeTab === tab ? "bg-gray-700 text-white" : "text-gray-500 hover:text-gray-300"
                   }`}
                 >
                   {tab === "lineup" ? "打順" : tab === "defense" ? "守備" : tab === "inning" ? "回別" : tab === "reason" ? "根拠" : "比較"}
@@ -416,31 +376,20 @@ export default function LineupOptimizer({ players, color, isDH = false, dataYear
             </div>
           )}
 
-          {/* Tab: 打順 */}
           {(activeTab === "lineup" || lineupIds.length === 0) && (
             <div className="bg-gray-900 rounded-xl border border-gray-800">
-              <div className="px-4 py-3 border-b border-gray-800">
-                <h2 className="font-semibold text-white text-sm">打順</h2>
-              </div>
+              <div className="px-4 py-3 border-b border-gray-800"><h2 className="font-semibold text-white text-sm">打順</h2></div>
               <div className="divide-y divide-gray-800/40">
                 {Array.from({ length: 9 }, (_, i) => {
                   const playerId = lineupIds[i];
                   const player = playerId ? playerMap.get(playerId) : undefined;
                   const s = playerId ? saberMap.get(playerId) : undefined;
                   const raw = playerId ? rawSaberMap.get(playerId) : undefined;
-
                   return (
                     <div key={i} className="flex items-center gap-3 px-4 py-3 min-h-[60px]">
-                      <span
-                        className="w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0"
-                        style={
-                          player
-                            ? { backgroundColor: color + "33", color }
-                            : { backgroundColor: "#1f2937", color: "#374151" }
-                        }
-                      >
-                        {i + 1}
-                      </span>
+                      <span className="w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0"
+                        style={player ? { backgroundColor: color + "33", color } : { backgroundColor: "#1f2937", color: "#374151" }}
+                      >{i + 1}</span>
                       {player && s ? (
                         <>
                           <div className="flex-1 min-w-0">
@@ -460,28 +409,15 @@ export default function LineupOptimizer({ players, color, isDH = false, dataYear
                               {showShrink && raw && <ShrinkBadge pa={raw.pa} />}
                             </div>
                             <div className="flex gap-2 mt-0.5 flex-wrap">
-                              <span className={`text-xs font-mono font-bold ${wOBAColor(s.wOBA)}`}>
-                                wOBA {s.wOBA.toFixed(3)}
-                              </span>
+                              <span className={`text-xs font-mono font-bold ${wOBAColor(s.wOBA)}`}>wOBA {s.wOBA.toFixed(3)}</span>
                               <StatBadge label="ISO" value={s.iso.toFixed(3)} />
                               <StatBadge label="BABIP" value={s.babip.toFixed(3)} />
                             </div>
                           </div>
                           <div className="flex items-center gap-0.5 flex-shrink-0">
-                            <button
-                              onClick={() => moveUp(i)}
-                              disabled={i === 0}
-                              className="w-7 h-7 flex items-center justify-center text-gray-600 hover:text-gray-300 disabled:opacity-20 transition-colors text-xs"
-                            >▲</button>
-                            <button
-                              onClick={() => moveDown(i)}
-                              disabled={i >= lineupIds.length - 1}
-                              className="w-7 h-7 flex items-center justify-center text-gray-600 hover:text-gray-300 disabled:opacity-20 transition-colors text-xs"
-                            >▼</button>
-                            <button
-                              onClick={() => removePlayer(i)}
-                              className="w-7 h-7 flex items-center justify-center text-red-700 hover:text-red-400 transition-colors ml-1 text-base leading-none"
-                            >×</button>
+                            <button onClick={() => moveUp(i)} disabled={i === 0} className="w-7 h-7 flex items-center justify-center text-gray-600 hover:text-gray-300 disabled:opacity-20 transition-colors text-xs">▲</button>
+                            <button onClick={() => moveDown(i)} disabled={i >= lineupIds.length - 1} className="w-7 h-7 flex items-center justify-center text-gray-600 hover:text-gray-300 disabled:opacity-20 transition-colors text-xs">▼</button>
+                            <button onClick={() => removePlayer(i)} className="w-7 h-7 flex items-center justify-center text-red-700 hover:text-red-400 transition-colors ml-1 text-base leading-none">×</button>
                           </div>
                         </>
                       ) : (
@@ -494,30 +430,23 @@ export default function LineupOptimizer({ players, color, isDH = false, dataYear
             </div>
           )}
 
-          {/* Tab: 守備位置 */}
           {activeTab === "defense" && (
             <div className="bg-gray-900 rounded-xl border border-gray-800">
-              <div className="px-4 py-3 border-b border-gray-800">
-                <h2 className="font-semibold text-white text-sm">守備位置</h2>
-              </div>
+              <div className="px-4 py-3 border-b border-gray-800"><h2 className="font-semibold text-white text-sm">守備位置</h2></div>
               {(() => {
                 const fieldPositions = dhMode ? FIELDING_POSITIONS_DH : FIELDING_POSITIONS_NO_DH;
-                // 割り当て済み守備位置のカウント（重複検出用）
                 const posCounts: Record<string, number> = {};
                 for (const id of lineupIds) {
                   const pos = assignedPositions[id] ?? playerMap.get(id)?.position ?? "";
                   posCounts[pos] = (posCounts[pos] ?? 0) + 1;
                 }
-                // 守備位置 → 打者インデックスのマップ
                 const posToPlayer: Record<string, string[]> = {};
                 for (const id of lineupIds) {
                   const pos = assignedPositions[id] ?? playerMap.get(id)?.position ?? "";
                   if (!posToPlayer[pos]) posToPlayer[pos] = [];
                   posToPlayer[pos].push(id);
                 }
-                // 未割り当てポジション
                 const unassigned = fieldPositions.filter(pos => !posToPlayer[pos]?.length);
-
                 return (
                   <div className="p-4 space-y-2">
                     {fieldPositions.map(pos => {
@@ -525,17 +454,10 @@ export default function LineupOptimizer({ players, color, isDH = false, dataYear
                       const isDup = ids.length > 1;
                       const isEmpty = ids.length === 0;
                       return (
-                        <div
-                          key={pos}
-                          className={`flex items-center gap-3 px-3 py-2 rounded-lg ${
-                            isDup ? "bg-red-900/20 border border-red-800/50"
-                            : isEmpty ? "bg-gray-800/30 border border-gray-800/30"
-                            : "bg-gray-800/50"
-                          }`}
-                        >
-                          <span className="w-8 text-center text-xs font-bold text-gray-500 font-mono flex-shrink-0">
-                            {POS_SHORT[pos] ?? pos}
-                          </span>
+                        <div key={pos} className={`flex items-center gap-3 px-3 py-2 rounded-lg ${
+                          isDup ? "bg-red-900/20 border border-red-800/50" : isEmpty ? "bg-gray-800/30 border border-gray-800/30" : "bg-gray-800/50"
+                        }`}>
+                          <span className="w-8 text-center text-xs font-bold text-gray-500 font-mono flex-shrink-0">{POS_SHORT[pos] ?? pos}</span>
                           <span className="text-xs text-gray-600 w-14 flex-shrink-0">{pos}</span>
                           {ids.length > 0 ? (
                             <div className="flex-1 flex items-center gap-2 flex-wrap">
@@ -544,20 +466,13 @@ export default function LineupOptimizer({ players, color, isDH = false, dataYear
                                 const battingSlot = lineupIds.indexOf(id) + 1;
                                 return p ? (
                                   <span key={id} className={`flex items-center gap-1.5 ${isDup ? "text-red-400" : "text-white"}`}>
-                                    <span
-                                      className="w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold"
-                                      style={{ backgroundColor: color + "33", color }}
-                                    >
-                                      {battingSlot}
-                                    </span>
+                                    <span className="w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold" style={{ backgroundColor: color + "33", color }}>{battingSlot}</span>
                                     <span className="text-sm">{p.name}</span>
                                     <span className="text-xs text-gray-600">#{p.jerseyNumber}</span>
                                   </span>
                                 ) : null;
                               })}
-                              {isDup && (
-                                <span className="text-xs text-red-500">重複</span>
-                              )}
+                              {isDup && <span className="text-xs text-red-500">重複</span>}
                             </div>
                           ) : (
                             <span className="text-xs text-gray-700">— 未割り当て</span>
@@ -568,21 +483,16 @@ export default function LineupOptimizer({ players, color, isDH = false, dataYear
                     {lineupIds.length > 0 && unassigned.length === 0 && Object.values(posCounts).every(c => c <= 1) && (
                       <p className="text-xs text-green-600 text-center pt-1">守備位置が揃っています</p>
                     )}
-                    {lineupIds.length === 0 && (
-                      <p className="text-xs text-gray-700 text-center py-4">打順に選手を追加すると表示されます</p>
-                    )}
+                    {lineupIds.length === 0 && <p className="text-xs text-gray-700 text-center py-4">打順に選手を追加すると表示されます</p>}
                   </div>
                 );
               })()}
             </div>
           )}
 
-          {/* Tab: イニング別 */}
           {activeTab === "inning" && runsDetail && (
             <div className="bg-gray-900 rounded-xl border border-gray-800">
-              <div className="px-4 py-3 border-b border-gray-800">
-                <h2 className="font-semibold text-white text-sm">イニング別期待得点</h2>
-              </div>
+              <div className="px-4 py-3 border-b border-gray-800"><h2 className="font-semibold text-white text-sm">イニング別期待得点</h2></div>
               <div className="p-4 space-y-2">
                 {runsDetail.perInning.map(({ inning, runs, leadoffBatter }) => {
                   const leaderId = lineupIds[leadoffBatter % lineupIds.length];
@@ -593,17 +503,12 @@ export default function LineupOptimizer({ players, color, isDH = false, dataYear
                     <div key={inning} className="space-y-1">
                       <div className="flex items-center justify-between text-xs">
                         <span className="text-gray-400 w-8">{inning}回</span>
-                        <span className="text-gray-600 flex-1 px-2 truncate text-left">
-                          {leader ? `先頭: ${leader.name}` : ""}
-                        </span>
+                        <span className="text-gray-600 flex-1 px-2 truncate text-left">{leader ? `先頭: ${leader.name}` : ""}</span>
                         <span className="text-white font-mono font-bold">{runs.toFixed(3)}</span>
                         <span className="text-gray-600 ml-1">点</span>
                       </div>
                       <div className="h-1.5 bg-gray-800 rounded-full overflow-hidden">
-                        <div
-                          className="h-full rounded-full transition-all"
-                          style={{ width: `${barWidth}%`, backgroundColor: color }}
-                        />
+                        <div className="h-full rounded-full transition-all" style={{ width: `${barWidth}%`, backgroundColor: color }} />
                       </div>
                     </div>
                   );
@@ -616,12 +521,9 @@ export default function LineupOptimizer({ players, color, isDH = false, dataYear
             </div>
           )}
 
-          {/* Tab: 根拠 */}
           {activeTab === "reason" && (
             <div className="bg-gray-900 rounded-xl border border-gray-800">
-              <div className="px-4 py-3 border-b border-gray-800">
-                <h2 className="font-semibold text-white text-sm">最適化の根拠</h2>
-              </div>
+              <div className="px-4 py-3 border-b border-gray-800"><h2 className="font-semibold text-white text-sm">最適化の根拠</h2></div>
               {rationale ? (
                 <div className="divide-y divide-gray-800/40">
                   {rationale.map(({ slot, playerIdx, reason }) => {
@@ -629,12 +531,7 @@ export default function LineupOptimizer({ players, color, isDH = false, dataYear
                     if (!player) return null;
                     return (
                       <div key={slot} className="px-4 py-3 flex gap-3">
-                        <span
-                          className="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5"
-                          style={{ backgroundColor: color + "33", color }}
-                        >
-                          {slot}
-                        </span>
+                        <span className="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5" style={{ backgroundColor: color + "33", color }}>{slot}</span>
                         <div>
                           <span className="text-white text-sm font-medium">{player.name}</span>
                           <p className="text-xs text-gray-500 mt-0.5">{reason}</p>
@@ -644,23 +541,16 @@ export default function LineupOptimizer({ players, color, isDH = false, dataYear
                   })}
                 </div>
               ) : (
-                <p className="px-4 py-6 text-center text-gray-600 text-sm">
-                  「最適打順を提案」を実行すると根拠が表示されます
-                </p>
+                <p className="px-4 py-6 text-center text-gray-600 text-sm">「最適打順を提案」を実行すると根拠が表示されます</p>
               )}
             </div>
           )}
 
-          {/* Tab: 比較 */}
           {activeTab === "compare" && (
             <div className="bg-gray-900 rounded-xl border border-gray-800">
-              <div className="px-4 py-3 border-b border-gray-800">
-                <h2 className="font-semibold text-white text-sm">打順比較</h2>
-              </div>
+              <div className="px-4 py-3 border-b border-gray-800"><h2 className="font-semibold text-white text-sm">打順比較</h2></div>
               {savedLineups.length === 0 ? (
-                <p className="px-4 py-6 text-center text-gray-600 text-sm">
-                  「この打順を保存」で比較できます
-                </p>
+                <p className="px-4 py-6 text-center text-gray-600 text-sm">「この打順を保存」で比較できます</p>
               ) : (
                 <div className="divide-y divide-gray-800/40">
                   {savedLineups.map((saved, idx) => {
@@ -671,50 +561,26 @@ export default function LineupOptimizer({ players, color, isDH = false, dataYear
                       <div key={idx} className="px-4 py-3">
                         <div className="flex items-center justify-between mb-1">
                           <div className="flex items-center gap-2">
-                            <span className={`text-sm font-medium ${isBest ? "text-white" : "text-gray-400"}`}>
-                              {saved.label}
-                            </span>
-                            {isBest && (
-                              <span className="text-xs px-1.5 py-0.5 rounded bg-yellow-900/50 text-yellow-400">最高</span>
-                            )}
+                            <span className={`text-sm font-medium ${isBest ? "text-white" : "text-gray-400"}`}>{saved.label}</span>
+                            {isBest && <span className="text-xs px-1.5 py-0.5 rounded bg-yellow-900/50 text-yellow-400">最高</span>}
                           </div>
                           <div className="flex items-center gap-2">
-                            <span className={`font-mono font-bold text-sm ${isBest ? "text-white" : "text-gray-400"}`}>
-                              {saved.result.total.toFixed(2)}点
-                            </span>
-                            <button
-                              onClick={() => handleLoadLineup(saved)}
-                              className="text-xs text-gray-600 hover:text-gray-300 transition-colors"
-                            >
-                              読込
-                            </button>
+                            <span className={`font-mono font-bold text-sm ${isBest ? "text-white" : "text-gray-400"}`}>{saved.result.total.toFixed(2)}点</span>
+                            <button onClick={() => handleLoadLineup(saved)} className="text-xs text-gray-600 hover:text-gray-300 transition-colors">読込</button>
                           </div>
                         </div>
                         <div className="h-1.5 bg-gray-800 rounded-full overflow-hidden">
-                          <div
-                            className="h-full rounded-full"
-                            style={{ width: `${barWidth}%`, backgroundColor: isBest ? color : color + "66" }}
-                          />
+                          <div className="h-full rounded-full" style={{ width: `${barWidth}%`, backgroundColor: isBest ? color : color + "66" }} />
                         </div>
                         <div className="flex gap-1 mt-1.5 flex-wrap">
-                          {saved.ids.map((id, i) => {
-                            const p = playerMap.get(id);
-                            return p ? (
-                              <span key={i} className="text-xs text-gray-600">{i + 1}.{p.name}</span>
-                            ) : null;
-                          })}
+                          {saved.ids.map((id, i) => { const p = playerMap.get(id); return p ? <span key={i} className="text-xs text-gray-600">{i + 1}.{p.name}</span> : null; })}
                         </div>
                       </div>
                     );
                   })}
                   {savedLineups.length > 1 && (
                     <div className="px-4 py-2 flex justify-end">
-                      <button
-                        onClick={() => setSavedLineups([])}
-                        className="text-xs text-gray-600 hover:text-red-400 transition-colors"
-                      >
-                        比較をクリア
-                      </button>
+                      <button onClick={() => setSavedLineups([])} className="text-xs text-gray-600 hover:text-red-400 transition-colors">比較をクリア</button>
                     </div>
                   )}
                 </div>
@@ -722,7 +588,6 @@ export default function LineupOptimizer({ players, color, isDH = false, dataYear
             </div>
           )}
 
-          {/* Legend */}
           <div className="bg-gray-900/50 rounded-xl border border-gray-800 px-4 py-3">
             <p className="text-xs text-gray-600 mb-2">wOBA ランク</p>
             <div className="flex flex-wrap gap-3 text-xs">
@@ -733,9 +598,7 @@ export default function LineupOptimizer({ players, color, isDH = false, dataYear
               <span className="text-red-400">&lt;.310 平均以下</span>
             </div>
             {showShrink && (
-              <p className="text-xs text-gray-700 mt-2">
-                PA案分: 打席数が少ない選手の成績をリーグ平均（基準{SHRINK_C}打席）に引き寄せて計算
-              </p>
+              <p className="text-xs text-gray-700 mt-2">PA案分: 打席数が少ない選手の成績をリーグ平均（基準{SHRINK_C}打席）に引き寄せて計算</p>
             )}
           </div>
         </div>
