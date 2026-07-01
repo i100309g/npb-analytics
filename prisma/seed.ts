@@ -73,20 +73,32 @@ async function main() {
   // Batting stats
   const battingStats = [...battingStatsCentral, ...battingStatsPacific];
   for (const b of battingStats) {
-    await prisma.battingStat.create({ data: b });
+    await prisma.battingStat.upsert({
+      where: { playerId_seasonYear: { playerId: b.playerId, seasonYear: b.seasonYear } },
+      update: b,
+      create: b,
+    });
   }
   console.log(`✓ ${battingStats.length} batting stats`);
 
   // Pitching stats
   const pitchingStats = [...pitchingStatsCentral, ...pitchingStatsPacific];
   for (const p of pitchingStats) {
-    await prisma.pitchingStat.create({ data: p });
+    await prisma.pitchingStat.upsert({
+      where: { playerId_seasonYear: { playerId: p.playerId, seasonYear: p.seasonYear } },
+      update: p,
+      create: p,
+    });
   }
   console.log(`✓ ${pitchingStats.length} pitching stats`);
 
   // Fielding stats
   for (const f of fieldingStats) {
-    await prisma.fieldingStat.create({ data: f });
+    await prisma.fieldingStat.upsert({
+      where: { playerId_seasonYear_position: { playerId: f.playerId, seasonYear: f.seasonYear, position: f.position } },
+      update: f,
+      create: f,
+    });
   }
   console.log(`✓ ${fieldingStats.length} fielding stats`);
 

@@ -65,6 +65,6 @@ export function buildLookup(teamId: string): Map<string, string> {
 }
 
 export function lookupId(map: Map<string, string>, name: string): string | undefined {
-  const norm = normalize(name);
+  const norm = normalize(name.replace(/^\*/, ""));
   return map.get(norm);
 }

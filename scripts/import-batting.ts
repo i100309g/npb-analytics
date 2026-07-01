@@ -6,9 +6,9 @@
  *   echo "<TSV>" | ./node_modules/.bin/tsx scripts/import-batting.ts <teamId> [--year <year>]
  *
  * TSV列順（npb.jp 実際の順序）:
- *   選手名(0) 試合(1) 打席(2) 打数(3) 安打(4) 二塁打(5) 三塁打(6) 本塁打(7) 塁打(8)
- *   打点(9) 得点(10) 三振(11) 四球(12) 死球(13) 犠打(14) 犠飛(15) 盗塁(16)
- *   盗塁死(17) 併殺打(18) 打率(19) 出塁率(20) 長打率(21) OPS(22)
+ *   選手名(0) 試合(1) 打席(2) 打数(3) 得点(4) 安打(5) 二塁打(6) 三塁打(7) 本塁打(8) 塁打(9)
+ *   打点(10) 犠打(11) 盗塁死(12) 盗塁(13) 犠飛(14) 四球(15) 故意四球(16) 死球(17)
+ *   三振(18) 併殺打(19) 打率(20) 長打率(21) 出塁率(22) OPS(23)
  *
  * - "-" は 0 として扱う（打席なし選手）
  * - 推論なし: マッチしない選手名は WARN を出力してスキップ
@@ -55,6 +55,7 @@ interface BattingRow {
   hitByPitch: number;
   sacrificeHits: number;
   sacrificeFlies: number;
+  intentionalWalks: number;
   stolenBases: number;
   caughtStealing: number;
   doublePlayGrounded: number;
@@ -70,7 +71,7 @@ const rl = readline.createInterface({ input: process.stdin });
 
 rl.on("line", (line) => {
   const cols = line.split("\t");
-  if (cols.length < 20) return; // ヘッダー行やデータ不足はスキップ
+  if (cols.length < 24) return; // ヘッダー行やデータ不足はスキップ
 
   const name = cols[0].trim();
   if (name === "選手名" || !name) return; // ヘッダー行スキップ
@@ -90,10 +91,12 @@ rl.on("line", (line) => {
     return;
   }
 
-  const hits    = num(cols[4]);
-  const doubles = num(cols[5]);
-  const triples = num(cols[6]);
-  const hr      = num(cols[7]);
+  const runs    = num(cols[4]);   // 得点
+  const hits    = num(cols[5]);   // 安打
+  const doubles = num(cols[6]);   // 二塁打
+  const triples = num(cols[7]);   // 三塁打
+  const hr      = num(cols[8]);   // 本塁打
+  // col[9] = 塁打(TB) — skip
   const singles = Math.max(0, hits - doubles - triples - hr);
 
   rows.push({
@@ -106,20 +109,21 @@ rl.on("line", (line) => {
     doubles,
     triples,
     homeRuns:           hr,
-    rbi:                num(cols[9]),
-    runs:               num(cols[10]),
-    strikeouts:         num(cols[11]),
-    walks:              num(cols[12]),
-    hitByPitch:         num(cols[13]),
-    sacrificeHits:      num(cols[14]),
-    sacrificeFlies:     num(cols[15]),
-    stolenBases:        num(cols[16]),
-    caughtStealing:     num(cols[17]),
-    doublePlayGrounded: num(cols[18]),
-    avg: num(cols[19]),
-    obp: num(cols[20]),
-    slg: num(cols[21]),
-    ops: num(cols[22]),
+    rbi:                num(cols[10]),  // 打点
+    runs,
+    strikeouts:         num(cols[18]),  // 三振
+    walks:              num(cols[15]),  // 四球
+    intentionalWalks:   num(cols[16]),  // 故意四球
+    hitByPitch:         num(cols[17]),  // 死球
+    sacrificeHits:      num(cols[11]),  // 犠打
+    sacrificeFlies:     num(cols[14]),  // 犠飛
+    stolenBases:        num(cols[13]),  // 盗塁
+    caughtStealing:     num(cols[12]),  // 盗塁死
+    doublePlayGrounded: num(cols[19]),  // 併殺打
+    avg: num(cols[20]),  // 打率
+    slg: num(cols[21]),  // 長打率
+    obp: num(cols[22]),  // 出塁率
+    ops: num(cols[23]),  // OPS
   });
 });
 
@@ -149,7 +153,7 @@ rl.on("close", () => {
     `rbi: ${String(r.rbi).padStart(3)}, ` +
     `runs: ${String(r.runs).padStart(3)}, ` +
     `walks: ${String(r.walks).padStart(2)}, ` +
-    `intentionalWalks: 0, ` +
+    `intentionalWalks: ${String(r.intentionalWalks).padStart(2)}, ` +
     `hitByPitch: ${String(r.hitByPitch).padStart(2)}, ` +
     `strikeouts: ${String(r.strikeouts).padStart(3)}, ` +
     `stolenBases: ${String(r.stolenBases).padStart(2)}, ` +

@@ -73,6 +73,10 @@ jobs:
           npx tsx scripts/update-stats.ts $ARGS
         continue-on-error: true
 
+      # ── シードデータ検証 ─────────────────────────────────────────
+      - name: Validate seed data (regression check)
+        run: npx tsx scripts/validate-seed-data.ts
+
       # ── DB再シード ────────────────────────────────────────────────
       - name: Re-seed database with updated data
         run: npm run seed

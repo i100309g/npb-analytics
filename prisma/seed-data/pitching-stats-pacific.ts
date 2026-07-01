@@ -541,35 +541,4 @@ export const pitchingStatsPacific: {
     qualityStarts: 0,
   },
 
-  // ── lions 2026 ──────────────────────
-  { playerId: "lions-6", seasonYear: 2026, games:  11, starts:  1, completeGames: 1, shutouts: 0, wins:  5, losses:  1, saves:  0, holds:  0, blownSaves: 0, inningsPitched: 71.00, hitsAllowed:  32, runsAllowed:   8, earnedRuns:   7, walksAllowed: 27, intentionalWalks: 0, hitBatters:  4, strikeouts:  66, homeRunsAllowed:  1, era: 0.89, whip: 0.83, kPer9: 8.37, bbPer9: 3.42, qualityStarts: 0 },
-
-  // ── fighters 2026 ──────────────────────
-  { playerId: "fighters-6", seasonYear: 2026, games:   1, starts:  0, completeGames: 0, shutouts: 0, wins:  0, losses:  0, saves:  0, holds:  0, blownSaves: 0, inningsPitched: 3.00, hitsAllowed:   7, runsAllowed:   5, earnedRuns:   2, walksAllowed:  3, intentionalWalks: 0, hitBatters:  0, strikeouts:   2, homeRunsAllowed:  1, era: 6.00, whip: 3.33, kPer9: 6.00, bbPer9: 9.00, qualityStarts: 0 },
-
-  // ── marines 2026 ──────────────────────
-  { playerId: "marines-6", seasonYear: 2026, games:   2, starts:  0, completeGames: 0, shutouts: 0, wins:  0, losses:  0, saves:  0, holds:  0, blownSaves: 0, inningsPitched: 7.67, hitsAllowed:   6, runsAllowed:   0, earnedRuns:   0, walksAllowed:  0, intentionalWalks: 0, hitBatters:  0, strikeouts:   7, homeRunsAllowed:  0, era: 0.00, whip: 0.78, kPer9: 8.22, bbPer9: 0.00, qualityStarts: 0 },
-
-  // ── eagles 2026 ──────────────────────
-  { playerId: "eagles-6", seasonYear: 2026, games:  12, starts:  0, completeGames: 0, shutouts: 0, wins:  4, losses:  6, saves:  0, holds:  0, blownSaves: 0, inningsPitched: 74.00, hitsAllowed:  73, runsAllowed:  35, earnedRuns:  34, walksAllowed: 19, intentionalWalks: 0, hitBatters:  2, strikeouts:  79, homeRunsAllowed: 12, era: 4.14, whip: 1.24, kPer9: 9.61, bbPer9: 2.31, qualityStarts: 0 },
-
-  // ── hawks 2025 ──────────────────────
-  { playerId: "hawks-4", seasonYear: 2025, games:  26, starts:  1, completeGames: 1, shutouts: 0, wins: 14, losses:  9, saves:  0, holds:  0, blownSaves: 0, inningsPitched: 175.00, hitsAllowed: 167, runsAllowed:  67, earnedRuns:  59, walksAllowed: 41, intentionalWalks: 0, hitBatters:  6, strikeouts: 121, homeRunsAllowed: 10, era: 3.03, whip: 1.19, kPer9: 6.22, bbPer9: 2.11, qualityStarts: 0 },
-
-  // ── lions 2025 ──────────────────────
-  { playerId: "lions-4", seasonYear: 2025, games:  24, starts:  3, completeGames: 5, shutouts: 3, wins: 10, losses:  5, saves:  0, holds:  0, blownSaves: 0, inningsPitched: 163.67, hitsAllowed: 101, runsAllowed:  38, earnedRuns:  35, walksAllowed: 45, intentionalWalks: 0, hitBatters: 10, strikeouts: 178, homeRunsAllowed:  6, era: 1.92, whip: 0.89, kPer9: 9.79, bbPer9: 2.47, qualityStarts: 0 },
-  { playerId: "lions-6", seasonYear: 2025, games:  54, starts:  0, completeGames: 0, shutouts: 0, wins:  4, losses:  2, saves: 31, holds:  8, blownSaves: 0, inningsPitched: 52.67, hitsAllowed:  43, runsAllowed:  12, earnedRuns:  10, walksAllowed: 21, intentionalWalks: 0, hitBatters:  3, strikeouts:  53, homeRunsAllowed:  0, era: 1.71, whip: 1.22, kPer9: 9.06, bbPer9: 3.59, qualityStarts: 0 },
-
-  // ── fighters 2025 ──────────────────────
-  { playerId: "fighters-6", seasonYear: 2025, games:  28, starts:  3, completeGames: 4, shutouts: 1, wins:  5, losses:  7, saves:  0, holds:  5, blownSaves: 0, inningsPitched: 95.33, hitsAllowed:  94, runsAllowed:  32, earnedRuns:  31, walksAllowed: 13, intentionalWalks: 0, hitBatters:  2, strikeouts:  62, homeRunsAllowed:  8, era: 2.93, whip: 1.12, kPer9: 5.85, bbPer9: 1.23, qualityStarts: 0 },
-
-  // ── marines 2025 ──────────────────────
-  { playerId: "marines-6", seasonYear: 2025, games:  24, starts:  0, completeGames: 2, shutouts: 0, wins:  9, losses:  8, saves:  0, holds:  0, blownSaves: 0, inningsPitched: 160.67, hitsAllowed: 134, runsAllowed:  55, earnedRuns:  47, walksAllowed: 50, intentionalWalks: 0, hitBatters:  6, strikeouts: 161, homeRunsAllowed: 13, era: 2.63, whip: 1.15, kPer9: 9.02, bbPer9: 2.80, qualityStarts: 0 },
-
-  // ── eagles 2025 ──────────────────────
-  { playerId: "eagles-6", seasonYear: 2025, games:  13, starts:  0, completeGames: 0, shutouts: 0, wins:  4, losses:  4, saves:  0, holds:  0, blownSaves: 0, inningsPitched: 76.33, hitsAllowed:  65, runsAllowed:  26, earnedRuns:  26, walksAllowed: 25, intentionalWalks: 0, hitBatters:  5, strikeouts:  70, homeRunsAllowed:  4, era: 3.07, whip: 1.18, kPer9: 8.25, bbPer9: 2.95, qualityStarts: 0 },
-  { playerId: "eagles-5", seasonYear: 2025, games:  56, starts:  0, completeGames: 0, shutouts: 0, wins:  3, losses:  4, saves: 16, holds: 10, blownSaves: 0, inningsPitched: 56.00, hitsAllowed:  60, runsAllowed:  19, earnedRuns:  19, walksAllowed: 20, intentionalWalks: 0, hitBatters:  2, strikeouts:  43, homeRunsAllowed:  4, era: 3.05, whip: 1.43, kPer9: 6.91, bbPer9: 3.21, qualityStarts: 0 },
-
-  // ── buffaloes 2025 ──────────────────────
-  { playerId: "buffaloes-4", seasonYear: 2025, games:   4, starts:  0, completeGames: 0, shutouts: 0, wins:  1, losses:  0, saves:  0, holds:  1, blownSaves: 0, inningsPitched: 21.67, hitsAllowed:  14, runsAllowed:   3, earnedRuns:   3, walksAllowed:  7, intentionalWalks: 0, hitBatters:  1, strikeouts:  31, homeRunsAllowed:  1, era: 1.25, whip: 0.97, kPer9: 12.88, bbPer9: 2.91, qualityStarts: 0 },
 ];
