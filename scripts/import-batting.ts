@@ -123,7 +123,8 @@ rl.on("line", (line) => {
     avg: num(cols[20]),  // 打率
     slg: num(cols[21]),  // 長打率
     obp: num(cols[22]),  // 出塁率
-    ops: num(cols[23]),  // OPS
+    // col[23] absent: colspan on player name collapses to 23 cells; compute OPS from components
+    ops: Math.round((num(cols[22]) + num(cols[21])) * 1000) / 1000,
   });
 });
 
