@@ -71,7 +71,7 @@ const rl = readline.createInterface({ input: process.stdin });
 
 rl.on("line", (line) => {
   const cols = line.split("\t");
-  if (cols.length < 24) return; // ヘッダー行やデータ不足はスキップ
+  if (cols.length < 20) return; // ヘッダー行やデータ不足はスキップ（実テーブルは23列）
 
   const name = cols[0].trim();
   if (name === "選手名" || !name) return; // ヘッダー行スキップ
