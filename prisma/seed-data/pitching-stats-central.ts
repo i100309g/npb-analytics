@@ -25,7 +25,7 @@ export const pitchingStatsCentral: {
   bbPer9: number;
   qualityStarts: number;
 }[] = [
-  // ── 読売ジャイアンツ ──────────────────────────────────────────
+  // ── giants 2025 ──────────────────────
 
   {
     // 中川皓太 63G 36H ERA2.24
@@ -784,7 +784,7 @@ export const pitchingStatsCentral: {
     qualityStarts: 0,
   },
 
-  // ── 阪神タイガース (2025年実データ) ──────────────────────────────
+  // ── tigers 2025 ──────────────────────
 
   { playerId: "tigers-19", seasonYear: 2025, games: 66, starts: 0, completeGames: 0, shutouts: 0, wins: 3, losses: 2, saves: 1, holds: 46, blownSaves: 1, inningsPitched: 62.0, hitsAllowed: 34, runsAllowed: 7, earnedRuns: 6, walksAllowed: 17, intentionalWalks: 1, hitBatters: 2, strikeouts: 66, homeRunsAllowed: 2, era: 0.87, whip: 0.82, kPer9: 9.58, bbPer9: 2.47, qualityStarts: 0 },
   { playerId: "tigers-32", seasonYear: 2025, games: 53, starts: 0, completeGames: 0, shutouts: 0, wins: 2, losses: 1, saves: 9, holds: 36, blownSaves: 1, inningsPitched: 53.0, hitsAllowed: 37, runsAllowed: 2, earnedRuns: 1, walksAllowed: 7, intentionalWalks: 0, hitBatters: 1, strikeouts: 42, homeRunsAllowed: 0, era: 0.17, whip: 0.83, kPer9: 7.13, bbPer9: 1.19, qualityStarts: 0 },
@@ -818,7 +818,7 @@ export const pitchingStatsCentral: {
   { playerId: "tigers-24", seasonYear: 2025, games: 2, starts: 0, completeGames: 0, shutouts: 0, wins: 0, losses: 0, saves: 0, holds: 0, blownSaves: 0, inningsPitched: 2.2, hitsAllowed: 1, runsAllowed: 0, earnedRuns: 0, walksAllowed: 1, intentionalWalks: 0, hitBatters: 0, strikeouts: 2, homeRunsAllowed: 0, era: 0.00, whip: 0.75, kPer9: 6.75, bbPer9: 3.38, qualityStarts: 0 },
   { playerId: "tigers-5", seasonYear: 2025, games: 1, starts: 1, completeGames: 0, shutouts: 0, wins: 0, losses: 1, saves: 0, holds: 0, blownSaves: 0, inningsPitched: 4.2, hitsAllowed: 6, runsAllowed: 3, earnedRuns: 3, walksAllowed: 3, intentionalWalks: 0, hitBatters: 0, strikeouts: 3, homeRunsAllowed: 1, era: 5.79, whip: 1.93, kPer9: 5.79, bbPer9: 5.79, qualityStarts: 0 },
 
-  // ── 横浜DeNAベイスターズ (2025年実データ) ──────────────────────
+  // ── baystars 2025 ──────────────────────
 
   {
     // 東克樹 #11 — 先発 14勝8敗 ERA 2.19 IP=160.1
@@ -1427,7 +1427,7 @@ export const pitchingStatsCentral: {
     qualityStarts: 0,
   },
 
-  // ── 広島東洋カープ (2025年実データ) ──────────────────────────────
+  // ── carp 2025 ──────────────────────
   { playerId: "carp-22", seasonYear: 2025, games: 60, starts: 0,  completeGames: 0, shutouts: 0, wins: 4, losses: 2, saves: 1,  holds: 29, blownSaves: 0, inningsPitched: 57.2,  hitsAllowed: 30,  runsAllowed: 11, earnedRuns: 9,  walksAllowed: 21, intentionalWalks: 1, hitBatters: 1, strikeouts: 57,  homeRunsAllowed: 1,  era: 1.40,  whip: 0.88, kPer9: 8.90,  bbPer9: 3.28, qualityStarts: 0 },
   { playerId: "carp-2",  seasonYear: 2025, games: 60, starts: 0,  completeGames: 0, shutouts: 0, wins: 2, losses: 3, saves: 12, holds: 25, blownSaves: 1, inningsPitched: 55.1,  hitsAllowed: 44,  runsAllowed: 10, earnedRuns: 10, walksAllowed: 15, intentionalWalks: 1, hitBatters: 4, strikeouts: 60,  homeRunsAllowed: 3,  era: 1.63,  whip: 1.07, kPer9: 9.76,  bbPer9: 2.44, qualityStarts: 0 },
   { playerId: "carp-8",  seasonYear: 2025, games: 55, starts: 0,  completeGames: 0, shutouts: 0, wins: 1, losses: 1, saves: 10, holds: 23, blownSaves: 1, inningsPitched: 52.1,  hitsAllowed: 35,  runsAllowed: 14, earnedRuns: 13, walksAllowed: 18, intentionalWalks: 1, hitBatters: 1, strikeouts: 54,  homeRunsAllowed: 3,  era: 2.24,  whip: 1.01, kPer9: 9.29,  bbPer9: 3.10, qualityStarts: 0 },
@@ -1457,7 +1457,7 @@ export const pitchingStatsCentral: {
   { playerId: "carp-25", seasonYear: 2025, games: 2,  starts: 1,  completeGames: 0, shutouts: 0, wins: 0, losses: 1, saves: 0,  holds: 0,  blownSaves: 0, inningsPitched: 5.2,   hitsAllowed: 7,   runsAllowed: 5,  earnedRuns: 5,  walksAllowed: 2,  intentionalWalks: 0, hitBatters: 0, strikeouts: 7,   homeRunsAllowed: 1,  era: 7.94,  whip: 1.59, kPer9: 11.12, bbPer9: 3.18, qualityStarts: 0 },
   { playerId: "carp-1",  seasonYear: 2025, games: 1,  starts: 0,  completeGames: 0, shutouts: 0, wins: 0, losses: 0, saves: 0,  holds: 0,  blownSaves: 0, inningsPitched: 1.0,   hitsAllowed: 0,   runsAllowed: 0,  earnedRuns: 0,  walksAllowed: 0,  intentionalWalks: 0, hitBatters: 0, strikeouts: 2,   homeRunsAllowed: 0,  era: 0.00,  whip: 0.00, kPer9: 18.00, bbPer9: 0.00, qualityStarts: 0 },
 
-  // ── 中日ドラゴンズ (2025年実データ) ────────────────────────────────────────
+  // ── dragons 2025 ──────────────────────
   { playerId: "dragons-24", seasonYear: 2025, games: 60, starts: 0,  completeGames: 10, shutouts: 0, wins: 1,  losses: 4,  saves: 1,  holds: 23, blownSaves: 0, inningsPitched: 52.2,  hitsAllowed: 48,  runsAllowed: 21, earnedRuns: 19, walksAllowed: 16, intentionalWalks: 0, hitBatters: 0, strikeouts: 34,  homeRunsAllowed: 3,  era: 3.25, whip: 1.22, kPer9: 5.81, bbPer9: 2.74, qualityStarts: 0 },
   { playerId: "dragons-22", seasonYear: 2025, games: 55, starts: 0,  completeGames: 8,  shutouts: 0, wins: 4,  losses: 1,  saves: 4,  holds: 30, blownSaves: 0, inningsPitched: 52.1,  hitsAllowed: 49,  runsAllowed: 15, earnedRuns: 13, walksAllowed: 21, intentionalWalks: 0, hitBatters: 1, strikeouts: 47,  homeRunsAllowed: 0,  era: 2.24, whip: 1.34, kPer9: 8.08, bbPer9: 3.61, qualityStarts: 0 },
   { playerId: "dragons-30", seasonYear: 2025, games: 53, starts: 0,  completeGames: 48, shutouts: 0, wins: 0,  losses: 1,  saves: 46, holds: 5,  blownSaves: 0, inningsPitched: 52.2,  hitsAllowed: 40,  runsAllowed: 9,  earnedRuns: 9,  walksAllowed: 11, intentionalWalks: 0, hitBatters: 1, strikeouts: 72,  homeRunsAllowed: 2,  era: 1.54, whip: 0.97, kPer9: 12.30, bbPer9: 1.88, qualityStarts: 0 },
@@ -1488,7 +1488,7 @@ export const pitchingStatsCentral: {
   { playerId: "dragons-9",  seasonYear: 2025, games: 1,  starts: 1,  completeGames: 0,  shutouts: 0, wins: 0,  losses: 0,  saves: 0,  holds: 0,  blownSaves: 0, inningsPitched: 2.2,   hitsAllowed: 3,   runsAllowed: 1,  earnedRuns: 1,  walksAllowed: 4,  intentionalWalks: 0, hitBatters: 1, strikeouts: 1,   homeRunsAllowed: 0,  era: 3.38, whip: 2.63, kPer9: 3.38, bbPer9: 13.50, qualityStarts: 0 },
   { playerId: "dragons-16", seasonYear: 2025, games: 1,  starts: 0,  completeGames: 1,  shutouts: 0, wins: 0,  losses: 0,  saves: 0,  holds: 0,  blownSaves: 0, inningsPitched: 1.0,   hitsAllowed: 0,   runsAllowed: 0,  earnedRuns: 0,  walksAllowed: 0,  intentionalWalks: 0, hitBatters: 0, strikeouts: 1,   homeRunsAllowed: 0,  era: 0.00, whip: 0.00, kPer9: 9.00, bbPer9: 0.00, qualityStarts: 0 },
 
-  // ── 東京ヤクルトスワローズ ────────────────────────────────────
+  // ── swallows 2025 ──────────────────────
 
   {
     // 大西広樹

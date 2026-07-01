@@ -25,7 +25,7 @@ export const battingStatsCentral: {
   slg?: number | null;
   ops?: number | null;
 }[] = [
-  // ── 読売ジャイアンツ ──────────────────────────────────────────
+  // ── giants 2025 ──────────────────────
   {
     // 泉口友汰 133G
     playerId: "giants-50",
@@ -1343,7 +1343,7 @@ export const battingStatsCentral: {
     ops: 0.433,
   },
 
-  // ── 阪神タイガース (2025年公式打撃成績) ──────────────────────────
+  // ── tigers 2025 ──────────────────────
   { playerId: "tigers-60", seasonYear: 2025, games: 143, plateAppearances: 620, atBats: 549, hits: 151, singles: 99,  doubles: 24, triples: 5, homeRuns: 23, rbi: 89,  runs: 82, walks: 54, intentionalWalks: 0, hitByPitch: 12, strikeouts: 86,  stolenBases: 5,  caughtStealing: 2, doublePlayGrounded: 15, sacrificeHits: 0,  sacrificeFlies: 5, avg: 0.275, obp: 0.350, slg: 0.463, ops: 0.813 },
   { playerId: "tigers-53", seasonYear: 2025, games: 143, plateAppearances: 625, atBats: 531, hits: 150, singles: 129, doubles: 18, triples: 3, homeRuns: 0,  rbi: 30,  runs: 65, walks: 44, intentionalWalks: 0, hitByPitch: 3,  strikeouts: 77,  stolenBases: 19, caughtStealing: 7, doublePlayGrounded: 5,  sacrificeHits: 44, sacrificeFlies: 3, avg: 0.282, obp: 0.339, slg: 0.328, ops: 0.667 },
   { playerId: "tigers-61", seasonYear: 2025, games: 140, plateAppearances: 638, atBats: 573, hits: 160, singles: 128, doubles: 25, triples: 4, homeRuns: 3,  rbi: 34,  runs: 76, walks: 60, intentionalWalks: 0, hitByPitch: 2,  strikeouts: 88,  stolenBases: 32, caughtStealing: 9, doublePlayGrounded: 3,  sacrificeHits: 0,  sacrificeFlies: 3, avg: 0.279, obp: 0.348, slg: 0.353, ops: 0.700 },
@@ -1385,7 +1385,7 @@ export const battingStatsCentral: {
   { playerId: "tigers-15", seasonYear: 2025, games: 3,   plateAppearances: 4,   atBats: 3,   hits: 0,   singles: 0,   doubles: 0,  triples: 0, homeRuns: 0,  rbi: 0,   runs: 0,  walks: 0,  intentionalWalks: 0, hitByPitch: 0,  strikeouts: 0,   stolenBases: 0,  caughtStealing: 0, doublePlayGrounded: 0,  sacrificeHits: 1,  sacrificeFlies: 0, avg: 0.000, obp: 0.000, slg: 0.000, ops: 0.000 },
   { playerId: "tigers-5",  seasonYear: 2025, games: 1,   plateAppearances: 1,   atBats: 1,   hits: 0,   singles: 0,   doubles: 0,  triples: 0, homeRuns: 0,  rbi: 0,   runs: 0,  walks: 0,  intentionalWalks: 0, hitByPitch: 0,  strikeouts: 1,   stolenBases: 0,  caughtStealing: 0, doublePlayGrounded: 0,  sacrificeHits: 0,  sacrificeFlies: 0, avg: 0.000, obp: 0.000, slg: 0.000, ops: 0.000 },
 
-  // ── 横浜DeNAベイスターズ (2025年実データ) ──────────────────────
+  // ── baystars 2025 ──────────────────────
   { playerId: "baystars-1",  seasonYear: 2025, games: 93,  plateAppearances: 391, atBats: 364, hits: 101, singles: 61,  doubles: 24, triples: 0, homeRuns: 16, rbi: 49,  runs: 48, walks: 16, intentionalWalks: 0, hitByPitch: 10, strikeouts: 76,  stolenBases: 3,  caughtStealing: 4, doublePlayGrounded: 6,  sacrificeHits: 0,  sacrificeFlies: 1,  avg: 0.277, obp: 0.325, slg: 0.475, ops: 0.800 },
   { playerId: "baystars-2",  seasonYear: 2025, games: 138, plateAppearances: 569, atBats: 525, hits: 144, singles: 105, doubles: 24, triples: 0, homeRuns: 15, rbi: 70,  runs: 47, walks: 34, intentionalWalks: 0, hitByPitch: 5,  strikeouts: 61,  stolenBases: 0,  caughtStealing: 0, doublePlayGrounded: 13, sacrificeHits: 0,  sacrificeFlies: 5,  avg: 0.274, obp: 0.322, slg: 0.406, ops: 0.727 },
   { playerId: "baystars-3",  seasonYear: 2025, games: 104, plateAppearances: 344, atBats: 313, hits: 82,  singles: 58,  doubles: 19, triples: 2, homeRuns: 3,  rbi: 41,  runs: 22, walks: 16, intentionalWalks: 0, hitByPitch: 4,  strikeouts: 40,  stolenBases: 0,  caughtStealing: 0, doublePlayGrounded: 5,  sacrificeHits: 4,  sacrificeFlies: 7,  avg: 0.262, obp: 0.300, slg: 0.364, ops: 0.664 },
@@ -1432,7 +1432,7 @@ export const battingStatsCentral: {
   { playerId: "baystars-74", seasonYear: 2025, games: 25,  plateAppearances: 51,  atBats: 46,  hits: 9,   singles: 8,   doubles: 1,  triples: 0, homeRuns: 0,  rbi: 1,   runs: 1,  walks: 5,  intentionalWalks: 0, hitByPitch: 0,  strikeouts: 13,  stolenBases: 0,  caughtStealing: 0, doublePlayGrounded: 0,  sacrificeHits: 0,  sacrificeFlies: 0,  avg: 0.196, obp: 0.275, slg: 0.217, ops: 0.492 },
   { playerId: "baystars-75", seasonYear: 2025, games: 73,  plateAppearances: 158, atBats: 141, hits: 34,  singles: 23,  doubles: 9,  triples: 0, homeRuns: 2,  rbi: 16,  runs: 15, walks: 14, intentionalWalks: 0, hitByPitch: 1,  strikeouts: 42,  stolenBases: 3,  caughtStealing: 2, doublePlayGrounded: 2,  sacrificeHits: 2,  sacrificeFlies: 0,  avg: 0.241, obp: 0.314, slg: 0.348, ops: 0.662 },
 
-  // ── 東京ヤクルトスワローズ ────────────────────────────────────
+  // ── swallows 2025 ──────────────────────
   {
     // 村上宗隆
     playerId: "swallows-1",
