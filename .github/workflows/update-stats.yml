@@ -81,12 +81,19 @@ jobs:
       - name: Re-seed database with updated data
         run: npm run seed
 
+      # ── セイバーメトリクス分析（Claude API） ─────────────────────────────
+      - name: Run sabermetrics analysis (Claude API)
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: npx tsx scripts/analyze-stats.ts
+        continue-on-error: true
+
       # ── 変更をコミット＆プッシュ ─────────────────────────────────
       - name: Commit updated seed files
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add prisma/seed-data/
+          git add prisma/seed-data/ reports/
           if git diff --staged --quiet; then
             echo "変更なし — スキップ"
           else

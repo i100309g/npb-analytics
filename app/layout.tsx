@@ -19,6 +19,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <nav className="flex gap-6 text-sm text-gray-400">
               <Link href="/" className="hover:text-white transition-colors">チーム</Link>
               <Link href="/players" className="hover:text-white transition-colors">選手成績</Link>
+              <Link href="/report" className="hover:text-white transition-colors">AI分析</Link>
             </nav>
           </div>
         </header>

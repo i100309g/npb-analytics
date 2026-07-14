@@ -17,9 +17,11 @@
     "update:players": "tsx scripts/update-stats.ts --type players",
     "update:2025": "tsx scripts/update-stats.ts --year 2025",
     "update:2026": "tsx scripts/update-stats.ts --year 2026",
-    "validate": "tsx scripts/validate-seed-data.ts"
+    "validate": "tsx scripts/validate-seed-data.ts",
+    "analyze": "tsx scripts/analyze-stats.ts"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.111.0",
     "@prisma/adapter-better-sqlite3": "^7.8.0",
     "@prisma/client": "^7.7.0",
     "@types/better-sqlite3": "^7.6.13",
