@@ -542,7 +542,7 @@ export const pitchingStatsPacific: {
   },
 
   // ── lions 2026 ──────────────────────
-  { playerId: "lions-6", seasonYear: 2026, games:  13, starts:  1, completeGames: 1, shutouts: 0, wins:  6, losses:  2, saves:  0, holds:  0, blownSaves: 0, inningsPitched: 82.00, hitsAllowed:  43, runsAllowed:  12, earnedRuns:   9, walksAllowed: 32, intentionalWalks: 0, hitBatters:  4, strikeouts:  78, homeRunsAllowed:  1, era: 0.99, whip: 0.91, kPer9: 8.56, bbPer9: 3.51, qualityStarts: 0 },
+  { playerId: "lions-6", seasonYear: 2026, games:  14, starts:  1, completeGames: 1, shutouts: 0, wins:  7, losses:  2, saves:  0, holds:  0, blownSaves: 0, inningsPitched: 88.00, hitsAllowed:  50, runsAllowed:  12, earnedRuns:   9, walksAllowed: 33, intentionalWalks: 0, hitBatters:  4, strikeouts:  82, homeRunsAllowed:  1, era: 0.92, whip: 0.94, kPer9: 8.39, bbPer9: 3.38, qualityStarts: 0 },
 
   // ── fighters 2026 ──────────────────────
   { playerId: "fighters-6", seasonYear: 2026, games:   5, starts:  0, completeGames: 0, shutouts: 0, wins:  0, losses:  0, saves:  0, holds:  0, blownSaves: 0, inningsPitched: 12.00, hitsAllowed:  14, runsAllowed:   7, earnedRuns:   4, walksAllowed:  5, intentionalWalks: 0, hitBatters:  0, strikeouts:  13, homeRunsAllowed:  2, era: 3.00, whip: 1.58, kPer9: 9.75, bbPer9: 3.75, qualityStarts: 0 },
