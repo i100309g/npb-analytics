@@ -552,7 +552,7 @@ export const battingStatsPacific: {
   { playerId: "eagles-6", seasonYear: 2026, games:  15, plateAppearances:   4, atBats:   3, hits:   0, singles:   0, doubles:  0, triples: 0, homeRuns:  0, rbi:   0, runs:   0, walks:  0, intentionalWalks: 0, hitByPitch:  1, strikeouts:   0, stolenBases:  0, caughtStealing: 0, doublePlayGrounded:  2, sacrificeHits:  0, sacrificeFlies:  0, avg: 0.000, obp: 0.000, slg: 0.000, ops: 0.000 },
 
   // ── buffaloes 2026 ──────────────────────
-  { playerId: "buffaloes-2", seasonYear: 2026, games:  79, plateAppearances: 319, atBats: 290, hits:  36, singles:   0, doubles: 78, triples: 11, homeRuns:  1, rbi: 109, runs:  29, walks:  2, intentionalWalks: 0, hitByPitch:  1, strikeouts:   2, stolenBases:  0, caughtStealing: 3, doublePlayGrounded: 35, sacrificeHits:  3, sacrificeFlies: 22, avg: 1.000, obp: 0.269, slg: 0.376, ops: 0.324 },
+  { playerId: "buffaloes-2", seasonYear: 2026, games:  80, plateAppearances: 320, atBats: 291, hits:  36, singles:   0, doubles: 78, triples: 11, homeRuns:  1, rbi: 109, runs:  29, walks:  2, intentionalWalks: 0, hitByPitch:  1, strikeouts:   2, stolenBases:  0, caughtStealing: 3, doublePlayGrounded: 35, sacrificeHits:  3, sacrificeFlies: 22, avg: 1.000, obp: 0.268, slg: 0.375, ops: 0.323 },
 
   // ── hawks 2025 ──────────────────────
   { playerId: "hawks-4", seasonYear: 2025, games:  26, plateAppearances:   2, atBats:   1, hits:   0, singles:   0, doubles:  0, triples: 0, homeRuns:  0, rbi:   0, runs:   0, walks:  0, intentionalWalks: 0, hitByPitch:  1, strikeouts:   0, stolenBases:  0, caughtStealing: 0, doublePlayGrounded:  1, sacrificeHits:  0, sacrificeFlies:  0, avg: 0.000, obp: 0.000, slg: 0.000, ops: 0.000 },
