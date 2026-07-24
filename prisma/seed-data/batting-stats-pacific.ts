@@ -542,17 +542,17 @@ export const battingStatsPacific: {
   },
 
   // ── lions 2026 ──────────────────────
-  { playerId: "lions-2", seasonYear: 2026, games:  18, plateAppearances:  60, atBats:  54, hits:   5, singles:   0, doubles:  9, triples: 1, homeRuns:  0, rbi:  13, runs:   5, walks:  1, intentionalWalks: 0, hitByPitch:  0, strikeouts:   1, stolenBases:  0, caughtStealing: 1, doublePlayGrounded: 12, sacrificeHits:  1, sacrificeFlies:  4, avg: 0.000, obp: 0.167, slg: 0.241, ops: 0.233 },
+  { playerId: "lions-2", seasonYear: 2026, games:  19, plateAppearances:  62, atBats:  56, hits:   5, singles:   0, doubles:  9, triples: 1, homeRuns:  0, rbi:  13, runs:   5, walks:  1, intentionalWalks: 0, hitByPitch:  0, strikeouts:   1, stolenBases:  0, caughtStealing: 1, doublePlayGrounded: 13, sacrificeHits:  1, sacrificeFlies:  4, avg: 0.000, obp: 0.161, slg: 0.232, ops: 0.226 },
 
   // ── fighters 2026 ──────────────────────
-  { playerId: "fighters-1", seasonYear: 2026, games:  90, plateAppearances: 349, atBats: 311, hits:  42, singles:   0, doubles: 83, triples: 13, homeRuns:  1, rbi: 149, runs:  44, walks:  1, intentionalWalks: 0, hitByPitch:  0, strikeouts:   0, stolenBases:  2, caughtStealing: 3, doublePlayGrounded: 87, sacrificeHits:  3, sacrificeFlies: 31, avg: 13.000, obp: 0.267, slg: 0.479, ops: 0.336 },
+  { playerId: "fighters-1", seasonYear: 2026, games:  91, plateAppearances: 353, atBats: 315, hits:  44, singles:   0, doubles: 85, triples: 13, homeRuns:  1, rbi: 154, runs:  46, walks:  1, intentionalWalks: 0, hitByPitch:  0, strikeouts:   0, stolenBases:  2, caughtStealing: 3, doublePlayGrounded: 87, sacrificeHits:  3, sacrificeFlies: 31, avg: 13.000, obp: 0.270, slg: 0.489, ops: 0.338 },
 
   // ── eagles 2026 ──────────────────────
-  { playerId: "eagles-1", seasonYear: 2026, games:  81, plateAppearances: 308, atBats: 265, hits:  21, singles:   0, doubles: 57, triples: 7, homeRuns:  0, rbi:  85, runs:  30, walks:  0, intentionalWalks: 0, hitByPitch:  0, strikeouts:   1, stolenBases:  1, caughtStealing: 3, doublePlayGrounded: 66, sacrificeHits:  3, sacrificeFlies: 37, avg: 10.000, obp: 0.215, slg: 0.321, ops: 0.315 },
+  { playerId: "eagles-1", seasonYear: 2026, games:  82, plateAppearances: 313, atBats: 269, hits:  21, singles:   0, doubles: 57, triples: 7, homeRuns:  0, rbi:  85, runs:  30, walks:  0, intentionalWalks: 0, hitByPitch:  0, strikeouts:   1, stolenBases:  1, caughtStealing: 3, doublePlayGrounded: 67, sacrificeHits:  3, sacrificeFlies: 38, avg: 10.000, obp: 0.212, slg: 0.316, ops: 0.313 },
   { playerId: "eagles-6", seasonYear: 2026, games:  15, plateAppearances:   4, atBats:   3, hits:   0, singles:   0, doubles:  0, triples: 0, homeRuns:  0, rbi:   0, runs:   0, walks:  0, intentionalWalks: 0, hitByPitch:  1, strikeouts:   0, stolenBases:  0, caughtStealing: 0, doublePlayGrounded:  2, sacrificeHits:  0, sacrificeFlies:  0, avg: 0.000, obp: 0.000, slg: 0.000, ops: 0.000 },
 
   // ── buffaloes 2026 ──────────────────────
-  { playerId: "buffaloes-2", seasonYear: 2026, games:  81, plateAppearances: 324, atBats: 293, hits:  36, singles:   0, doubles: 78, triples: 11, homeRuns:  1, rbi: 109, runs:  29, walks:  2, intentionalWalks: 0, hitByPitch:  1, strikeouts:   2, stolenBases:  0, caughtStealing: 3, doublePlayGrounded: 35, sacrificeHits:  3, sacrificeFlies: 24, avg: 1.000, obp: 0.266, slg: 0.372, ops: 0.325 },
+  { playerId: "buffaloes-2", seasonYear: 2026, games:  82, plateAppearances: 328, atBats: 296, hits:  37, singles:   0, doubles: 78, triples: 11, homeRuns:  1, rbi: 109, runs:  29, walks:  2, intentionalWalks: 0, hitByPitch:  1, strikeouts:   2, stolenBases:  0, caughtStealing: 3, doublePlayGrounded: 35, sacrificeHits:  3, sacrificeFlies: 25, avg: 2.000, obp: 0.264, slg: 0.368, ops: 0.324 },
 
   // ── hawks 2025 ──────────────────────
   { playerId: "hawks-4", seasonYear: 2025, games:  26, plateAppearances:   2, atBats:   1, hits:   0, singles:   0, doubles:  0, triples: 0, homeRuns:  0, rbi:   0, runs:   0, walks:  0, intentionalWalks: 0, hitByPitch:  1, strikeouts:   0, stolenBases:  0, caughtStealing: 0, doublePlayGrounded:  1, sacrificeHits:  0, sacrificeFlies:  0, avg: 0.000, obp: 0.000, slg: 0.000, ops: 0.000 },
