@@ -542,10 +542,10 @@ export const battingStatsPacific: {
   },
 
   // ── lions 2026 ──────────────────────
-  { playerId: "lions-2", seasonYear: 2026, games:  21, plateAppearances:  64, atBats:  58, hits:   5, singles:   0, doubles: 10, triples: 1, homeRuns:  0, rbi:  14, runs:   5, walks:  1, intentionalWalks: 0, hitByPitch:  0, strikeouts:   1, stolenBases:  0, caughtStealing: 1, doublePlayGrounded: 13, sacrificeHits:  1, sacrificeFlies:  4, avg: 0.000, obp: 0.172, slg: 0.241, ops: 0.234 },
+  { playerId: "lions-2", seasonYear: 2026, games:  22, plateAppearances:  68, atBats:  61, hits:   5, singles:   0, doubles: 10, triples: 1, homeRuns:  0, rbi:  14, runs:   5, walks:  1, intentionalWalks: 0, hitByPitch:  0, strikeouts:   1, stolenBases:  0, caughtStealing: 2, doublePlayGrounded: 13, sacrificeHits:  1, sacrificeFlies:  4, avg: 1.000, obp: 0.164, slg: 0.230, ops: 0.235 },
 
   // ── fighters 2026 ──────────────────────
-  { playerId: "fighters-1", seasonYear: 2026, games:  96, plateAppearances: 373, atBats: 333, hits:  46, singles:   0, doubles: 89, triples: 13, homeRuns:  1, rbi: 161, runs:  48, walks:  1, intentionalWalks: 0, hitByPitch:  0, strikeouts:   0, stolenBases:  2, caughtStealing: 3, doublePlayGrounded: 91, sacrificeHits:  3, sacrificeFlies: 33, avg: 14.000, obp: 0.267, slg: 0.483, ops: 0.336 },
+  { playerId: "fighters-1", seasonYear: 2026, games:  97, plateAppearances: 377, atBats: 336, hits:  46, singles:   0, doubles: 90, triples: 14, homeRuns:  1, rbi: 163, runs:  48, walks:  1, intentionalWalks: 0, hitByPitch:  0, strikeouts:   0, stolenBases:  2, caughtStealing: 3, doublePlayGrounded: 91, sacrificeHits:  3, sacrificeFlies: 34, avg: 14.000, obp: 0.268, slg: 0.485, ops: 0.338 },
 
   // ── eagles 2026 ──────────────────────
   { playerId: "eagles-1", seasonYear: 2026, games:  86, plateAppearances: 329, atBats: 282, hits:  23, singles:   0, doubles: 62, triples: 9, homeRuns:  0, rbi:  98, runs:  35, walks:  0, intentionalWalks: 0, hitByPitch:  0, strikeouts:   1, stolenBases:  1, caughtStealing: 3, doublePlayGrounded: 70, sacrificeHits:  4, sacrificeFlies: 40, avg: 10.000, obp: 0.220, slg: 0.348, ops: 0.319 },
