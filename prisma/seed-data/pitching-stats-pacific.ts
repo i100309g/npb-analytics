@@ -545,7 +545,7 @@ export const pitchingStatsPacific: {
   { playerId: "lions-6", seasonYear: 2026, games:  17, starts:  1, completeGames: 1, shutouts: 0, wins:  8, losses:  3, saves:  0, holds:  0, blownSaves: 0, inningsPitched: 103.00, hitsAllowed:  66, runsAllowed:  20, earnedRuns:  17, walksAllowed: 39, intentionalWalks: 0, hitBatters:  6, strikeouts:  96, homeRunsAllowed:  2, era: 1.49, whip: 1.02, kPer9: 8.39, bbPer9: 3.41, qualityStarts: 0 },
 
   // ── fighters 2026 ──────────────────────
-  { playerId: "fighters-6", seasonYear: 2026, games:  11, starts:  0, completeGames: 0, shutouts: 0, wins:  0, losses:  0, saves:  0, holds:  0, blownSaves: 0, inningsPitched: 19.67, hitsAllowed:  18, runsAllowed:   7, earnedRuns:   4, walksAllowed:  5, intentionalWalks: 0, hitBatters:  0, strikeouts:  17, homeRunsAllowed:  2, era: 1.83, whip: 1.17, kPer9: 7.78, bbPer9: 2.29, qualityStarts: 0 },
+  { playerId: "fighters-6", seasonYear: 2026, games:  12, starts:  0, completeGames: 0, shutouts: 0, wins:  0, losses:  0, saves:  0, holds:  0, blownSaves: 0, inningsPitched: 20.33, hitsAllowed:  19, runsAllowed:   8, earnedRuns:   5, walksAllowed:  5, intentionalWalks: 0, hitBatters:  0, strikeouts:  17, homeRunsAllowed:  3, era: 2.21, whip: 1.18, kPer9: 7.52, bbPer9: 2.21, qualityStarts: 0 },
 
   // ── marines 2026 ──────────────────────
   { playerId: "marines-6", seasonYear: 2026, games:   2, starts:  0, completeGames: 0, shutouts: 0, wins:  0, losses:  0, saves:  0, holds:  0, blownSaves: 0, inningsPitched: 7.67, hitsAllowed:   6, runsAllowed:   0, earnedRuns:   0, walksAllowed:  0, intentionalWalks: 0, hitBatters:  0, strikeouts:   7, homeRunsAllowed:  0, era: 0.00, whip: 0.78, kPer9: 8.22, bbPer9: 0.00, qualityStarts: 0 },

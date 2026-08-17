@@ -543,10 +543,10 @@ export const battingStatsPacific: {
 
   // ── lions 2026 ──────────────────────
   { playerId: "lions-2", seasonYear: 2026, games:  23, plateAppearances:  69, atBats:  62, hits:   5, singles:   0, doubles: 10, triples: 1, homeRuns:  0, rbi:  14, runs:   5, walks:  1, intentionalWalks: 0, hitByPitch:  0, strikeouts:   1, stolenBases:  0, caughtStealing: 2, doublePlayGrounded: 13, sacrificeHits:  1, sacrificeFlies:  4, avg: 1.000, obp: 0.161, slg: 0.226, ops: 0.232 },
-  { playerId: "lions-3", seasonYear: 2026, games:   7, plateAppearances:  24, atBats:  23, hits:   0, singles:   0, doubles:  4, triples: 0, homeRuns:  0, rbi:   4, runs:   0, walks:  0, intentionalWalks: 0, hitByPitch:  0, strikeouts:   0, stolenBases:  0, caughtStealing: 0, doublePlayGrounded:  9, sacrificeHits:  0, sacrificeFlies:  1, avg: 0.000, obp: 0.174, slg: 0.174, ops: 0.208 },
+  { playerId: "lions-3", seasonYear: 2026, games:   8, plateAppearances:  27, atBats:  26, hits:   0, singles:   0, doubles:  5, triples: 1, homeRuns:  0, rbi:   6, runs:   1, walks:  0, intentionalWalks: 0, hitByPitch:  0, strikeouts:   0, stolenBases:  0, caughtStealing: 0, doublePlayGrounded: 11, sacrificeHits:  0, sacrificeFlies:  1, avg: 0.000, obp: 0.192, slg: 0.231, ops: 0.222 },
 
   // ── fighters 2026 ──────────────────────
-  { playerId: "fighters-1", seasonYear: 2026, games: 105, plateAppearances: 408, atBats: 366, hits:  49, singles:   0, doubles: 97, triples: 14, homeRuns:  1, rbi: 173, runs:  50, walks:  1, intentionalWalks: 0, hitByPitch:  0, strikeouts:   0, stolenBases:  2, caughtStealing: 3, doublePlayGrounded: 101, sacrificeHits:  3, sacrificeFlies: 35, avg: 15.000, obp: 0.265, slg: 0.473, ops: 0.332 },
+  { playerId: "fighters-1", seasonYear: 2026, games: 106, plateAppearances: 413, atBats: 371, hits:  49, singles:   0, doubles: 97, triples: 14, homeRuns:  1, rbi: 173, runs:  50, walks:  1, intentionalWalks: 0, hitByPitch:  0, strikeouts:   0, stolenBases:  2, caughtStealing: 3, doublePlayGrounded: 101, sacrificeHits:  3, sacrificeFlies: 35, avg: 15.000, obp: 0.261, slg: 0.466, ops: 0.328 },
 
   // ── eagles 2026 ──────────────────────
   { playerId: "eagles-1", seasonYear: 2026, games:  87, plateAppearances: 333, atBats: 286, hits:  23, singles:   0, doubles: 62, triples: 9, homeRuns:  0, rbi:  98, runs:  35, walks:  0, intentionalWalks: 0, hitByPitch:  0, strikeouts:   1, stolenBases:  1, caughtStealing: 3, doublePlayGrounded: 72, sacrificeHits:  4, sacrificeFlies: 40, avg: 11.000, obp: 0.217, slg: 0.343, ops: 0.315 },
