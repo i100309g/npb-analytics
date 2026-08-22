@@ -543,7 +543,7 @@ export const battingStatsPacific: {
 
   // ── lions 2026 ──────────────────────
   { playerId: "lions-2", seasonYear: 2026, games:  23, plateAppearances:  69, atBats:  62, hits:   5, singles:   0, doubles: 10, triples: 1, homeRuns:  0, rbi:  14, runs:   5, walks:  1, intentionalWalks: 0, hitByPitch:  0, strikeouts:   1, stolenBases:  0, caughtStealing: 2, doublePlayGrounded: 13, sacrificeHits:  1, sacrificeFlies:  4, avg: 1.000, obp: 0.161, slg: 0.226, ops: 0.232 },
-  { playerId: "lions-3", seasonYear: 2026, games:  11, plateAppearances:  35, atBats:  33, hits:   1, singles:   0, doubles:  7, triples: 2, homeRuns:  0, rbi:   9, runs:   1, walks:  0, intentionalWalks: 0, hitByPitch:  0, strikeouts:   0, stolenBases:  0, caughtStealing: 0, doublePlayGrounded: 12, sacrificeHits:  0, sacrificeFlies:  2, avg: 0.000, obp: 0.212, slg: 0.273, ops: 0.257 },
+  { playerId: "lions-3", seasonYear: 2026, games:  12, plateAppearances:  36, atBats:  34, hits:   2, singles:   0, doubles:  8, triples: 2, homeRuns:  0, rbi:  13, runs:   5, walks:  0, intentionalWalks: 0, hitByPitch:  0, strikeouts:   0, stolenBases:  0, caughtStealing: 0, doublePlayGrounded: 12, sacrificeHits:  0, sacrificeFlies:  2, avg: 0.000, obp: 0.235, slg: 0.382, ops: 0.278 },
 
   // ── fighters 2026 ──────────────────────
   { playerId: "fighters-1", seasonYear: 2026, games: 107, plateAppearances: 417, atBats: 375, hits:  49, singles:   0, doubles: 97, triples: 14, homeRuns:  1, rbi: 173, runs:  50, walks:  1, intentionalWalks: 0, hitByPitch:  0, strikeouts:   0, stolenBases:  2, caughtStealing: 3, doublePlayGrounded: 104, sacrificeHits:  3, sacrificeFlies: 35, avg: 15.000, obp: 0.259, slg: 0.461, ops: 0.325 },
