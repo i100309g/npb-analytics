@@ -551,7 +551,7 @@ export const pitchingStatsPacific: {
   { playerId: "marines-6", seasonYear: 2026, games:   2, starts:  0, completeGames: 0, shutouts: 0, wins:  0, losses:  0, saves:  0, holds:  0, blownSaves: 0, inningsPitched: 7.67, hitsAllowed:   6, runsAllowed:   0, earnedRuns:   0, walksAllowed:  0, intentionalWalks: 0, hitBatters:  0, strikeouts:   7, homeRunsAllowed:  0, era: 0.00, whip: 0.78, kPer9: 8.22, bbPer9: 0.00, qualityStarts: 0 },
 
   // ── eagles 2026 ──────────────────────
-  { playerId: "eagles-6", seasonYear: 2026, games:  19, starts:  0, completeGames: 0, shutouts: 0, wins:  6, losses:  9, saves:  0, holds:  0, blownSaves: 0, inningsPitched: 117.00, hitsAllowed: 109, runsAllowed:  55, earnedRuns:  53, walksAllowed: 31, intentionalWalks: 0, hitBatters:  3, strikeouts: 121, homeRunsAllowed: 19, era: 4.08, whip: 1.20, kPer9: 9.31, bbPer9: 2.38, qualityStarts: 0 },
+  { playerId: "eagles-6", seasonYear: 2026, games:  20, starts:  0, completeGames: 0, shutouts: 0, wins:  6, losses:  9, saves:  0, holds:  0, blownSaves: 0, inningsPitched: 123.00, hitsAllowed: 117, runsAllowed:  59, earnedRuns:  57, walksAllowed: 34, intentionalWalks: 0, hitBatters:  3, strikeouts: 130, homeRunsAllowed: 19, era: 4.17, whip: 1.23, kPer9: 9.51, bbPer9: 2.49, qualityStarts: 0 },
 
   // ── hawks 2025 ──────────────────────
   { playerId: "hawks-4", seasonYear: 2025, games:  26, starts:  1, completeGames: 1, shutouts: 0, wins: 14, losses:  9, saves:  0, holds:  0, blownSaves: 0, inningsPitched: 175.00, hitsAllowed: 167, runsAllowed:  67, earnedRuns:  59, walksAllowed: 41, intentionalWalks: 0, hitBatters:  6, strikeouts: 121, homeRunsAllowed: 10, era: 3.03, whip: 1.19, kPer9: 6.22, bbPer9: 2.11, qualityStarts: 0 },
