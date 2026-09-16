@@ -550,7 +550,7 @@ export const battingStatsPacific: {
 
   // ── eagles 2026 ──────────────────────
   { playerId: "eagles-1", seasonYear: 2026, games:  87, plateAppearances: 333, atBats: 286, hits:  23, singles:   0, doubles: 62, triples: 9, homeRuns:  0, rbi:  98, runs:  35, walks:  0, intentionalWalks: 0, hitByPitch:  0, strikeouts:   1, stolenBases:  1, caughtStealing: 3, doublePlayGrounded: 72, sacrificeHits:  4, sacrificeFlies: 40, avg: 11.000, obp: 0.217, slg: 0.343, ops: 0.315 },
-  { playerId: "eagles-6", seasonYear: 2026, games:  22, plateAppearances:   4, atBats:   3, hits:   0, singles:   0, doubles:  0, triples: 0, homeRuns:  0, rbi:   0, runs:   0, walks:  0, intentionalWalks: 0, hitByPitch:  1, strikeouts:   0, stolenBases:  0, caughtStealing: 0, doublePlayGrounded:  2, sacrificeHits:  0, sacrificeFlies:  0, avg: 0.000, obp: 0.000, slg: 0.000, ops: 0.000 },
+  { playerId: "eagles-6", seasonYear: 2026, games:  23, plateAppearances:   4, atBats:   3, hits:   0, singles:   0, doubles:  0, triples: 0, homeRuns:  0, rbi:   0, runs:   0, walks:  0, intentionalWalks: 0, hitByPitch:  1, strikeouts:   0, stolenBases:  0, caughtStealing: 0, doublePlayGrounded:  2, sacrificeHits:  0, sacrificeFlies:  0, avg: 0.000, obp: 0.000, slg: 0.000, ops: 0.000 },
 
   // ── buffaloes 2026 ──────────────────────
   { playerId: "buffaloes-2", seasonYear: 2026, games: 113, plateAppearances: 438, atBats: 393, hits:  44, singles:   0, doubles: 99, triples: 14, homeRuns:  1, rbi: 133, runs:  33, walks:  3, intentionalWalks: 0, hitByPitch:  2, strikeouts:   3, stolenBases:  1, caughtStealing: 5, doublePlayGrounded: 46, sacrificeHits:  5, sacrificeFlies: 33, avg: 3.000, obp: 0.252, slg: 0.338, ops: 0.314 },
