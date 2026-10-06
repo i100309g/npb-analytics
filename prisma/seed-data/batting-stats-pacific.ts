@@ -542,8 +542,8 @@ export const battingStatsPacific: {
   },
 
   // ── lions 2026 ──────────────────────
-  { playerId: "lions-2", seasonYear: 2026, games:  34, plateAppearances: 100, atBats:  93, hits:   8, singles:   0, doubles: 16, triples: 3, homeRuns:  0, rbi:  25, runs:   8, walks:  1, intentionalWalks: 0, hitByPitch:  0, strikeouts:   1, stolenBases:  0, caughtStealing: 2, doublePlayGrounded: 20, sacrificeHits:  1, sacrificeFlies:  4, avg: 3.000, obp: 0.172, slg: 0.269, ops: 0.220 },
-  { playerId: "lions-3", seasonYear: 2026, games:  25, plateAppearances:  61, atBats:  57, hits:   2, singles:   0, doubles: 14, triples: 4, homeRuns:  0, rbi:  21, runs:   8, walks:  0, intentionalWalks: 0, hitByPitch:  0, strikeouts:   0, stolenBases:  0, caughtStealing: 0, doublePlayGrounded: 21, sacrificeHits:  0, sacrificeFlies:  4, avg: 0.000, obp: 0.246, slg: 0.368, ops: 0.295 },
+  { playerId: "lions-2", seasonYear: 2026, games:  35, plateAppearances: 103, atBats:  96, hits:   8, singles:   0, doubles: 16, triples: 3, homeRuns:  0, rbi:  25, runs:   9, walks:  1, intentionalWalks: 0, hitByPitch:  0, strikeouts:   1, stolenBases:  0, caughtStealing: 2, doublePlayGrounded: 20, sacrificeHits:  1, sacrificeFlies:  4, avg: 3.000, obp: 0.167, slg: 0.260, ops: 0.214 },
+  { playerId: "lions-3", seasonYear: 2026, games:  26, plateAppearances:  64, atBats:  60, hits:   2, singles:   0, doubles: 14, triples: 4, homeRuns:  0, rbi:  21, runs:   8, walks:  0, intentionalWalks: 0, hitByPitch:  0, strikeouts:   0, stolenBases:  0, caughtStealing: 0, doublePlayGrounded: 22, sacrificeHits:  0, sacrificeFlies:  4, avg: 0.000, obp: 0.233, slg: 0.350, ops: 0.281 },
 
   // ── fighters 2026 ──────────────────────
   { playerId: "fighters-1", seasonYear: 2026, games: 119, plateAppearances: 466, atBats: 421, hits:  58, singles:   0, doubles: 108, triples: 18, homeRuns:  1, rbi: 191, runs:  55, walks:  1, intentionalWalks: 0, hitByPitch:  0, strikeouts:   0, stolenBases:  2, caughtStealing: 3, doublePlayGrounded: 114, sacrificeHits:  4, sacrificeFlies: 37, avg: 15.000, obp: 0.257, slg: 0.454, ops: 0.318 },
